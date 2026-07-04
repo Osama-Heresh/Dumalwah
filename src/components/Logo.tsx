@@ -20,7 +20,7 @@ export default function Logo({ className = "w-24 h-24", showText = true }: LogoP
       {showText && (
         <div className="text-center mt-3" id="brand-text-block">
           <h1 className="text-2xl font-bold text-[#4A2F13] tracking-tight font-sans">
-            قلعة الدملوة
+            قلعة الدملؤة
           </h1>
           <p className="text-xs text-[#B58A30] uppercase font-mono tracking-widest mt-1">
             YEMENI PREMIUM HONEY

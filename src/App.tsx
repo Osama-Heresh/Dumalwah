@@ -3,6 +3,8 @@ import { Product, CartItem, LoyaltyProfile, Language, ShippingMethod, PaymentMet
 import { translations } from "./translations";
 import Logo from "./components/Logo";
 import Chatbot from "./components/Chatbot";
+import { FeedbackForm } from "./components/FeedbackForm";
+import { AdminFeedback } from "./components/AdminFeedback";
 import { 
   ShoppingBag, 
   Search, 
@@ -135,7 +137,7 @@ const LOCAL_PRODUCTS: Product[] = [
   {
     id: "dumalwah-immunity",
     category: "blends",
-    nameAr: "خلطة قلعة الدملوة الملكية للمناعة",
+    nameAr: "خلطة قلعة الدملؤة الملكية للمناعة",
     nameEn: "Al-Dumalwah Castle Royal Immunity Blend",
     taglineAr: "مزيج القوة المبتكر: عسل سدر يمني، غذاء ملكات، بروبوليس، وجينسنج",
     taglineEn: "The Ultimate Synergy: Yemeni Sidr Honey, Royal Jelly, Propolis & Ginseng",
@@ -196,6 +198,8 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<string>("home");
   const [cartOpen, setCartOpen] = useState(false);
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Filters state
@@ -244,6 +248,13 @@ export default function App() {
   const [regPhone, setRegPhone] = useState("");
   const [regPassword, setRegPassword] = useState("");
   const [regConfirmPassword, setRegConfirmPassword] = useState("");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("admin") === "true") {
+      setShowAdmin(true);
+    }
+  }, []);
   const [authError, setAuthError] = useState<string | null>(null);
 
   const [loyaltyPhone, setLoyaltyPhone] = useState("");
@@ -2279,7 +2290,7 @@ export default function App() {
                                     </div>
                                     {ticket.replyText && (
                                       <div className="mt-2.5 p-3 rounded-lg bg-white border border-[#EADFC9]/50 space-y-1 text-right md:text-right">
-                                        <span className="font-black text-[10px] text-[#B58A30] block">👑 {language === "ar" ? "رد المدير زكريى السلام (إدارة قلعة الدملوة):" : "Reply from Manager Zakaria Al-Salam (Al-Dumalwah Admin):"}</span>
+                                        <span className="font-black text-[10px] text-[#B58A30] block">👑 {language === "ar" ? "رد المدير زكريى السلام (إدارة قلعة الدملؤة):" : "Reply from Manager Zakaria Al-Salam (Al-Dumalwah Admin):"}</span>
                                         <p className="text-gray-700 leading-relaxed italic">{ticket.replyText}</p>
                                         <span className="block text-[9px] text-gray-400 font-mono text-left">{ticket.replyDate}</span>
                                       </div>
@@ -2481,7 +2492,7 @@ export default function App() {
                           {language === "ar" ? "أهلاً بك يا زكريى السلام" : "Welcome back, Director Zakaria Al-Salam"}
                         </h2>
                         <p className="text-xs text-stone-400 mt-1">
-                          {language === "ar" ? "لوحة الإدارة والمتابعة الأمنية لمتجر قلعة الدملوة للعسل اليمني" : "Administrative & secure control panel for Al-Dumalwah Castle Honey"}
+                          {language === "ar" ? "لوحة الإدارة والمتابعة الأمنية لمتجر قلعة الدملؤة للعسل اليمني" : "Administrative & secure control panel for Al-Dumalwah Castle Honey"}
                         </p>
                       </div>
                       <div className="flex items-center gap-3 bg-stone-800/60 px-4 py-2 rounded-xl border border-stone-800 shrink-0">
@@ -3207,7 +3218,7 @@ export default function App() {
             <div className="space-y-3 text-xs">
               <p className="leading-relaxed text-[#FCFAF7]/70">
                 {language === "ar" 
-                  ? "لأي استفسارات طبية أو صحية أو لمتابعة طلبياتكم الفاخرة، يسعد طاقم خدمة العملاء بقلعة الدملوة خدمتكم على مدار الساعة." 
+                  ? "لأي استفسارات طبية أو صحية أو لمتابعة طلبياتكم الفاخرة، يسعد طاقم خدمة العملاء بقلعة الدملؤة خدمتكم على مدار الساعة." 
                   : "For therapeutic inquiries, order status tracking, or phone ordering, our helpdesk team is operational 24/7."}
               </p>
               
@@ -3215,7 +3226,7 @@ export default function App() {
               <div className="flex flex-col items-center md:items-start gap-2">
                 <span className="font-mono text-stone-300 text-xs tracking-wider">📞 00962799695547</span>
                 <a
-                  href="https://wa.me/962799695547?text=السلام%20عليكم%20قلعة%20الدملوة%20للعسل%20اليمني%20أود%20الاستفسار"
+                  href="https://wa.me/962799695547?text=السلام%20عليكم%20قلعة%20الدملؤة%20للعسل%20اليمني%20أود%20الاستفسار"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-md transition hover:-translate-y-0.5"
@@ -3237,8 +3248,18 @@ export default function App() {
         </div>
 
         {/* Floating WhatsApp Action button */}
+        <button
+          onClick={() => setShowFeedbackForm(true)}
+          className="fixed bottom-6 left-6 z-40 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border border-blue-400 flex items-center justify-center group"
+          id="floating-feedback-button"
+        >
+          <MessageSquare className="w-6 h-6" />
+          <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap font-sans text-xs font-bold leading-none pl-0 group-hover:pl-2">
+            {language === "ar" ? "اقتراحات وشكاوى" : "Suggestions & Complaints"}
+          </span>
+        </button>
         <a
-          href="https://wa.me/962799695547?text=السلام%20عليكم%20قلعة%20الدملوة%20أود%20الاستفسار%20عن%20العسل"
+          href="https://wa.me/962799695547?text=السلام%20عليكم%20قلعة%20الدملؤة%20أود%20الاستفسار%20عن%20العسل"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border border-emerald-400 flex items-center justify-center group"
@@ -3249,6 +3270,8 @@ export default function App() {
             {language === "ar" ? "واتساب المتجر" : "WhatsApp Shop"}
           </span>
         </a>
+        {showFeedbackForm && <FeedbackForm onClose={() => setShowFeedbackForm(false)} language={language} />}
+        {showAdmin && <AdminFeedback />}
 
       </footer>
 
