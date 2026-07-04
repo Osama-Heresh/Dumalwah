@@ -55,7 +55,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "The purest and most therapeutic Sidr honey from Usaimat mountains",
     descriptionAr: "يُعتبر عسل السدر العصيمي من أندر وأنقى أنواع العسل اليمني، حيث يجني النحل رحيق شجر السدر في جبال العصيمات الشاهقة. يتميز بقوامه الكثيف المخملي ونكهته المركزة القوية التي تحمل عبق الأرض. يعد خياراً مثالياً لتقوية المناعة ومقاومة الأمراض.",
     descriptionEn: "Sidr Usaimi Honey is one of the rarest and purest types of Yemeni honey, harvested from the towering mountains of Usaimat. It features a thick, velvety texture and a strong, concentrated flavor. It is the ultimate choice for boosting immunity and overall vitality.",
-    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=600",
+    image: "https://picsum.photos/600/400?random=1",
     rating: 4.9,
     reviewsCount: 142,
     sizes: [
@@ -77,7 +77,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Authentic Sidr honey from the depths of the famous Wadi Do'an",
     descriptionAr: "من قلب وادي دوعن الشهير في حضرموت، يأتي هذا العسل بخصائصه العلاجية الفريدة وطعمه اللذيذ المعتدل مقارنة بالعصيمي. يتميز بلون ذهبي غامق ساحر ونكهة حلوة زهرية غنية تدوم طويلاً، وهو مفضل للصغار والكبار على حد سواء كعلاج وغذاء.",
     descriptionEn: "From the heart of the legendary Wadi Do'an in Hadramout, this Sidr honey features exceptional therapeutic properties and a smooth, moderately sweet floral flavor. Loved by children and adults alike, it is the perfect daily health companion.",
-    image: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&q=80&w=600",
+    image: "https://picsum.photos/600/400?random=2",
     rating: 4.8,
     reviewsCount: 98,
     sizes: [
@@ -99,7 +99,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Dark, mineral-rich Sumar honey, your digestive system's best friend",
     descriptionAr: "يُستخلص عسل السمر (الطلح) من زهور أشجار الأكاسيا الشوكية المنتشرة في سهول وجبال اليمن. يتميز بلونه الداكن المائل للاحمرار، ونكهته القوية المركبة المدخنة وحلاوته المعتدلة. غني جداً بالحديد والمعادن، مما يجعله علاجاً مذهلاً لفقر الدم ومشاكل المعدة.",
     descriptionEn: "Harvested from the blossoms of thorny Acacia trees in Yemen's plains and mountains, Sumar Honey is highly valued for its dark, reddish color, unique smoky herbal flavor, and moderate sweetness. It is incredibly rich in iron and essential minerals.",
-    image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&q=80&w=600",
+    image: "https://picsum.photos/600/400?random=3",
     rating: 4.7,
     reviewsCount: 84,
     sizes: [
@@ -121,7 +121,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Economical, multi-flower natural honey for your family's daily wellness",
     descriptionAr: "ينتج عسل المراعي من رحيق الزهور البرية المتنوعة التي تزدهر في ربوع اليمن طوال العام. يتميز بطعم حلو كلاسيكي محبب، قوام خفيف ذهبي مشرق، وقيمة غذائية ممتازة. الخيار الاقتصادي الأمثل ليكون بديلاً صحياً للسكر الأبيض في المشروبات والحلويات اليومية.",
     descriptionEn: "Yemeni Mara'i (pasture) honey is sourced from various wild blossoms throughout the year. It has a beautiful bright golden color, standard sweet flavor, and high nutritional values. It serves as the perfect healthy sweetener for teas, breakfasts, and baking.",
-    image: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&q=80&w=600",
+    image: "https://picsum.photos/600/400?random=4",
     rating: 4.6,
     reviewsCount: 115,
     sizes: [
@@ -143,7 +143,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "The Ultimate Synergy: Yemeni Sidr Honey, Royal Jelly, Propolis & Ginseng",
     descriptionAr: "الخلطة الحصرية لقلعتنا! قمنا بتركيبها بعناية فائقة بخلط عسل السدر العصيمي الفاخر مع أعلى تركيز مسموح به من غذاء ملكات النحل الطازج، صمغ النحل (البروبوليس) المعقم، حبوب لقاح النحل، وجينسنج أحمر كوري أصلي. طاقة لا تنضب وحصن مناعي منيع ضد الفيروسات.",
     descriptionEn: "Our castle's signature wellness masterwork! We meticulously blend premium Sidr honey with fresh Royal Jelly, purified Bee Propolis, multi-floral Bee Pollen, and authentic Korean Red Ginseng. Designed for boundless energy, peak physical focus, and ironclad immune defense.",
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=600",
+    image: "https://picsum.photos/600/400?random=5",
     rating: 4.95,
     reviewsCount: 176,
     sizes: [
@@ -164,7 +164,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Nature's strongest defense antibiotic from clean mountain beehives",
     descriptionAr: "صمغ النحل أو العكبر اليمني الجبلي هو مادة صمغية يعقم بها النحل خليته لحمايتها من البكتيريا والفيروسات. يتميز بخصائص معقمة ومطهرة مذهلة، ويُعد أقوى مضاد حيوي طبيعي على الإطلاق لمحاربة نزلات البرد، الفطريات، وحماية الفم واللثة.",
     descriptionEn: "Yemeni Bee Propolis (Purified Resinous Extract) is the natural substance bees gather to sterilize their hive against germs. It acts as an incredible natural antibiotic and antioxidant, outstanding for sore throats, oral hygiene, and deep defense.",
-    image: "https://images.unsplash.com/photo-1587049352851-8d4e89134292?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1563284917-d5d10a0e5b77?auto=format&fit=crop&q=80&w=600",
     rating: 4.8,
     reviewsCount: 41,
     sizes: [
@@ -187,7 +187,7 @@ export default function App() {
 
   // Load products from localStorage or fallback
   const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem("qd_products_db");
+    const saved = localStorage.getItem("qd_products_db_v3");
     return saved ? JSON.parse(saved) : LOCAL_PRODUCTS;
   });
 
@@ -490,7 +490,7 @@ export default function App() {
 
   // Save products database (for admin edits)
   useEffect(() => {
-    localStorage.setItem("qd_products_db", JSON.stringify(products));
+    localStorage.setItem("qd_products_db_v3", JSON.stringify(products));
   }, [products]);
 
   // Auto fill checkout and feedback details from logged in user profile
