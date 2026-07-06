@@ -6,6 +6,8 @@ import Logo from "./components/Logo";
 import Chatbot from "./components/Chatbot";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { AdminFeedback } from "./components/AdminFeedback";
+import { db } from "./lib/firebase";
+import { collection, getDocs, setDoc, doc, deleteDoc } from "firebase/firestore";
 
 // @ts-ignore
 import usaimiImg from "./assets/images/usaimi_honey_squeeze_1783374285647.jpg";
@@ -584,25 +586,80 @@ export default function App() {
     localStorage.setItem("qd_language", language);
   }, [language]);
 
-  // Fetch products from server on mount
+  // Fetch products from Firestore with fallback to server on mount
   useEffect(() => {
-    fetch("/api/products")
-      .then((res) => {
-        if (!res.ok) throw new Error("API failed");
-        return res.json();
-      })
-      .then((data: Product[]) => {
-        const mapped = data.map(p => ({
-          ...p,
-          image: p.image || PRODUCT_IMAGES[p.id]
-        }));
-        if (!localStorage.getItem("qd_products_db_v4")) {
-          setProducts(mapped);
+    const fetchAndSyncProducts = async () => {
+      try {
+        console.log("Loading products from Firestore...");
+        const querySnapshot = await getDocs(collection(db, "products"));
+        
+        if (!querySnapshot.empty) {
+          // Documents exist in Firestore!
+          const list = querySnapshot.docs.map(doc => {
+            const data = doc.data();
+            return {
+              id: doc.id,
+              ...data,
+              image: data.image || PRODUCT_IMAGES[doc.id]
+            };
+          }) as Product[];
+          
+          // Sort them by sortOrder to maintain order
+          const sortedList = list.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+          setProducts(sortedList);
+          console.log("Successfully loaded products from Firestore:", sortedList.length);
+        } else {
+          // Firestore is empty, let's seed it from API or LOCAL_PRODUCTS
+          console.log("Firestore products collection is empty. Seeding from API/LOCAL_PRODUCTS...");
+          let baseProducts: Product[] = LOCAL_PRODUCTS;
+          try {
+            const res = await fetch("/api/products");
+            if (res.ok) {
+              baseProducts = await res.json();
+            }
+          } catch (err) {
+            console.warn("Could not fetch base products from API for seeding, using LOCAL_PRODUCTS", err);
+          }
+
+          // Save each product to Firestore and add sortOrder
+          const seededList: Product[] = [];
+          for (let i = 0; i < baseProducts.length; i++) {
+            const p = baseProducts[i];
+            const productToSave = {
+              ...p,
+              sortOrder: i,
+              image: p.image || PRODUCT_IMAGES[p.id] || ""
+            };
+            await setDoc(doc(db, "products", p.id), productToSave);
+            seededList.push(productToSave);
+          }
+          setProducts(seededList);
+          console.log("Successfully seeded Firestore products collection:", seededList.length);
         }
-      })
-      .catch((err) => {
-        console.warn("Could not load products from API, using robust local dataset instead.", err);
-      });
+      } catch (err) {
+        console.error("Failed to load products from Firestore, falling back to local database/API", err);
+        // Fallback: load from API/localStorage
+        fetch("/api/products")
+          .then((res) => {
+            if (!res.ok) throw new Error("API failed");
+            return res.json();
+          })
+          .then((data: Product[]) => {
+            const mapped = data.map(p => ({
+              ...p,
+              image: p.image || PRODUCT_IMAGES[p.id]
+            }));
+            if (!localStorage.getItem("qd_products_db_v4")) {
+              setProducts(mapped);
+            }
+          })
+          .catch((localErr) => {
+            console.warn("Could not load products from API, using robust local dataset instead.", localErr);
+          });
+      }
+    };
+
+    fetchAndSyncProducts();
   }, []);
 
   // Save Cart to local storage
@@ -3245,15 +3302,48 @@ export default function App() {
                                 e.preventDefault();
                                 if (editingProductId) {
                                   // Update existing
-                                  setProducts(prev => prev.map(p => p.id === editingProductId ? { ...p, ...newProductForm } : p));
+                                  const originalProduct = products.find(p => p.id === editingProductId);
+                                  const updatedProduct = {
+                                    ...originalProduct,
+                                    ...newProductForm,
+                                    id: editingProductId
+                                  } as Product;
+                                  
+                                  setProducts(prev => prev.map(p => p.id === editingProductId ? updatedProduct : p));
+                                  
+                                  // Save to Firestore
+                                  setDoc(doc(db, "products", editingProductId), updatedProduct)
+                                    .then(() => console.log("Product updated in Firestore successfully"))
+                                    .catch(err => console.error("Error updating product in Firestore:", err));
                                 } else {
                                   // Create new
                                   const generatedId = `custom-${Date.now()}`;
                                   const freshProduct: Product = {
+                                    category: "sidr",
+                                    nameAr: "",
+                                    nameEn: "",
+                                    taglineAr: "",
+                                    taglineEn: "",
+                                    descriptionAr: "",
+                                    descriptionEn: "",
+                                    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=600",
+                                    rating: 4.8,
+                                    reviewsCount: 1,
+                                    sizes: [],
+                                    benefitsAr: [],
+                                    benefitsEn: [],
+                                    bestSeller: false,
+                                    ...newProductForm,
                                     id: generatedId,
-                                    ...newProductForm
-                                  };
+                                    sortOrder: products.length
+                                  } as Product;
+                                  
                                   setProducts(prev => [freshProduct, ...prev]);
+                                  
+                                  // Save to Firestore
+                                  setDoc(doc(db, "products", generatedId), freshProduct)
+                                    .then(() => console.log("Product created in Firestore successfully"))
+                                    .catch(err => console.error("Error creating product in Firestore:", err));
                                 }
                                 setShowAddProductModal(false);
                                 alert(language === "ar" ? "تم حفظ التغييرات والمنتجات بنجاح!" : "Catalog products database updated successfully!");
@@ -3485,6 +3575,9 @@ export default function App() {
                                       onClick={() => {
                                         if (confirm(language === "ar" ? "هل أنت متأكد من رغبتك في حذف هذا المنتج من الكاتالوج؟" : "Are you sure you want to delete this product?")) {
                                           setProducts(prev => prev.filter(prod => prod.id !== p.id));
+                                          deleteDoc(doc(db, "products", p.id))
+                                            .then(() => console.log("Product deleted from Firestore successfully"))
+                                            .catch(err => console.error("Error deleting product from Firestore:", err));
                                         }
                                       }}
                                       className="inline-flex items-center gap-1 bg-red-50 hover:bg-red-100 border border-red-200 px-2.5 py-1.5 rounded-lg text-xs cursor-pointer"

@@ -23,6 +23,7 @@ export interface Product {
   benefitsEn: string[];
   bestSeller?: boolean;
   honeyType?: string;
+  sortOrder?: number;
 }
 
 export interface CartItem {

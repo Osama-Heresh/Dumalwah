@@ -4,5 +4,8 @@ service cloud.firestore {
     match /feedback/{document} {
       allow read, write: if true;
     }
+    match /products/{document} {
+      allow read, write: if true;
+    }
   }
 }
