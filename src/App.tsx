@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Product, CartItem, LoyaltyProfile, Language, ShippingMethod, PaymentMethod, Order, FeedbackTicket, Review } from "./types";
 import { translations } from "./translations";
 import Logo from "./components/Logo";
@@ -55,7 +56,8 @@ import {
   Crown,
   Flower2,
   FlaskConical,
-  ThumbsUp
+  ThumbsUp,
+  Upload
 } from "lucide-react";
 
 const PRODUCT_IMAGES: Record<string, string> = {
@@ -619,6 +621,11 @@ export default function App() {
     }
   }, [loyaltyProfile]);
 
+  // Scroll to top when tab or checkout mode changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [activeTab, checkoutMode]);
+
   // Translate helpers
   const t = translations[language];
 
@@ -633,6 +640,19 @@ export default function App() {
       ...prev,
       [productId]: sizeIdx
     }));
+  };
+
+  // Helper: Open review form for a specific product
+  const handleRateProduct = (productId: string) => {
+    setReviewProductId(productId);
+    setShowAddReviewForm(true);
+    setActiveTab("home");
+    setTimeout(() => {
+      const el = document.getElementById("customer-reviews-section");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 150);
   };
 
   // --- Cart Actions ---
@@ -1707,12 +1727,20 @@ export default function App() {
             </div>
           </div>
         ) : (
-          <>
+          <AnimatePresence mode="wait">
             {/* ======================================= */}
             {/* --- CORE TAB 1: HOME PAGE --- */}
             {/* ======================================= */}
             {activeTab === "home" && (
-              <div className="space-y-16" id="home-tab-container">
+              <motion.div
+                key="home"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="space-y-16"
+                id="home-tab-container"
+              >
                 
                 {/* --- HERO BANNER --- */}
                 <section className="bg-gradient-to-br from-[#FCFAF7] via-[#FFF8EC] to-[#F3E6CD] rounded-3xl overflow-hidden shadow-md border-2 border-[#EADFC9]/80 relative qamariyah-grid" id="hero-banner-section">
@@ -1737,19 +1765,25 @@ export default function App() {
                       </p>
 
                       <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
-                        <button
+                        <motion.button
                           onClick={() => setActiveTab("products")}
-                          className="bg-gradient-to-r from-qamariyah-amber to-qamariyah-red hover:from-qamariyah-red hover:to-qamariyah-amber text-white font-extrabold font-sans px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 cursor-pointer text-center animate-bounce-short"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.98 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                          className="bg-gradient-to-r from-qamariyah-amber to-qamariyah-red hover:from-qamariyah-red hover:to-qamariyah-amber text-white font-extrabold font-sans px-8 py-4 rounded-xl shadow-lg hover:shadow-xl cursor-pointer text-center"
                         >
                           {t.heroActionBuy}
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                           onClick={() => setActiveTab("chat")}
-                          className="bg-white hover:bg-[#FCFAF7] border-2 border-qamariyah-blue/20 hover:border-qamariyah-blue/40 text-[#4A2F13] font-extrabold font-sans px-8 py-4 rounded-xl shadow-sm transition-all hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2 group"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.98 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                          className="bg-white hover:bg-[#FCFAF7] border-2 border-qamariyah-blue/20 hover:border-qamariyah-blue/40 text-[#4A2F13] font-extrabold font-sans px-8 py-4 rounded-xl shadow-sm cursor-pointer flex items-center justify-center gap-2 group"
                         >
                           <Sparkles className="w-5 h-5 text-qamariyah-blue group-hover:animate-spin" />
                           {t.heroActionChat}
-                        </button>
+                        </motion.button>
                       </div>
                     </div>
 
@@ -1773,10 +1807,19 @@ export default function App() {
                     { title: t.statCertificates, subtitle: language === "ar" ? "خالٍ تماماً من السكر والإضافات" : "Tested free of chemicals", icon: <ShieldCheck className="w-6 h-6 text-qamariyah-green" />, bg: "bg-qamariyah-green/10 border-qamariyah-green/20" },
                     { title: t.statPoints, subtitle: language === "ar" ? "نقطة مقابل كل ١ دينار" : "1 Pt for every 1 JOD spent", icon: <Gift className="w-6 h-6 text-qamariyah-blue" />, bg: "bg-qamariyah-blue/10 border-qamariyah-blue/20" }
                   ].map((stat, idx) => (
-                    <div key={idx} className="flex flex-col items-center text-center space-y-2">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center border ${stat.bg} shadow-xs`}>
+                    <motion.div 
+                      key={idx} 
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex flex-col items-center text-center space-y-2 group cursor-default"
+                    >
+                      <motion.div 
+                        whileHover={{ scale: 1.15, rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 350, damping: 10 }}
+                        className={`w-12 h-12 rounded-full flex items-center justify-center border ${stat.bg} shadow-xs`}
+                      >
                         {stat.icon}
-                      </div>
+                      </motion.div>
                       <div className="space-y-0.5">
                         <span className="block font-black text-2xl md:text-3xl text-[#4A2F13] font-sans tracking-tight">
                           {stat.title}
@@ -1785,7 +1828,7 @@ export default function App() {
                           {stat.subtitle}
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </section>
 
@@ -1822,7 +1865,10 @@ export default function App() {
                   {/* Reviews Summary Dashboard Cards (Bento grid style) */}
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-6" id="reviews-summary-dashboard">
                     {/* Left: Overall Rating Medallion */}
-                    <div className="md:col-span-4 bg-gradient-to-br from-[#FFFBF2] to-[#FDF8EC] border border-[#EADFC9] rounded-2xl p-6 text-center flex flex-col justify-center items-center space-y-3 shadow-xs">
+                    <motion.div 
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                      className="md:col-span-4 bg-gradient-to-br from-[#FFFBF2] to-[#FDF8EC] border border-[#EADFC9] rounded-2xl p-6 text-center flex flex-col justify-center items-center space-y-3 shadow-xs hover:shadow-md transition-shadow"
+                    >
                       <span className="text-sm font-bold text-[#4A2F13]/70 uppercase tracking-wider">
                         {language === "ar" ? "التقييم العام" : "Overall Rating"}
                       </span>
@@ -1846,10 +1892,13 @@ export default function App() {
                           ? `بناءً على ${reviews.length} تقييم حقيقي من عملائنا`
                           : `Based on ${reviews.length} verified buyer reviews`}
                       </span>
-                    </div>
+                    </motion.div>
 
                     {/* Middle: Rating breakdown bars */}
-                    <div className="md:col-span-5 bg-white border border-[#EADFC9]/60 rounded-2xl p-6 flex flex-col justify-between space-y-2.5 shadow-xs">
+                    <motion.div 
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                      className="md:col-span-5 bg-white border border-[#EADFC9]/60 rounded-2xl p-6 flex flex-col justify-between space-y-2.5 shadow-xs hover:shadow-md transition-shadow"
+                    >
                       {[5, 4, 3, 2, 1].map((stars) => {
                         const count = reviews.filter(r => r.rating === stars).length;
                         const pct = reviews.length ? (count / reviews.length) * 100 : 0;
@@ -1866,10 +1915,13 @@ export default function App() {
                           </div>
                         );
                       })}
-                    </div>
+                    </motion.div>
 
                     {/* Right: Satisfaction highlight info */}
-                    <div className="md:col-span-3 bg-gradient-to-br from-qamariyah-green/5 to-emerald-500/5 border border-qamariyah-green/20 rounded-2xl p-6 flex flex-col justify-center items-center text-center space-y-2 shadow-xs">
+                    <motion.div 
+                      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                      className="md:col-span-3 bg-gradient-to-br from-qamariyah-green/5 to-emerald-500/5 border border-qamariyah-green/20 rounded-2xl p-6 flex flex-col justify-center items-center text-center space-y-2 shadow-xs hover:shadow-md transition-shadow"
+                    >
                       <div className="w-12 h-12 rounded-full bg-qamariyah-green/10 border border-qamariyah-green/20 flex items-center justify-center text-qamariyah-green">
                         <CheckCircle className="w-6 h-6 fill-qamariyah-green/15" />
                       </div>
@@ -1879,12 +1931,20 @@ export default function App() {
                           ? "من المشترين ينصحون بالتعامل معنا لجودة عسلنا وأمانته."
                           : "of buyers highly recommend our pure honey for medicinal use."}
                       </span>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Add Review Form Panel (Stateful collapsible slider) */}
-                  {showAddReviewForm && (
-                    <div className="bg-[#FFFFFF] border-2 border-qamariyah-amber/35 rounded-2xl p-6 md:p-8 shadow-lg space-y-6 relative transition-all duration-300" id="add-review-form-container">
+                  <AnimatePresence>
+                    {showAddReviewForm && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="bg-[#FFFFFF] border-2 border-qamariyah-amber/35 rounded-2xl p-6 md:p-8 shadow-lg space-y-6 relative overflow-hidden"
+                        id="add-review-form-container"
+                      >
                       <div className="flex justify-between items-center pb-4 border-b border-[#EADFC9]/50">
                         <h3 className="font-extrabold text-lg text-[#4A2F13] flex items-center gap-2 font-sans">
                           <Edit3 className="w-5 h-5 text-qamariyah-amber" />
@@ -2031,8 +2091,9 @@ export default function App() {
                           </div>
                         </form>
                       )}
-                    </div>
-                  )}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   {/* Reviews List */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="customer-reviews-grid-list">
@@ -2040,9 +2101,13 @@ export default function App() {
                       const isLiked = !!sessionStorage.getItem(`liked_${rev.id}`);
                       
                       return (
-                        <div 
+                        <motion.div 
                           key={rev.id} 
-                          className="bg-[#FFFFFF] border border-[#EADFC9]/50 hover:border-[#EADFC9] rounded-2xl p-6 shadow-xs hover:shadow-md transition duration-300 flex flex-col justify-between space-y-4"
+                          initial={{ opacity: 0, scale: 0.96 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true, margin: "-40px" }}
+                          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                          className="bg-[#FFFFFF] border border-[#EADFC9]/50 hover:border-[#EADFC9] rounded-2xl p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between space-y-4"
                         >
                           <div className="space-y-3">
                             {/* User Header */}
@@ -2117,7 +2182,7 @@ export default function App() {
                               <span className="font-mono opacity-80">({rev.likes})</span>
                             </button>
                           </div>
-                        </div>
+                        </motion.div>
                       );
                     })}
                   </div>
@@ -2182,7 +2247,7 @@ export default function App() {
                   </button>
                 </section>
 
-              </div>
+              </motion.div>
             )}
 
 
@@ -2190,7 +2255,15 @@ export default function App() {
             {/* --- CORE TAB 2: PRODUCTS CATALOGUE --- */}
             {/* ======================================= */}
             {activeTab === "products" && (
-              <div className="space-y-8" id="products-tab-container">
+              <motion.div
+                key="products"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="space-y-8"
+                id="products-tab-container"
+              >
                 
                 {/* Title */}
                 <div className="space-y-1.5" id="products-tab-title">
@@ -2266,14 +2339,23 @@ export default function App() {
                        const currentSize = prod.sizes[selectedSizeIdx];
   
                        return (
-                        <div key={prod.id} className={`rounded-2xl overflow-hidden transition-all duration-300 flex flex-col group border border-[#EADFC9]/70 card-theme-${prod.category}`} id={`product-card-${prod.id}`}>
+                        <motion.div
+                          key={prod.id}
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                          className={`rounded-2xl overflow-hidden flex flex-col group border border-[#EADFC9]/70 card-theme-${prod.category} hover:shadow-xl hover:shadow-qamariyah-amber/5 transition-shadow`}
+                          id={`product-card-${prod.id}`}
+                        >
                            {/* Image frame */}
                            <div className="relative aspect-[4/3] overflow-hidden bg-[#FCFAF7]">
-                             <img
+                             <motion.img
                                src={prod.image}
                                alt={prod.nameEn}
                                referrerPolicy="no-referrer"
-                               className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                               whileHover={{ scale: 1.06 }}
+                               transition={{ duration: 0.4 }}
+                               className="w-full h-full object-cover"
                              />
                              {/* Best seller ribbon */}
                              {prod.bestSeller && (
@@ -2294,13 +2376,26 @@ export default function App() {
                              
                              {/* Title & Tagline */}
                              <div className="space-y-1">
-                               <div className="flex items-center gap-1.5 text-xs text-[#B58A30] font-bold">
-                                 <span className="flex items-center gap-0.5">
-                                   <Star className="w-3.5 h-3.5 fill-[#B58A30] text-[#B58A30]" />
-                                   <span className="font-mono font-bold mt-0.5">{prod.rating}</span>
-                                 </span>
-                                 <span className="text-[#EADFC9]">|</span>
-                                 <span className="text-[#4A2F13]/60 font-mono font-medium">{prod.reviewsCount} {t.reviewsCountLabel}</span>
+                               <div className="flex items-center justify-between gap-1.5 text-xs text-[#B58A30] font-bold w-full">
+                                 <div className="flex items-center gap-1.5">
+                                   <span className="flex items-center gap-0.5">
+                                     <Star className="w-3.5 h-3.5 fill-[#B58A30] text-[#B58A30]" />
+                                     <span className="font-mono font-bold mt-0.5">{prod.rating}</span>
+                                   </span>
+                                   <span className="text-[#EADFC9]">|</span>
+                                   <span className="text-[#4A2F13]/60 font-mono font-medium">{prod.reviewsCount} {t.reviewsCountLabel}</span>
+                                 </div>
+                                 <button
+                                   onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleRateProduct(prod.id);
+                                   }}
+                                   className="text-[11.5px] text-[#B58A30] hover:text-qamariyah-red underline font-extrabold cursor-pointer transition-colors duration-200 flex items-center gap-1 shrink-0"
+                                   title={language === "ar" ? "قيم هذا المنتج" : "Rate this product"}
+                                 >
+                                   <Edit3 className="w-3 h-3" />
+                                   <span>{language === "ar" ? "قيم المنتج" : "Rate Product"}</span>
+                                 </button>
                                </div>
                                <h3 className="font-extrabold text-base md:text-lg text-[#4A2F13] font-sans tracking-tight">
                                  {language === "ar" ? prod.nameAr : prod.nameEn}
@@ -2368,7 +2463,7 @@ export default function App() {
                              </div>
   
                            </div>
-                         </div>
+                         </motion.div>
                        );
                      })}
                    </div>
@@ -2378,7 +2473,7 @@ export default function App() {
                    </div>
                  )}
 
-              </div>
+              </motion.div>
             )}
 
 
@@ -2386,7 +2481,15 @@ export default function App() {
             {/* --- CORE TAB 3: LOYALTY PORTAL --- */}
             {/* ======================================= */}
             {activeTab === "loyalty" && (
-              <div className="space-y-10" id="loyalty-tab-container">
+              <motion.div
+                key="loyalty"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="space-y-10"
+                id="loyalty-tab-container"
+              >
                 
                 {/* Intro section */}
                 <div className="text-center space-y-2 max-w-3xl mx-auto" id="loyalty-intro">
@@ -2892,7 +2995,7 @@ export default function App() {
                   </div>
                 )}
 
-              </div>
+              </motion.div>
             )}
 
 
@@ -2900,7 +3003,15 @@ export default function App() {
             {/* --- CORE TAB: SECURE SITE ADMIN PANEL --- */}
             {/* ======================================= */}
             {activeTab === "admin" && (
-              <div className="space-y-10" id="admin-panel-container">
+              <motion.div
+                key="admin"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="space-y-10"
+                id="admin-panel-container"
+              >
                 
                 {/* Title & Badge */}
                 <div className="text-center space-y-2 max-w-3xl mx-auto" id="admin-header">
@@ -3157,13 +3268,49 @@ export default function App() {
                                     </select>
                                   </div>
                                   <div className="space-y-1 text-right">
-                                    <label>{language === "ar" ? "رابط صورة المنتج *" : "Product Image URL *"}</label>
-                                    <input
-                                      type="text" required
-                                      value={newProductForm.image}
-                                      onChange={(e) => setNewProductForm(p => ({ ...p, image: e.target.value }))}
-                                      className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
-                                    />
+                                    <label className="block mb-1">{language === "ar" ? "صورة المنتج *" : "Product Image *"}</label>
+                                    <div className="space-y-2">
+                                      <div className="flex items-center gap-2">
+                                        {newProductForm.image && (
+                                          <div className="w-10 h-10 rounded-lg overflow-hidden border border-[#EADFC9] bg-[#FCFAF7] shrink-0">
+                                            <img src={newProductForm.image} alt="Preview" className="w-full h-full object-cover" />
+                                          </div>
+                                        )}
+                                        <label className="flex-grow flex items-center justify-center gap-1.5 bg-[#FCFAF7] hover:bg-[#F5EFE4] border border-dashed border-[#EADFC9] hover:border-[#B58A30] rounded-lg px-2.5 py-2 text-[11px] text-[#4A2F13] cursor-pointer transition duration-200">
+                                          <Upload className="w-3.5 h-3.5 text-[#B58A30]" />
+                                          <span className="font-bold">
+                                            {language === "ar" ? "تحميل صورة مباشرة" : "Upload Direct Image"}
+                                          </span>
+                                          <input
+                                            type="file"
+                                            accept="image/*"
+                                            className="hidden"
+                                            onChange={(e) => {
+                                              const file = e.target.files?.[0];
+                                              if (file) {
+                                                const reader = new FileReader();
+                                                reader.onloadend = () => {
+                                                  if (typeof reader.result === "string") {
+                                                    setNewProductForm(p => ({ ...p, image: reader.result as string }));
+                                                  }
+                                                };
+                                                reader.readAsDataURL(file);
+                                              }
+                                            }}
+                                          />
+                                        </label>
+                                      </div>
+                                      <div className="space-y-0.5">
+                                        <span className="text-[10px] text-[#4A2F13]/60 block">{language === "ar" ? "أو أدخل رابط صورة:" : "Or enter image URL:"}</span>
+                                        <input
+                                          type="text" required
+                                          value={newProductForm.image}
+                                          onChange={(e) => setNewProductForm(p => ({ ...p, image: e.target.value }))}
+                                          className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-1.5 text-xs font-sans"
+                                          placeholder="https://..."
+                                        />
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
 
@@ -3502,7 +3649,7 @@ export default function App() {
                   </div>
                 )}
 
-              </div>
+              </motion.div>
             )}
 
 
@@ -3510,7 +3657,15 @@ export default function App() {
             {/* --- CORE TAB 4: CHATBOT SOMMELIER --- */}
             {/* ======================================= */}
             {activeTab === "chat" && (
-              <div className="space-y-8 max-w-4xl mx-auto animate-in fade-in duration-300" id="chatbot-tab-container">
+              <motion.div
+                key="chat"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="space-y-8 max-w-4xl mx-auto"
+                id="chatbot-tab-container"
+              >
                 <div className="text-center space-y-2">
                   <span className="text-xs font-bold text-[#B58A30] font-mono tracking-widest uppercase">AL-DUMALWAH AI SOMMELIER</span>
                   <h1 className="text-2xl md:text-4xl font-black font-sans text-[#4A2F13]">
@@ -3523,10 +3678,10 @@ export default function App() {
                   </p>
                 </div>
                 <Chatbot language={language} />
-              </div>
+              </motion.div>
             )}
 
-          </>
+          </AnimatePresence>
         )}
 
       </main>
