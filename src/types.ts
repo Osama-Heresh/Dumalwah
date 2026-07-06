@@ -97,3 +97,17 @@ export interface Order {
   date: string;
   status: "pending" | "processing" | "shipped" | "delivered";
 }
+
+export interface Review {
+  id: string;
+  name: string;
+  rating: number;
+  text: string;
+  productId?: string;
+  productNameAr?: string;
+  productNameEn?: string;
+  date: string;
+  isVerified: boolean;
+  likes: number;
+}
+

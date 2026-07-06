@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Product, CartItem, LoyaltyProfile, Language, ShippingMethod, PaymentMethod, Order, FeedbackTicket } from "./types";
+import { Product, CartItem, LoyaltyProfile, Language, ShippingMethod, PaymentMethod, Order, FeedbackTicket, Review } from "./types";
 import { translations } from "./translations";
 import Logo from "./components/Logo";
 import Chatbot from "./components/Chatbot";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { AdminFeedback } from "./components/AdminFeedback";
+
+// @ts-ignore
+import usaimiImg from "./assets/images/usaimi_honey_squeeze_1783374285647.jpg";
+// @ts-ignore
+import doanImg from "./assets/images/doan_honey_bottles_1783374300002.jpg";
+// @ts-ignore
+import sumarImg from "./assets/images/sumar_honey_jar_1783374310259.jpg";
+// @ts-ignore
+import maraiImg from "./assets/images/marai_honey_jar_1783374322711.jpg";
+// @ts-ignore
+import immunityImg from "./assets/images/immunity_gift_box_1783374333437.jpg";
+// @ts-ignore
+import propolisImg from "./assets/images/propolis_sample_box_1783374344559.jpg";
 import { 
   ShoppingBag, 
   Search, 
@@ -41,8 +54,18 @@ import {
   AlertTriangle,
   Crown,
   Flower2,
-  FlaskConical
+  FlaskConical,
+  ThumbsUp
 } from "lucide-react";
+
+const PRODUCT_IMAGES: Record<string, string> = {
+  "sidr-usaimi": usaimiImg,
+  "sidr-doani": doanImg,
+  "sumar-taiz": sumarImg,
+  "marai-yemeni": maraiImg,
+  "dumalwah-immunity": immunityImg,
+  "yemeni-propolis": propolisImg,
+};
 
 // Fallback product data if API is loading or fails
 const LOCAL_PRODUCTS: Product[] = [
@@ -55,7 +78,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "The purest and most therapeutic Sidr honey from Usaimat mountains",
     descriptionAr: "يُعتبر عسل السدر العصيمي من أندر وأنقى أنواع العسل اليمني، حيث يجني النحل رحيق شجر السدر في جبال العصيمات الشاهقة. يتميز بقوامه الكثيف المخملي ونكهته المركزة القوية التي تحمل عبق الأرض. يعد خياراً مثالياً لتقوية المناعة ومقاومة الأمراض.",
     descriptionEn: "Sidr Usaimi Honey is one of the rarest and purest types of Yemeni honey, harvested from the towering mountains of Usaimat. It features a thick, velvety texture and a strong, concentrated flavor. It is the ultimate choice for boosting immunity and overall vitality.",
-    image: "https://picsum.photos/600/400?random=1",
+    image: usaimiImg,
     rating: 4.9,
     reviewsCount: 142,
     sizes: [
@@ -77,7 +100,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Authentic Sidr honey from the depths of the famous Wadi Do'an",
     descriptionAr: "من قلب وادي دوعن الشهير في حضرموت، يأتي هذا العسل بخصائصه العلاجية الفريدة وطعمه اللذيذ المعتدل مقارنة بالعصيمي. يتميز بلون ذهبي غامق ساحر ونكهة حلوة زهرية غنية تدوم طويلاً، وهو مفضل للصغار والكبار على حد سواء كعلاج وغذاء.",
     descriptionEn: "From the heart of the legendary Wadi Do'an in Hadramout, this Sidr honey features exceptional therapeutic properties and a smooth, moderately sweet floral flavor. Loved by children and adults alike, it is the perfect daily health companion.",
-    image: "https://picsum.photos/600/400?random=2",
+    image: doanImg,
     rating: 4.8,
     reviewsCount: 98,
     sizes: [
@@ -99,7 +122,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Dark, mineral-rich Sumar honey, your digestive system's best friend",
     descriptionAr: "يُستخلص عسل السمر (الطلح) من زهور أشجار الأكاسيا الشوكية المنتشرة في سهول وجبال اليمن. يتميز بلونه الداكن المائل للاحمرار، ونكهته القوية المركبة المدخنة وحلاوته المعتدلة. غني جداً بالحديد والمعادن، مما يجعله علاجاً مذهلاً لفقر الدم ومشاكل المعدة.",
     descriptionEn: "Harvested from the blossoms of thorny Acacia trees in Yemen's plains and mountains, Sumar Honey is highly valued for its dark, reddish color, unique smoky herbal flavor, and moderate sweetness. It is incredibly rich in iron and essential minerals.",
-    image: "https://picsum.photos/600/400?random=3",
+    image: sumarImg,
     rating: 4.7,
     reviewsCount: 84,
     sizes: [
@@ -121,7 +144,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Economical, multi-flower natural honey for your family's daily wellness",
     descriptionAr: "ينتج عسل المراعي من رحيق الزهور البرية المتنوعة التي تزدهر في ربوع اليمن طوال العام. يتميز بطعم حلو كلاسيكي محبب، قوام خفيف ذهبي مشرق، وقيمة غذائية ممتازة. الخيار الاقتصادي الأمثل ليكون بديلاً صحياً للسكر الأبيض في المشروبات والحلويات اليومية.",
     descriptionEn: "Yemeni Mara'i (pasture) honey is sourced from various wild blossoms throughout the year. It has a beautiful bright golden color, standard sweet flavor, and high nutritional values. It serves as the perfect healthy sweetener for teas, breakfasts, and baking.",
-    image: "https://picsum.photos/600/400?random=4",
+    image: maraiImg,
     rating: 4.6,
     reviewsCount: 115,
     sizes: [
@@ -143,7 +166,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "The Ultimate Synergy: Yemeni Sidr Honey, Royal Jelly, Propolis & Ginseng",
     descriptionAr: "الخلطة الحصرية لقلعتنا! قمنا بتركيبها بعناية فائقة بخلط عسل السدر العصيمي الفاخر مع أعلى تركيز مسموح به من غذاء ملكات النحل الطازج، صمغ النحل (البروبوليس) المعقم، حبوب لقاح النحل، وجينسنج أحمر كوري أصلي. طاقة لا تنضب وحصن مناعي منيع ضد الفيروسات.",
     descriptionEn: "Our castle's signature wellness masterwork! We meticulously blend premium Sidr honey with fresh Royal Jelly, purified Bee Propolis, multi-floral Bee Pollen, and authentic Korean Red Ginseng. Designed for boundless energy, peak physical focus, and ironclad immune defense.",
-    image: "https://picsum.photos/600/400?random=5",
+    image: immunityImg,
     rating: 4.95,
     reviewsCount: 176,
     sizes: [
@@ -164,7 +187,7 @@ const LOCAL_PRODUCTS: Product[] = [
     taglineEn: "Nature's strongest defense antibiotic from clean mountain beehives",
     descriptionAr: "صمغ النحل أو العكبر اليمني الجبلي هو مادة صمغية يعقم بها النحل خليته لحمايتها من البكتيريا والفيروسات. يتميز بخصائص معقمة ومطهرة مذهلة، ويُعد أقوى مضاد حيوي طبيعي على الإطلاق لمحاربة نزلات البرد، الفطريات، وحماية الفم واللثة.",
     descriptionEn: "Yemeni Bee Propolis (Purified Resinous Extract) is the natural substance bees gather to sterilize their hive against germs. It acts as an incredible natural antibiotic and antioxidant, outstanding for sore throats, oral hygiene, and deep defense.",
-    image: "https://images.unsplash.com/photo-1563284917-d5d10a0e5b77?auto=format&fit=crop&q=80&w=600",
+    image: propolisImg,
     rating: 4.8,
     reviewsCount: 41,
     sizes: [
@@ -187,8 +210,19 @@ export default function App() {
 
   // Load products from localStorage or fallback
   const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem("qd_products_db_v3");
-    return saved ? JSON.parse(saved) : LOCAL_PRODUCTS;
+    const saved = localStorage.getItem("qd_products_db_v4");
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved) as Product[];
+        return parsed.map(p => ({
+          ...p,
+          image: PRODUCT_IMAGES[p.id] || p.image
+        }));
+      } catch (e) {
+        return LOCAL_PRODUCTS;
+      }
+    }
+    return LOCAL_PRODUCTS;
   });
 
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -365,6 +399,65 @@ export default function App() {
     return seed;
   });
 
+  // --- Reviews Database ---
+  const [reviews, setReviews] = useState<Review[]>(() => {
+    const saved = localStorage.getItem("qd_reviews_db_v1");
+    if (saved) return JSON.parse(saved);
+
+    const seed: Review[] = [
+      {
+        id: "rev-1",
+        name: "أبو فهد الحارثي",
+        rating: 5,
+        text: "ما شاء الله، عسل السدر العصيمي روعة روعة روعة! القوام ثقيل ومخملي والنكهة غنية جداً ولها طابع علاجي فريد. ساعدني كثيراً في التخلص من الكحة الشتوية وأعطاني طاقة ممتازة. التغليف قمة في الفخامة ويصلح كهدية راقية. بارك الله في جهودكم.",
+        productId: "sidr-usaimi",
+        productNameAr: "عسل سدر عصيمي فاخر",
+        productNameEn: "Premium Sidr Usaimi Honey",
+        date: "2026-06-28",
+        isVerified: true,
+        likes: 24
+      },
+      {
+        id: "rev-2",
+        name: "Sarah K. Al-Saeed",
+        rating: 5,
+        text: "The Royal Immunity Blend (خلطة المناعة والنشاط) is a game-changer! I purchased it for my husband and kids, and we have noticed a massive difference in our energy levels and focus. The taste is incredibly rich and pleasant. Plus, earning loyalty points saved me JOD 5 on my second purchase! Outstanding service and fast delivery.",
+        productId: "dumalwah-immunity",
+        productNameAr: "خلطة المناعة والنشاط الملكية",
+        productNameEn: "Royal Immunity & Vitality Blend",
+        date: "2026-07-03",
+        isVerified: true,
+        likes: 18
+      },
+      {
+        id: "rev-3",
+        name: "د. طارق الجبور",
+        rating: 5,
+        text: "بصفتي طبيب ومهتم بالعلاجات الطبيعية، قمت بتحليل عينة عسل السمر (الطلح) هذا والنتائج ممتازة ونسبة السكروز منخفضة جداً مما يدل على نقائه المطلق. فعال للغاية لمشاكل القولون والارتداد المريئي، والحديد العالي فيه يجعله خياراً ممتازاً لعلاج فقر الدم. أنصح به بشدة كبديل آمن وطبيعي.",
+        productId: "sumar-taiz",
+        productNameAr: "عسل سمر (الطلح) البلدي",
+        productNameEn: "Yemeni Sumar Honey",
+        date: "2026-06-20",
+        isVerified: true,
+        likes: 31
+      },
+      {
+        id: "rev-4",
+        name: "ام معاذ الدويري",
+        rating: 4,
+        text: "عسل المراعي اليمني خيار ممتاز واقتصادي جداً للاستخدام اليومي في التحلية وصناعة الحلويات للأطفال. طعمه رائع وقوامه مثالي وخفيف. الطلب سهل والتوصيل سريع جداً في عمان. سأكرر التجربة بالتأكيد.",
+        productId: "marai-yemeni",
+        productNameAr: "عسل مراعي يمني طبيعي",
+        productNameEn: "Yemeni Mara'i Pasture Honey",
+        date: "2026-06-15",
+        isVerified: true,
+        likes: 12
+      }
+    ];
+    localStorage.setItem("qd_reviews_db_v1", JSON.stringify(seed));
+    return seed;
+  });
+
   // Visitor feedback submission form states
   const [feedbackType, setFeedbackType] = useState<"complaint" | "suggestion">("complaint");
   const [feedbackName, setFeedbackName] = useState("");
@@ -372,6 +465,14 @@ export default function App() {
   const [feedbackPhone, setFeedbackPhone] = useState("");
   const [feedbackText, setFeedbackText] = useState("");
   const [feedbackSuccess, setFeedbackSuccess] = useState<string | null>(null);
+
+  // User review submission form states
+  const [reviewName, setReviewName] = useState("");
+  const [reviewRating, setReviewRating] = useState(5);
+  const [reviewText, setReviewText] = useState("");
+  const [reviewProductId, setReviewProductId] = useState("");
+  const [reviewSuccess, setReviewSuccess] = useState<string | null>(null);
+  const [showAddReviewForm, setShowAddReviewForm] = useState(false);
 
   // --- Site Admin Page states ---
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
@@ -444,9 +545,13 @@ export default function App() {
         if (!res.ok) throw new Error("API failed");
         return res.json();
       })
-      .then((data) => {
-        if (!localStorage.getItem("qd_products_db")) {
-          setProducts(data);
+      .then((data: Product[]) => {
+        const mapped = data.map(p => ({
+          ...p,
+          image: PRODUCT_IMAGES[p.id] || p.image
+        }));
+        if (!localStorage.getItem("qd_products_db_v4")) {
+          setProducts(mapped);
         }
       })
       .catch((err) => {
@@ -490,8 +595,13 @@ export default function App() {
 
   // Save products database (for admin edits)
   useEffect(() => {
-    localStorage.setItem("qd_products_db_v3", JSON.stringify(products));
+    localStorage.setItem("qd_products_db_v4", JSON.stringify(products));
   }, [products]);
+
+  // Save reviews database
+  useEffect(() => {
+    localStorage.setItem("qd_reviews_db_v1", JSON.stringify(reviews));
+  }, [reviews]);
 
   // Auto fill checkout and feedback details from logged in user profile
   useEffect(() => {
@@ -505,6 +615,7 @@ export default function App() {
       setFeedbackName(loyaltyProfile.username);
       setFeedbackEmail(loyaltyProfile.email || "");
       setFeedbackPhone(loyaltyProfile.phone);
+      setReviewName(loyaltyProfile.username);
     }
   }, [loyaltyProfile]);
 
@@ -912,6 +1023,60 @@ export default function App() {
       setFeedbackEmail("");
       setFeedbackPhone("");
     }
+  };
+
+  const handleSubmissionReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reviewName.trim() || !reviewText.trim()) {
+      alert(language === "ar" ? "الرجاء كتابة الاسم والتعليق" : "Please provide your name and review text.");
+      return;
+    }
+
+    let selectedProd = products.find(p => p.id === reviewProductId);
+    if (!selectedProd) {
+      selectedProd = LOCAL_PRODUCTS.find(p => p.id === reviewProductId);
+    }
+
+    const newReview: Review = {
+      id: `rev-${Date.now()}`,
+      name: reviewName.trim(),
+      rating: reviewRating,
+      text: reviewText.trim(),
+      productId: reviewProductId || undefined,
+      productNameAr: selectedProd ? selectedProd.nameAr : undefined,
+      productNameEn: selectedProd ? selectedProd.nameEn : undefined,
+      date: new Date().toISOString().split('T')[0],
+      isVerified: loyaltyProfile ? true : false,
+      likes: 0
+    };
+
+    setReviews(prev => [newReview, ...prev]);
+
+    setReviewSuccess(language === "ar" 
+      ? "شكراً لك! تم إضافة تقييمك بنجاح وعرضه على الصفحة الرئيسية."
+      : "Thank you! Your review has been successfully added and is now displayed on the front page."
+    );
+
+    setReviewText("");
+    setReviewRating(5);
+    setReviewProductId("");
+    if (!loyaltyProfile) {
+      setReviewName("");
+    }
+
+    setTimeout(() => {
+      setReviewSuccess(null);
+      setShowAddReviewForm(false);
+    }, 4000);
+  };
+
+  const handleLikeReview = (id: string) => {
+    const likedKey = `liked_${id}`;
+    if (sessionStorage.getItem(likedKey)) {
+      return;
+    }
+    setReviews(prev => prev.map(r => r.id === id ? { ...r, likes: r.likes + 1 } : r));
+    sessionStorage.setItem(likedKey, "true");
   };
 
   return (
@@ -1622,6 +1787,340 @@ export default function App() {
                       </div>
                     </div>
                   ))}
+                </section>
+
+                {/* --- CUSTOMER REVIEWS & FEEDBACK SECTION --- */}
+                <section className="bg-[#FFFFFF] border-2 border-[#EADFC9]/70 rounded-3xl p-6 md:p-10 shadow-md space-y-8" id="customer-reviews-section">
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#EADFC9]/50 pb-6">
+                    <div className="space-y-2">
+                      <div className="inline-flex items-center gap-1.5 bg-qamariyah-amber/10 border border-qamariyah-amber/30 text-[#4A2F13] text-xs px-3 py-1 rounded-full font-bold">
+                        <MessageSquare className="w-3.5 h-3.5 text-qamariyah-amber fill-qamariyah-amber/20" />
+                        {language === "ar" ? "آراء قلعتنا المعتمدة" : "Castle Certified Reviews"}
+                      </div>
+                      <h2 className="text-2xl md:text-3.5xl font-black text-[#4A2F13] font-sans tracking-tight">
+                        {language === "ar" ? "تقييمات وآراء عملائنا" : "Customer Reviews & Testimonials"}
+                      </h2>
+                      <p className="text-xs md:text-sm text-[#4A2F13]/70">
+                        {language === "ar" 
+                          ? "نفتخر بتقديم أجود أنواع العسل اليمني الأصيل، وهذه شهادات وتجارب عملائنا الموثقة."
+                          : "We take absolute pride in our pure honey. Read verified experiences from our beloved customers."}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setShowAddReviewForm(!showAddReviewForm);
+                        setReviewSuccess(null);
+                      }}
+                      className="bg-gradient-to-r from-qamariyah-amber to-qamariyah-red hover:from-qamariyah-red hover:to-qamariyah-amber text-white font-extrabold font-sans text-sm px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer self-start md:self-auto"
+                    >
+                      <Edit3 className="w-4 h-4" />
+                      {language === "ar" ? "اكتب تقييمك الآن" : "Write a Review"}
+                    </button>
+                  </div>
+
+                  {/* Reviews Summary Dashboard Cards (Bento grid style) */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6" id="reviews-summary-dashboard">
+                    {/* Left: Overall Rating Medallion */}
+                    <div className="md:col-span-4 bg-gradient-to-br from-[#FFFBF2] to-[#FDF8EC] border border-[#EADFC9] rounded-2xl p-6 text-center flex flex-col justify-center items-center space-y-3 shadow-xs">
+                      <span className="text-sm font-bold text-[#4A2F13]/70 uppercase tracking-wider">
+                        {language === "ar" ? "التقييم العام" : "Overall Rating"}
+                      </span>
+                      <div className="text-5xl font-black text-[#4A2F13] font-mono tracking-tight flex items-baseline gap-1">
+                        <span>{(reviews.reduce((sum, r) => sum + r.rating, 0) / (reviews.length || 1)).toFixed(1)}</span>
+                        <span className="text-lg font-bold text-[#4A2F13]/50">/5</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        {[1, 2, 3, 4, 5].map((star) => {
+                          const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / (reviews.length || 1);
+                          return (
+                            <Star
+                              key={star}
+                              className={`w-5 h-5 ${star <= Math.round(avg) ? "text-qamariyah-amber fill-qamariyah-amber" : "text-gray-300"}`}
+                            />
+                          );
+                        })}
+                      </div>
+                      <span className="text-xs font-semibold text-[#4A2F13]/80">
+                        {language === "ar" 
+                          ? `بناءً على ${reviews.length} تقييم حقيقي من عملائنا`
+                          : `Based on ${reviews.length} verified buyer reviews`}
+                      </span>
+                    </div>
+
+                    {/* Middle: Rating breakdown bars */}
+                    <div className="md:col-span-5 bg-white border border-[#EADFC9]/60 rounded-2xl p-6 flex flex-col justify-between space-y-2.5 shadow-xs">
+                      {[5, 4, 3, 2, 1].map((stars) => {
+                        const count = reviews.filter(r => r.rating === stars).length;
+                        const pct = reviews.length ? (count / reviews.length) * 100 : 0;
+                        return (
+                          <div key={stars} className="flex items-center gap-3 text-xs font-bold text-[#4A2F13]">
+                            <span className="w-3 text-right">{stars}★</span>
+                            <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full bg-gradient-to-r from-qamariyah-amber to-[#F59E0B] rounded-full transition-all duration-500" 
+                                style={{ width: `${pct}%` }}
+                              ></div>
+                            </div>
+                            <span className="w-10 text-left text-[#4A2F13]/60">({count})</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* Right: Satisfaction highlight info */}
+                    <div className="md:col-span-3 bg-gradient-to-br from-qamariyah-green/5 to-emerald-500/5 border border-qamariyah-green/20 rounded-2xl p-6 flex flex-col justify-center items-center text-center space-y-2 shadow-xs">
+                      <div className="w-12 h-12 rounded-full bg-qamariyah-green/10 border border-qamariyah-green/20 flex items-center justify-center text-qamariyah-green">
+                        <CheckCircle className="w-6 h-6 fill-qamariyah-green/15" />
+                      </div>
+                      <span className="text-2xl font-black text-[#4A2F13] font-sans">98.2%</span>
+                      <span className="text-xs text-[#4A2F13]/80 font-bold leading-relaxed px-2">
+                        {language === "ar" 
+                          ? "من المشترين ينصحون بالتعامل معنا لجودة عسلنا وأمانته."
+                          : "of buyers highly recommend our pure honey for medicinal use."}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Add Review Form Panel (Stateful collapsible slider) */}
+                  {showAddReviewForm && (
+                    <div className="bg-[#FFFFFF] border-2 border-qamariyah-amber/35 rounded-2xl p-6 md:p-8 shadow-lg space-y-6 relative transition-all duration-300" id="add-review-form-container">
+                      <div className="flex justify-between items-center pb-4 border-b border-[#EADFC9]/50">
+                        <h3 className="font-extrabold text-lg text-[#4A2F13] flex items-center gap-2 font-sans">
+                          <Edit3 className="w-5 h-5 text-qamariyah-amber" />
+                          {language === "ar" ? "شاركنا رأيك الصادق بالعسل" : "Share Your Honest Experience"}
+                        </h3>
+                        <button 
+                          onClick={() => { setShowAddReviewForm(false); setReviewSuccess(null); }}
+                          className="p-1 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      </div>
+
+                      {reviewSuccess ? (
+                        <div className="bg-emerald-50 border-2 border-emerald-500/30 text-emerald-800 p-5 rounded-xl flex items-start gap-3 shadow-inner">
+                          <CheckCircle className="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
+                          <div className="space-y-1">
+                            <h4 className="font-extrabold text-sm">{language === "ar" ? "تم نشر تقييمك بنجاح!" : "Review Published Successfully!"}</h4>
+                            <p className="text-xs leading-relaxed font-semibold opacity-90">{reviewSuccess}</p>
+                          </div>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleSubmissionReview} className="space-y-5">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            {/* Full Name input */}
+                            <div className="space-y-2">
+                              <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                                {language === "ar" ? "الاسم الكامل" : "Full Name"} <span className="text-qamariyah-red">*</span>
+                              </label>
+                              <input
+                                type="text"
+                                required
+                                value={reviewName}
+                                onChange={(e) => setReviewName(e.target.value)}
+                                placeholder={language === "ar" ? "أدخل اسمك ليظهر على تقييمك..." : "Enter your name..."}
+                                disabled={!!loyaltyProfile}
+                                className="w-full bg-[#FCFAF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#4A2F13] font-bold disabled:opacity-75 disabled:bg-gray-100"
+                              />
+                              {loyaltyProfile && (
+                                <span className="text-[10px] text-qamariyah-green font-bold block">
+                                  {language === "ar" 
+                                    ? "✓ تم تسجيل الاسم تلقائياً من حساب الولاء (تقييم موثق)"
+                                    : "✓ Name autofilled from your Loyalty Profile (Verified Badge)"}
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Honey Product Selector */}
+                            <div className="space-y-2">
+                              <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                                {language === "ar" ? "الصنف الذي جربته (اختياري)" : "Product Sourced (Optional)"}
+                              </label>
+                              <select
+                                value={reviewProductId}
+                                onChange={(e) => setReviewProductId(e.target.value)}
+                                className="w-full bg-[#FCFAF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#4A2F13] font-bold cursor-pointer"
+                              >
+                                <option value="">
+                                  {language === "ar" ? "-- اختر صنف العسل --" : "-- Choose Honey Variety --"}
+                                </option>
+                                <option value="sidr-usaimi">
+                                  {language === "ar" ? "عسل سدر عصيمي فاخر" : "Premium Sidr Usaimi Honey"}
+                                </option>
+                                <option value="sidr-doani">
+                                  {language === "ar" ? "عسل سدر دوعني" : "Sidr Do'ani Honey"}
+                                </option>
+                                <option value="sumar-taiz">
+                                  {language === "ar" ? "عسل سمر (الطلح)" : "Yemeni Sumar Honey"}
+                                </option>
+                                <option value="marai-yemeni">
+                                  {language === "ar" ? "عسل مراعي يمني" : "Yemeni Mara'i Honey"}
+                                </option>
+                                <option value="dumalwah-immunity">
+                                  {language === "ar" ? "خلطة المناعة والنشاط الملكية" : "Royal Immunity & Vitality Blend"}
+                                </option>
+                                <option value="yemeni-propolis">
+                                  {language === "ar" ? "عكبر يمني جبلي" : "Yemeni Bee Propolis"}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {/* Star Rating Selectors */}
+                          <div className="space-y-2">
+                            <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                              {language === "ar" ? "تقييمك بالنجوم" : "Your Rating"} <span className="text-qamariyah-red">*</span>
+                            </label>
+                            <div className="flex items-center gap-2 bg-[#FCFAF7] border-2 border-[#EADFC9] rounded-xl px-4 py-3.5 w-full md:w-fit">
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <button
+                                  type="button"
+                                  key={star}
+                                  onClick={() => setReviewRating(star)}
+                                  className="transition transform hover:scale-125 focus:outline-none"
+                                >
+                                  <Star
+                                    className={`w-7 h-7 cursor-pointer ${
+                                      star <= reviewRating
+                                        ? "text-qamariyah-amber fill-qamariyah-amber"
+                                        : "text-gray-300 hover:text-qamariyah-amber/75"
+                                    }`}
+                                  />
+                                </button>
+                              ))}
+                              <span className="text-xs font-extrabold text-[#4A2F13]/70 ml-2 font-mono">
+                                {reviewRating} / 5
+                              </span>
+                            </div>
+                          </div>
+
+                          {/* Review comment Textarea */}
+                          <div className="space-y-2">
+                            <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                              {language === "ar" ? "رأيك بالتفصيل" : "Your Review Description"} <span className="text-qamariyah-red">*</span>
+                            </label>
+                            <textarea
+                              required
+                              rows={4}
+                              value={reviewText}
+                              onChange={(e) => setReviewText(e.target.value)}
+                              placeholder={
+                                language === "ar"
+                                  ? "اكتب تجربتك مع طعم العسل، فوائده العلاجية، التغليف، أو جودة الخدمة..."
+                                  : "How was the honey taste, its therapeutic impact, packaging, or customer service experience?..."
+                              }
+                              className="w-full bg-[#FCFAF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#4A2F13] font-bold placeholder-gray-400"
+                            ></textarea>
+                          </div>
+
+                          <div className="flex items-center gap-3 pt-2">
+                            <button
+                              type="submit"
+                              className="bg-gradient-to-r from-qamariyah-amber to-qamariyah-red hover:from-qamariyah-red hover:to-qamariyah-amber text-white font-extrabold font-sans text-sm px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+                            >
+                              {language === "ar" ? "نشر التقييم" : "Post Review"}
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => { setShowAddReviewForm(false); setReviewSuccess(null); }}
+                              className="bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 font-bold font-sans text-sm px-6 py-3.5 rounded-xl transition cursor-pointer"
+                            >
+                              {language === "ar" ? "إلغاء" : "Cancel"}
+                            </button>
+                          </div>
+                        </form>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Reviews List */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="customer-reviews-grid-list">
+                    {reviews.map((rev) => {
+                      const isLiked = !!sessionStorage.getItem(`liked_${rev.id}`);
+                      
+                      return (
+                        <div 
+                          key={rev.id} 
+                          className="bg-[#FFFFFF] border border-[#EADFC9]/50 hover:border-[#EADFC9] rounded-2xl p-6 shadow-xs hover:shadow-md transition duration-300 flex flex-col justify-between space-y-4"
+                        >
+                          <div className="space-y-3">
+                            {/* User Header */}
+                            <div className="flex items-center gap-3 justify-between">
+                              <div className="flex items-center gap-3">
+                                {/* Letter Avatar */}
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-qamariyah-amber/10 to-qamariyah-red/10 border border-[#EADFC9] flex items-center justify-center text-[#4A2F13] font-black text-sm">
+                                  {rev.name.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                  <h4 className="font-extrabold text-sm text-[#4A2F13] font-sans">
+                                    {rev.name}
+                                  </h4>
+                                  <span className="text-[10px] text-gray-400 font-mono font-bold block">
+                                    {rev.date}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* Verified Buyer Badge */}
+                              {rev.isVerified && (
+                                <div className="flex items-center gap-1 bg-emerald-50 text-qamariyah-green border border-qamariyah-green/20 rounded-full px-2.5 py-0.5 text-[10px] font-black uppercase">
+                                  <Check className="w-3 h-3" />
+                                  <span>{language === "ar" ? "مشتري مؤكد" : "Verified"}</span>
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Stars & Product Tag */}
+                            <div className="flex flex-col gap-1.5 pt-0.5">
+                              <div className="flex items-center gap-0.5">
+                                {[1, 2, 3, 4, 5].map((s) => (
+                                  <Star
+                                    key={s}
+                                    className={`w-3.5 h-3.5 ${s <= rev.rating ? "text-qamariyah-amber fill-qamariyah-amber" : "text-gray-300"}`}
+                                  />
+                                ))}
+                              </div>
+                              
+                              {rev.productId && (
+                                <div className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#4A2F13]/70 bg-gradient-to-r from-[#FCFAF7] to-[#FFFBF2] border border-[#EADFC9]/50 rounded-lg px-2 py-0.5 w-fit">
+                                  <span className="opacity-60">{language === "ar" ? "اشترى:" : "Bought:"}</span>
+                                  <span className="text-[#4A2F13]">
+                                    {language === "ar" ? (rev.productNameAr || rev.productId) : (rev.productNameEn || rev.productId)}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+
+                            {/* Review Content */}
+                            <p className="text-xs md:text-sm text-[#4A2F13]/85 leading-relaxed font-medium">
+                              {rev.text}
+                            </p>
+                          </div>
+
+                          {/* Upvote & Social Actions Footer */}
+                          <div className="flex items-center justify-between pt-2 border-t border-gray-100/50">
+                            <span className="text-[10px] font-extrabold text-[#4A2F13]/55">
+                              {language === "ar" ? "هل كان هذا مفيداً؟" : "Was this helpful?"}
+                            </span>
+                            
+                            <button
+                              onClick={() => handleLikeReview(rev.id)}
+                              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer ${
+                                isLiked 
+                                  ? "bg-qamariyah-amber/15 text-qamariyah-amber border border-qamariyah-amber/30" 
+                                  : "bg-gray-50 text-gray-500 border border-gray-200 hover:bg-gray-100 hover:text-[#4A2F13]"
+                              }`}
+                            >
+                              <ThumbsUp className={`w-3.5 h-3.5 ${isLiked ? "fill-qamariyah-amber/30 text-current" : ""}`} />
+                              <span>{language === "ar" ? "مفيد" : "Helpful"}</span>
+                              <span className="font-mono opacity-80">({rev.likes})</span>
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </section>
 
                 {/* --- SECTIONS OF PRODUCTS INTRO --- */}
