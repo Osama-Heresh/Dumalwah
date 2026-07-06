@@ -69,6 +69,50 @@ const PRODUCT_IMAGES: Record<string, string> = {
   "yemeni-propolis": propolisImg,
 };
 
+// Compress and resize uploaded image base64 strings to prevent QuotaExceededError in localStorage
+const compressImage = (base64Str: string, maxWidth = 500, maxHeight = 375): Promise<string> => {
+  return new Promise((resolve) => {
+    // If it's already a regular URL (not base64), return it as is
+    if (!base64Str.startsWith("data:image")) {
+      resolve(base64Str);
+      return;
+    }
+    const img = new Image();
+    img.src = base64Str;
+    img.onload = () => {
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+      } else {
+        if (height > maxHeight) {
+          width = Math.round((width * maxHeight) / height);
+          height = maxHeight;
+        }
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", 0.7));
+      } else {
+        resolve(base64Str);
+      }
+    };
+    img.onerror = () => {
+      resolve(base64Str);
+    };
+  });
+};
+
 // Fallback product data if API is loading or fails
 const LOCAL_PRODUCTS: Product[] = [
   {
@@ -218,7 +262,7 @@ export default function App() {
         const parsed = JSON.parse(saved) as Product[];
         return parsed.map(p => ({
           ...p,
-          image: PRODUCT_IMAGES[p.id] || p.image
+          image: p.image || PRODUCT_IMAGES[p.id]
         }));
       } catch (e) {
         return LOCAL_PRODUCTS;
@@ -550,7 +594,7 @@ export default function App() {
       .then((data: Product[]) => {
         const mapped = data.map(p => ({
           ...p,
-          image: PRODUCT_IMAGES[p.id] || p.image
+          image: p.image || PRODUCT_IMAGES[p.id]
         }));
         if (!localStorage.getItem("qd_products_db_v4")) {
           setProducts(mapped);
@@ -597,7 +641,11 @@ export default function App() {
 
   // Save products database (for admin edits)
   useEffect(() => {
-    localStorage.setItem("qd_products_db_v4", JSON.stringify(products));
+    try {
+      localStorage.setItem("qd_products_db_v4", JSON.stringify(products));
+    } catch (e) {
+      console.warn("Could not save products to localStorage (limit exceeded):", e);
+    }
   }, [products]);
 
   // Save reviews database
@@ -3291,7 +3339,9 @@ export default function App() {
                                                 const reader = new FileReader();
                                                 reader.onloadend = () => {
                                                   if (typeof reader.result === "string") {
-                                                    setNewProductForm(p => ({ ...p, image: reader.result as string }));
+                                                    compressImage(reader.result).then((compressed) => {
+                                                      setNewProductForm(p => ({ ...p, image: compressed }));
+                                                    });
                                                   }
                                                 };
                                                 reader.readAsDataURL(file);
