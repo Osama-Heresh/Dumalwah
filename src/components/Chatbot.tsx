@@ -18,7 +18,7 @@ export default function Chatbot({ language }: ChatbotProps) {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   const t = translations[language];
 
@@ -29,9 +29,14 @@ export default function Chatbot({ language }: ChatbotProps) {
     t.chatSuggest4
   ];
 
-  // Scroll to bottom whenever messages change
+  // Scroll to bottom of the messages container whenever messages change
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior: "smooth"
+      });
+    }
   }, [messages]);
 
   // Adjust welcome message language when switching language
@@ -132,7 +137,11 @@ export default function Chatbot({ language }: ChatbotProps) {
       </div>
 
       {/* Messages Window */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 font-sans bg-[#FCFAF7]/40 backdrop-blur-xs" id="chatbot-messages-window">
+      <div 
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto p-4 space-y-4 font-sans bg-[#FCFAF7]/40 backdrop-blur-xs" 
+        id="chatbot-messages-window"
+      >
         {messages.map((msg) => {
           const isUser = msg.role === "user";
           return (
@@ -184,7 +193,6 @@ export default function Chatbot({ language }: ChatbotProps) {
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggested Questions Slider with colorful buttons */}
