@@ -21,6 +21,8 @@ import maraiImg from "./assets/images/marai_honey_jar_1783374322711.jpg";
 import immunityImg from "./assets/images/immunity_gift_box_1783374333437.jpg";
 // @ts-ignore
 import propolisImg from "./assets/images/propolis_sample_box_1783374344559.jpg";
+// @ts-ignore
+import goldenHoneycombBg from "./assets/images/golden_honeycomb_texture_1783449988826.jpg";
 import { 
   ShoppingBag, 
   Search, 
@@ -1205,17 +1207,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FCFAF7] font-sans antialiased text-[#4A2F13] selection:bg-[#EADFC9] selection:text-[#4A2F13]" id="app-root-layout">
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] font-sans antialiased text-[#1F1106] selection:bg-[#EADFC9] selection:text-[#1F1106]" id="app-root-layout">
       
       {/* --- PREMIUM HEADER TOP BAR --- */}
       <div className="bg-[#FAF9F6] text-[#3D3028] text-xs py-2 px-4 flex items-center justify-between border-b border-[#EADFC9] font-medium" id="header-top-banner">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#B58A30]" />
+            <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
             {t.badgeTested}
           </span>
           <span className="hidden sm:flex items-center gap-1.5">
-            <Truck className="w-4 h-4 text-[#B58A30]" />
+            <Truck className="w-4 h-4 text-[#D4AF37]" />
             {t.badgeWorldwide}
           </span>
         </div>
@@ -1226,24 +1228,24 @@ export default function App() {
             className="flex items-center gap-1 bg-[#F5EFE4] hover:bg-[#EADFC9] border border-[#EADFC9] rounded px-2.5 py-1 text-[11px] transition cursor-pointer"
             id="lang-switcher-btn"
           >
-            <Globe className="w-3.5 h-3.5 text-[#B58A30]" />
+            <Globe className="w-3.5 h-3.5 text-[#D4AF37]" />
             <span>{language === "ar" ? "English" : "العربية"}</span>
           </button>
         </div>
       </div>
 
       {/* --- MAIN HEADER NAVBAR --- */}
-      <header className="sticky top-0 z-40 bg-[#FCFAF7]/95 backdrop-blur-md shadow-sm border-b border-[#EADFC9]/50" id="app-navigation-header">
+      <header className="sticky top-0 z-40 bg-[#FDFBF7]/95 backdrop-blur-md shadow-sm border-b border-[#EADFC9]/50" id="app-navigation-header">
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 md:h-24 flex items-center justify-between">
           
           {/* Logo & Branding Area */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setActiveTab("home"); setCheckoutMode(false); }} id="brand-identity">
             <Logo className="w-12 h-12 md:w-16 md:h-16" showText={false} />
             <div className="text-right">
-              <span className="block font-bold text-lg md:text-2xl text-[#4A2F13] font-sans tracking-tight">
+              <span className="block font-bold text-lg md:text-2xl text-[#1F1106] font-sans tracking-tight">
                 {t.appName}
               </span>
-              <span className="block text-[10px] md:text-xs text-[#B58A30] font-mono tracking-widest leading-none mt-0.5">
+              <span className="block text-[10px] md:text-xs text-[#D4AF37] font-mono tracking-widest leading-none mt-0.5">
                 {language === "ar" ? "حصن الجودة والأصالة" : "YEMENI AUTHENTIC HERITAGE"}
               </span>
             </div>
@@ -1253,34 +1255,34 @@ export default function App() {
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-medium text-[15px]" id="desktop-navbar">
             <button
               onClick={() => { setActiveTab("home"); setCheckoutMode(false); }}
-              className={`hover:text-[#B58A30] transition pb-1 border-b-2 cursor-pointer ${activeTab === "home" && !checkoutMode ? "text-[#B58A30] border-[#B58A30]" : "text-[#4A2F13]/80 border-transparent"}`}
+              className={`hover:text-[#D4AF37] transition pb-1 border-b-2 cursor-pointer ${activeTab === "home" && !checkoutMode ? "text-[#D4AF37] border-[#D4AF37]" : "text-[#1F1106]/80 border-transparent"}`}
             >
               {t.navHome}
             </button>
             <button
               onClick={() => { setActiveTab("products"); setCheckoutMode(false); }}
-              className={`hover:text-[#B58A30] transition pb-1 border-b-2 cursor-pointer ${activeTab === "products" && !checkoutMode ? "text-[#B58A30] border-[#B58A30]" : "text-[#4A2F13]/80 border-transparent"}`}
+              className={`hover:text-[#D4AF37] transition pb-1 border-b-2 cursor-pointer ${activeTab === "products" && !checkoutMode ? "text-[#D4AF37] border-[#D4AF37]" : "text-[#1F1106]/80 border-transparent"}`}
             >
               {t.navProducts}
             </button>
             <button
               onClick={() => { setActiveTab("loyalty"); setCheckoutMode(false); }}
-              className={`hover:text-[#B58A30] transition pb-1 border-b-2 cursor-pointer ${activeTab === "loyalty" && !checkoutMode ? "text-[#B58A30] border-[#B58A30]" : "text-[#4A2F13]/80 border-transparent"}`}
+              className={`hover:text-[#D4AF37] transition pb-1 border-b-2 cursor-pointer ${activeTab === "loyalty" && !checkoutMode ? "text-[#D4AF37] border-[#D4AF37]" : "text-[#1F1106]/80 border-transparent"}`}
             >
               {t.navLoyalty}
             </button>
             <button
               onClick={() => { setActiveTab("chat"); setCheckoutMode(false); }}
-              className={`hover:text-[#B58A30] transition pb-1 border-b-2 cursor-pointer flex items-center gap-1.5 ${activeTab === "chat" ? "text-[#B58A30] border-[#B58A30] font-bold" : "text-[#4A2F13]/80 border-transparent"}`}
+              className={`hover:text-[#D4AF37] transition pb-1 border-b-2 cursor-pointer flex items-center gap-1.5 ${activeTab === "chat" ? "text-[#D4AF37] border-[#D4AF37] font-bold" : "text-[#1F1106]/80 border-transparent"}`}
             >
-              <Sparkles className="w-4 h-4 text-[#B58A30]" />
+              <Sparkles className="w-4 h-4 text-[#D4AF37]" />
               {t.navChat}
             </button>
             <button
               onClick={() => { setActiveTab("admin"); setCheckoutMode(false); }}
-              className={`hover:text-[#B58A30] transition pb-1 border-b-2 cursor-pointer flex items-center gap-1.5 ${activeTab === "admin" ? "text-[#B58A30] border-[#B58A30] font-bold" : "text-[#4A2F13]/80 border-transparent"}`}
+              className={`hover:text-[#D4AF37] transition pb-1 border-b-2 cursor-pointer flex items-center gap-1.5 ${activeTab === "admin" ? "text-[#D4AF37] border-[#D4AF37] font-bold" : "text-[#1F1106]/80 border-transparent"}`}
             >
-              <ShieldCheck className="w-4 h-4 text-[#B58A30]" />
+              <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
               {language === "ar" ? "لوحة الإدارة" : "Admin"}
             </button>
           </nav>
@@ -1295,10 +1297,10 @@ export default function App() {
                 className="hidden md:flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#F5EFE4] border border-[#EADFC9] px-3.5 py-1.5 rounded-full cursor-pointer transition shadow-sm"
                 id="active-loyalty-widget"
               >
-                <Award className="w-4.5 h-4.5 text-[#B58A30] animate-pulse" />
+                <Award className="w-4.5 h-4.5 text-[#D4AF37] animate-pulse" />
                 <div className="text-right leading-none">
-                  <span className="block text-[10px] text-[#4A2F13]/70 font-sans">{loyaltyProfile.username}</span>
-                  <span className="text-xs font-bold text-[#B58A30] font-mono">{loyaltyProfile.points} {language === "ar" ? "نقطة" : "Pts"}</span>
+                  <span className="block text-[10px] text-[#1F1106]/70 font-sans">{loyaltyProfile.username}</span>
+                  <span className="text-xs font-bold text-[#D4AF37] font-mono">{loyaltyProfile.points} {language === "ar" ? "نقطة" : "Pts"}</span>
                 </div>
               </div>
             )}
@@ -1311,10 +1313,10 @@ export default function App() {
                   setActiveTab("loyalty");
                   setCheckoutMode(false);
                 }}
-                className="hidden md:flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F5EFE4] border-2 border-[#B58A30] text-[#B58A30] px-4 py-1.5 rounded-full font-bold text-xs transition duration-200 cursor-pointer shadow-sm hover:shadow"
+                className="hidden md:flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F5EFE4] border-2 border-[#D4AF37] text-[#D4AF37] px-4 py-1.5 rounded-full font-bold text-xs transition duration-200 cursor-pointer shadow-sm hover:shadow"
                 id="header-register-login-btn"
               >
-                <User className="w-4 h-4 text-[#B58A30]" />
+                <User className="w-4 h-4 text-[#D4AF37]" />
                 <span>{language === "ar" ? "تسجيل الدخول / فتح حساب" : "Sign In / Register"}</span>
               </button>
             )}
@@ -1322,12 +1324,12 @@ export default function App() {
             {/* Cart Button */}
             <button
               onClick={() => setCartOpen(true)}
-              className="relative w-11 h-11 md:w-12 md:h-12 rounded-full border border-[#EADFC9] bg-[#FFFFFF] hover:bg-[#F5EFE4] flex items-center justify-center text-[#4A2F13] hover:text-[#B58A30] hover:border-[#B58A30] transition cursor-pointer shadow-sm"
+              className="relative w-11 h-11 md:w-12 md:h-12 rounded-full border border-[#EADFC9] bg-[#FFFFFF] hover:bg-[#F5EFE4] flex items-center justify-center text-[#1F1106] hover:text-[#D4AF37] hover:border-[#D4AF37] transition cursor-pointer shadow-sm"
               id="header-cart-button"
             >
               <ShoppingBag className="w-5 h-5" />
               {cart.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#B58A30] text-white font-bold font-mono text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#FCFAF7] shadow">
+                <span className="absolute -top-1 -right-1 bg-[#D4AF37] text-white font-bold font-mono text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#FDFBF7] shadow">
                   {cart.reduce((sum, item) => sum + item.quantity, 0)}
                 </span>
               )}
@@ -1336,7 +1338,7 @@ export default function App() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(prev => !prev)}
-              className="lg:hidden w-11 h-11 rounded-full border border-[#EADFC9] bg-[#FFFFFF] flex items-center justify-center text-[#4A2F13] hover:text-[#B58A30] transition cursor-pointer"
+              className="lg:hidden w-11 h-11 rounded-full border border-[#EADFC9] bg-[#FFFFFF] flex items-center justify-center text-[#1F1106] hover:text-[#D4AF37] transition cursor-pointer"
               id="mobile-menu-toggle"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -1349,35 +1351,35 @@ export default function App() {
           <div className="lg:hidden bg-[#FFFFFF] border-t border-[#EADFC9] px-4 py-6 space-y-4 shadow-xl flex flex-col absolute top-20 left-0 w-full z-30 animate-in slide-in-from-top duration-300" id="mobile-navbar-drawer">
             <button
               onClick={() => { setActiveTab("home"); setCheckoutMode(false); setMobileMenuOpen(false); }}
-              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 ${activeTab === "home" && !checkoutMode ? "text-[#B58A30]" : "text-[#4A2F13]/80"}`}
+              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 ${activeTab === "home" && !checkoutMode ? "text-[#D4AF37]" : "text-[#1F1106]/80"}`}
             >
               {t.navHome}
             </button>
             <button
               onClick={() => { setActiveTab("products"); setCheckoutMode(false); setMobileMenuOpen(false); }}
-              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 ${activeTab === "products" && !checkoutMode ? "text-[#B58A30]" : "text-[#4A2F13]/80"}`}
+              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 ${activeTab === "products" && !checkoutMode ? "text-[#D4AF37]" : "text-[#1F1106]/80"}`}
             >
               {t.navProducts}
             </button>
             <button
               onClick={() => { setActiveTab("loyalty"); setCheckoutMode(false); setMobileMenuOpen(false); }}
-              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 ${activeTab === "loyalty" && !checkoutMode ? "text-[#B58A30]" : "text-[#4A2F13]/80"}`}
+              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 ${activeTab === "loyalty" && !checkoutMode ? "text-[#D4AF37]" : "text-[#1F1106]/80"}`}
             >
               {t.navLoyalty}
             </button>
             <button
               onClick={() => { setActiveTab("chat"); setCheckoutMode(false); setMobileMenuOpen(false); }}
-              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 flex items-center justify-between ${activeTab === "chat" ? "text-[#B58A30]" : "text-[#4A2F13]/80"}`}
+              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 flex items-center justify-between ${activeTab === "chat" ? "text-[#D4AF37]" : "text-[#1F1106]/80"}`}
             >
               <span>{t.navChat}</span>
-              <Sparkles className="w-4 h-4 text-[#B58A30] animate-pulse" />
+              <Sparkles className="w-4 h-4 text-[#D4AF37] animate-pulse" />
             </button>
             <button
               onClick={() => { setActiveTab("admin"); setCheckoutMode(false); setMobileMenuOpen(false); }}
-              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 flex items-center justify-between ${activeTab === "admin" ? "text-[#B58A30]" : "text-[#4A2F13]/80"}`}
+              className={`text-right w-full py-2.5 font-bold font-sans text-[16px] border-b border-[#EADFC9]/40 flex items-center justify-between ${activeTab === "admin" ? "text-[#D4AF37]" : "text-[#1F1106]/80"}`}
             >
               <span>{language === "ar" ? "لوحة التحكم للإدارة" : "Admin Panel"}</span>
-              <ShieldCheck className="w-4 h-4 text-[#B58A30]" />
+              <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
             </button>
             {!loyaltyProfile && (
               <button
@@ -1387,7 +1389,7 @@ export default function App() {
                   setCheckoutMode(false);
                   setMobileMenuOpen(false);
                 }}
-                className="w-full bg-gradient-to-r from-[#B58A30] to-[#D8B157] text-white font-extrabold font-sans text-sm py-3 px-4 rounded-xl flex items-center justify-between shadow transition cursor-pointer"
+                className="w-full bg-gradient-to-r from-[#D4AF37] to-[#D8B157] text-white font-extrabold font-sans text-sm py-3 px-4 rounded-xl flex items-center justify-between shadow transition cursor-pointer"
                 id="mobile-register-login-btn"
               >
                 <span>{language === "ar" ? "تسجيل الدخول / فتح حساب" : "Sign In / Register"}</span>
@@ -1395,14 +1397,14 @@ export default function App() {
               </button>
             )}
             {loyaltyProfile && (
-              <div className="bg-[#FCFAF7] p-4 rounded-xl border border-[#EADFC9]/70 flex items-center justify-between">
+              <div className="bg-[#FDFBF7] p-4 rounded-xl border border-[#EADFC9]/70 flex items-center justify-between">
                 <div>
-                  <span className="block text-xs text-[#4A2F13]/50">{loyaltyProfile.username}</span>
-                  <span className="block text-sm font-bold text-[#B58A30]">{loyaltyProfile.phone}</span>
+                  <span className="block text-xs text-[#1F1106]/50">{loyaltyProfile.username}</span>
+                  <span className="block text-sm font-bold text-[#D4AF37]">{loyaltyProfile.phone}</span>
                 </div>
                 <div className="text-right">
-                  <span className="block text-xs text-[#4A2F13]/50">{language === "ar" ? "النقاط المتوفرة:" : "Available Points:"}</span>
-                  <span className="text-lg font-bold text-[#B58A30] font-mono">{loyaltyProfile.points}</span>
+                  <span className="block text-xs text-[#1F1106]/50">{language === "ar" ? "النقاط المتوفرة:" : "Available Points:"}</span>
+                  <span className="text-lg font-bold text-[#D4AF37] font-mono">{loyaltyProfile.points}</span>
                 </div>
               </div>
             )}
@@ -1421,44 +1423,44 @@ export default function App() {
           <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4" id="order-success-screen">
             <div className="bg-[#FFFFFF] max-w-xl w-full rounded-2xl shadow-2xl border border-[#EADFC9] overflow-hidden transform animate-in zoom-in-95 duration-300" id="order-success-modal">
               {/* Success Header banner */}
-              <div className="bg-gradient-to-r from-[#FAF9F6] to-[#FCFAF7] p-8 text-[#4A2F13] text-center flex flex-col items-center gap-3 border-b border-[#EADFC9]">
-                <div className="w-16 h-16 rounded-full bg-[#B58A30]/15 border-2 border-[#B58A30] flex items-center justify-center text-[#B58A30] shadow-inner">
+              <div className="bg-gradient-to-r from-[#FAF9F6] to-[#FDFBF7] p-8 text-[#1F1106] text-center flex flex-col items-center gap-3 border-b border-[#EADFC9]">
+                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/15 border-2 border-[#D4AF37] flex items-center justify-center text-[#D4AF37] shadow-inner">
                   <CheckCircle className="w-9 h-9" />
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold font-sans text-[#4A2F13]">
+                <h2 className="text-xl md:text-2xl font-bold font-sans text-[#1F1106]">
                   {t.successTitle}
                 </h2>
-                <p className="text-xs md:text-sm text-[#4A2F13]/80 leading-relaxed max-w-md">
+                <p className="text-xs md:text-sm text-[#1F1106]/80 leading-relaxed max-w-md">
                   {t.successSubtitle}
                 </p>
               </div>
 
               {/* Order Specifics */}
               <div className="p-6 md:p-8 space-y-6">
-                <div className="bg-[#FCFAF7] border border-[#EADFC9]/60 rounded-xl p-4 md:p-5 flex flex-col gap-3 font-medium text-sm text-[#4A2F13]/80">
+                <div className="bg-[#FDFBF7] border border-[#EADFC9]/60 rounded-xl p-4 md:p-5 flex flex-col gap-3 font-medium text-sm text-[#1F1106]/80">
                   <div className="flex items-center justify-between">
                     <span>{t.successOrderID}</span>
-                    <span className="font-mono font-bold text-[#B58A30] text-base">{orderSuccess.id}</span>
+                    <span className="font-mono font-bold text-[#D4AF37] text-base">{orderSuccess.id}</span>
                   </div>
                   <div className="flex items-center justify-between border-t border-[#EADFC9]/30 pt-2.5">
                     <span>{language === "ar" ? "قيمة الطلب الإجمالية:" : "Total Order Value:"}</span>
-                    <span className="font-mono font-bold text-[#4A2F13] text-base">{orderSuccess.total} {language === "ar" ? "د.أ" : "JOD"}</span>
+                    <span className="font-mono font-bold text-[#1F1106] text-base">{orderSuccess.total} {language === "ar" ? "د.أ" : "JOD"}</span>
                   </div>
-                  <div className="flex items-center justify-between border-t border-[#EADFC9]/30 pt-2.5 bg-[#B58A30]/5 p-2 rounded-lg">
-                    <span className="flex items-center gap-1.5 text-[#B58A30]">
-                      <Coins className="w-4.5 h-4.5 text-[#B58A30]" />
+                  <div className="flex items-center justify-between border-t border-[#EADFC9]/30 pt-2.5 bg-[#D4AF37]/5 p-2 rounded-lg">
+                    <span className="flex items-center gap-1.5 text-[#D4AF37]">
+                      <Coins className="w-4.5 h-4.5 text-[#D4AF37]" />
                       {t.successPointsEarned}
                     </span>
-                    <span className="font-mono font-bold text-[#B58A30]">+{orderSuccess.pointsEarned} {language === "ar" ? "نقطة" : "pts"}</span>
+                    <span className="font-mono font-bold text-[#D4AF37]">+{orderSuccess.pointsEarned} {language === "ar" ? "نقطة" : "pts"}</span>
                   </div>
                 </div>
 
                 <div className="text-center md:text-right space-y-2.5">
-                  <p className="text-xs text-[#4A2F13]/60 leading-relaxed">
+                  <p className="text-xs text-[#1F1106]/60 leading-relaxed">
                     {t.successInstructions}
                   </p>
-                  <div className="flex items-center gap-2 justify-center text-xs font-semibold text-[#B58A30] bg-[#B58A30]/10 border border-[#B58A30]/25 rounded-lg p-2.5">
-                    <Truck className="w-4 h-4 text-[#B58A30]" />
+                  <div className="flex items-center gap-2 justify-center text-xs font-semibold text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/25 rounded-lg p-2.5">
+                    <Truck className="w-4 h-4 text-[#D4AF37]" />
                     <span>
                       {language === "ar" 
                         ? `سيتم شحن طلبك عبر: ${orderSuccess.shippingMethod === "aramex" ? "أرامكس" : orderSuccess.shippingMethod === "dhl" ? "دي اتش ال" : "المندوب المحلي"}` 
@@ -1469,7 +1471,7 @@ export default function App() {
 
                 <button
                   onClick={() => { setOrderSuccess(null); setActiveTab("home"); }}
-                  className="w-full bg-gradient-to-r from-[#B58A30] to-[#D8B157] text-[#FCFAF7] font-extrabold font-sans py-4 rounded-xl shadow-lg hover:shadow-xl transition cursor-pointer"
+                  className="w-full bg-gradient-to-r from-[#D4AF37] to-[#D8B157] text-[#FDFBF7] font-extrabold font-sans py-4 rounded-xl shadow-lg hover:shadow-xl transition cursor-pointer"
                 >
                   {t.successBtnClose}
                 </button>
@@ -1484,13 +1486,13 @@ export default function App() {
             {/* Back button */}
             <button
               onClick={() => setCheckoutMode(false)}
-              className="inline-flex items-center gap-1.5 text-[#4A2F13]/75 hover:text-[#B58A30] transition text-sm font-semibold cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-[#1F1106]/75 hover:text-[#D4AF37] transition text-sm font-semibold cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               {language === "ar" ? "العودة لتسوق المنتجات" : "Back to Shopping"}
             </button>
 
-            <h1 className="text-2xl md:text-3.5xl font-black font-sans text-[#4A2F13] border-b border-[#EADFC9]/50 pb-3">
+            <h1 className="text-2xl md:text-3.5xl font-black font-sans text-[#1F1106] border-b border-[#EADFC9]/50 pb-3">
               {t.checkoutTitle}
             </h1>
 
@@ -1501,76 +1503,76 @@ export default function App() {
                 
                 {/* 1. Address Block */}
                 <div>
-                  <h3 className="text-lg font-bold text-[#4A2F13] font-sans flex items-center gap-2 border-b border-[#EADFC9]/50 pb-3 mb-5">
-                    <MapPin className="w-5 h-5 text-[#B58A30]" />
+                  <h3 className="text-lg font-bold text-[#1F1106] font-sans flex items-center gap-2 border-b border-[#EADFC9]/50 pb-3 mb-5">
+                    <MapPin className="w-5 h-5 text-[#D4AF37]" />
                     {t.checkoutBillingDetails}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.checkoutFullName} *</label>
+                      <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.checkoutFullName} *</label>
                       <input
                         type="text"
                         required
                         value={checkoutForm.fullName}
                         onChange={(e) => setCheckoutForm({...checkoutForm, fullName: e.target.value})}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] transition"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm outline-none text-[#1F1106] transition"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.checkoutPhone} *</label>
+                      <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.checkoutPhone} *</label>
                       <input
                         type="tel"
                         required
                         placeholder="079xxxxxxx"
                         value={checkoutForm.phone}
                         onChange={(e) => setCheckoutForm({...checkoutForm, phone: e.target.value})}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] font-mono transition"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm outline-none text-[#1F1106] font-mono transition"
                       />
                     </div>
                     <div className="space-y-1.5 md:col-span-2">
-                      <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.checkoutEmail} *</label>
+                      <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.checkoutEmail} *</label>
                       <input
                         type="email"
                         required
                         value={checkoutForm.email}
                         onChange={(e) => setCheckoutForm({...checkoutForm, email: e.target.value})}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] transition"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm outline-none text-[#1F1106] transition"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.checkoutCountry} *</label>
+                      <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.checkoutCountry} *</label>
                       <select
                         value={checkoutForm.country}
                         onChange={(e) => setCheckoutForm({...checkoutForm, country: e.target.value})}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3.5 py-2.5 text-sm text-[#4A2F13] outline-none transition cursor-pointer"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm text-[#1F1106] outline-none transition cursor-pointer"
                       >
-                        <option value="Jordan" className="bg-white text-[#4A2F13]">{language === "ar" ? "الأردن (Jordan)" : "Jordan (الأردن)"}</option>
-                        <option value="Saudi Arabia" className="bg-white text-[#4A2F13]">{language === "ar" ? "المملكة العربية السعودية (Saudi Arabia)" : "Saudi Arabia (المملكة العربية السعودية)"}</option>
-                        <option value="Yemen" className="bg-white text-[#4A2F13]">{language === "ar" ? "اليمن (Yemen)" : "Yemen (اليمن)"}</option>
-                        <option value="United Arab Emirates" className="bg-white text-[#4A2F13]">{language === "ar" ? "الإمارات العربية المتحدة (UAE)" : "United Arab Emirates (الإمارات)"}</option>
-                        <option value="Oman" className="bg-white text-[#4A2F13]">{language === "ar" ? "عُمان" : "Oman"}</option>
-                        <option value="Qatar" className="bg-white text-[#4A2F13]">{language === "ar" ? "قطر" : "Qatar"}</option>
+                        <option value="Jordan" className="bg-white text-[#1F1106]">{language === "ar" ? "الأردن (Jordan)" : "Jordan (الأردن)"}</option>
+                        <option value="Saudi Arabia" className="bg-white text-[#1F1106]">{language === "ar" ? "المملكة العربية السعودية (Saudi Arabia)" : "Saudi Arabia (المملكة العربية السعودية)"}</option>
+                        <option value="Yemen" className="bg-white text-[#1F1106]">{language === "ar" ? "اليمن (Yemen)" : "Yemen (اليمن)"}</option>
+                        <option value="United Arab Emirates" className="bg-white text-[#1F1106]">{language === "ar" ? "الإمارات العربية المتحدة (UAE)" : "United Arab Emirates (الإمارات)"}</option>
+                        <option value="Oman" className="bg-white text-[#1F1106]">{language === "ar" ? "عُمان" : "Oman"}</option>
+                        <option value="Qatar" className="bg-white text-[#1F1106]">{language === "ar" ? "قطر" : "Qatar"}</option>
                       </select>
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.checkoutCity} *</label>
+                      <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.checkoutCity} *</label>
                       <input
                         type="text"
                         required
                         value={checkoutForm.city}
                         onChange={(e) => setCheckoutForm({...checkoutForm, city: e.target.value})}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3.5 py-2.5 text-sm text-[#4A2F13] outline-none transition"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm text-[#1F1106] outline-none transition"
                       />
                     </div>
                     <div className="space-y-1.5 md:col-span-2">
-                      <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.checkoutAddress} *</label>
+                      <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.checkoutAddress} *</label>
                       <input
                         type="text"
                         required
                         placeholder={language === "ar" ? "اسم الحي، اسم الشارع، رقم المبنى والرمز البريدي" : "District, Street, Building Number"}
                         value={checkoutForm.address}
                         onChange={(e) => setCheckoutForm({...checkoutForm, address: e.target.value})}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3.5 py-2.5 text-sm text-[#4A2F13] outline-none transition"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm text-[#1F1106] outline-none transition"
                       />
                     </div>
                   </div>
@@ -1578,58 +1580,58 @@ export default function App() {
 
                 {/* 2. Shipping Carrier Selection */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-[#4A2F13] font-sans flex items-center gap-2 border-b border-[#EADFC9]/50 pb-3 mb-5">
-                    <Truck className="w-5 h-5 text-[#B58A30]" />
+                  <h3 className="text-lg font-bold text-[#1F1106] font-sans flex items-center gap-2 border-b border-[#EADFC9]/50 pb-3 mb-5">
+                    <Truck className="w-5 h-5 text-[#D4AF37]" />
                     {t.shippingMethodTitle}
                   </h3>
                   <div className="space-y-3">
-                    <label className={`flex items-center gap-4 border p-4 rounded-xl cursor-pointer transition-all duration-200 ${shippingMethod === "aramex" ? "bg-[#B58A30]/10 border-[#B58A30] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FCFAF7]"}`}>
+                    <label className={`flex items-center gap-4 border p-4 rounded-xl cursor-pointer transition-all duration-200 ${shippingMethod === "aramex" ? "bg-[#D4AF37]/10 border-[#D4AF37] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FDFBF7]"}`}>
                       <input
                         type="radio"
                         name="shipping_method"
                         checked={shippingMethod === "aramex"}
                         onChange={() => setShippingMethod("aramex")}
-                        className="w-4 h-4 text-[#B58A30] focus:ring-[#B58A30] accent-[#B58A30]"
+                        className="w-4 h-4 text-[#D4AF37] focus:ring-[#D4AF37] accent-[#D4AF37]"
                       />
                       <div className="flex-grow text-right">
-                        <span className="block font-bold text-sm text-[#4A2F13]">{t.shipAramex}</span>
-                        <span className="text-xs text-[#4A2F13]/60">3-5 {t.shipDays}</span>
+                        <span className="block font-bold text-sm text-[#1F1106]">{t.shipAramex}</span>
+                        <span className="text-xs text-[#1F1106]/60">3-5 {t.shipDays}</span>
                       </div>
-                      <span className="font-mono font-bold text-sm text-[#B58A30]">
+                      <span className="font-mono font-bold text-sm text-[#D4AF37]">
                         {isFreeShipping ? t.shipFree : (language === "ar" ? "٥ د.أ" : "5 JOD")}
                       </span>
                     </label>
 
-                    <label className={`flex items-center gap-4 border p-4 rounded-xl cursor-pointer transition-all duration-200 ${shippingMethod === "dhl" ? "bg-[#B58A30]/10 border-[#B58A30] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FCFAF7]"}`}>
+                    <label className={`flex items-center gap-4 border p-4 rounded-xl cursor-pointer transition-all duration-200 ${shippingMethod === "dhl" ? "bg-[#D4AF37]/10 border-[#D4AF37] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FDFBF7]"}`}>
                       <input
                         type="radio"
                         name="shipping_method"
                         checked={shippingMethod === "dhl"}
                         onChange={() => setShippingMethod("dhl")}
-                        className="w-4 h-4 text-[#B58A30] focus:ring-[#B58A30] accent-[#B58A30]"
+                        className="w-4 h-4 text-[#D4AF37] focus:ring-[#D4AF37] accent-[#D4AF37]"
                       />
                       <div className="flex-grow text-right">
-                        <span className="block font-bold text-sm text-[#4A2F13]">{t.shipDHL}</span>
-                        <span className="text-xs text-[#4A2F13]/60">2-3 {t.shipDays}</span>
+                        <span className="block font-bold text-sm text-[#1F1106]">{t.shipDHL}</span>
+                        <span className="text-xs text-[#1F1106]/60">2-3 {t.shipDays}</span>
                       </div>
-                      <span className="font-mono font-bold text-sm text-[#B58A30]">
+                      <span className="font-mono font-bold text-sm text-[#D4AF37]">
                         {isFreeShipping ? t.shipFree : (language === "ar" ? "٨ د.أ" : "8 JOD")}
                       </span>
                     </label>
 
-                    <label className={`flex items-center gap-4 border p-4 rounded-xl cursor-pointer transition-all duration-200 ${shippingMethod === "local" ? "bg-[#B58A30]/10 border-[#B58A30] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FCFAF7]"}`}>
+                    <label className={`flex items-center gap-4 border p-4 rounded-xl cursor-pointer transition-all duration-200 ${shippingMethod === "local" ? "bg-[#D4AF37]/10 border-[#D4AF37] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FDFBF7]"}`}>
                       <input
                         type="radio"
                         name="shipping_method"
                         checked={shippingMethod === "local"}
                         onChange={() => setShippingMethod("local")}
-                        className="w-4 h-4 text-[#B58A30] focus:ring-[#B58A30] accent-[#B58A30]"
+                        className="w-4 h-4 text-[#D4AF37] focus:ring-[#D4AF37] accent-[#D4AF37]"
                       />
                       <div className="flex-grow text-right">
-                        <span className="block font-bold text-sm text-[#4A2F13]">{t.shipLocal}</span>
-                        <span className="text-xs text-[#4A2F13]/60">1-2 {t.shipDays}</span>
+                        <span className="block font-bold text-sm text-[#1F1106]">{t.shipLocal}</span>
+                        <span className="text-xs text-[#1F1106]/60">1-2 {t.shipDays}</span>
                       </div>
-                      <span className="font-mono font-bold text-sm text-[#B58A30]">
+                      <span className="font-mono font-bold text-sm text-[#D4AF37]">
                         {isFreeShipping ? t.shipFree : (language === "ar" ? "٣ د.أ" : "3 JOD")}
                       </span>
                     </label>
@@ -1638,8 +1640,8 @@ export default function App() {
 
                 {/* 3. Payment Method Choice */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-bold text-[#4A2F13] font-sans flex items-center gap-2 border-b border-[#EADFC9]/50 pb-3 mb-5">
-                    <CreditCard className="w-5 h-5 text-[#B58A30]" />
+                  <h3 className="text-lg font-bold text-[#1F1106] font-sans flex items-center gap-2 border-b border-[#EADFC9]/50 pb-3 mb-5">
+                    <CreditCard className="w-5 h-5 text-[#D4AF37]" />
                     {t.paymentMethodTitle}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -1652,41 +1654,41 @@ export default function App() {
                     ].map((pm) => (
                       <label
                         key={pm.id}
-                        className={`flex items-center gap-3 border p-3.5 rounded-xl cursor-pointer transition-all duration-200 ${paymentMethod === pm.id ? "bg-[#B58A30]/10 border-[#B58A30] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FCFAF7]"}`}
+                        className={`flex items-center gap-3 border p-3.5 rounded-xl cursor-pointer transition-all duration-200 ${paymentMethod === pm.id ? "bg-[#D4AF37]/10 border-[#D4AF37] shadow-sm" : "border-[#EADFC9]/60 hover:bg-[#FDFBF7]"}`}
                       >
                         <input
                           type="radio"
                           name="payment_method"
                           checked={paymentMethod === pm.id}
                           onChange={() => setPaymentMethod(pm.id as PaymentMethod)}
-                          className="w-4 h-4 text-[#B58A30] focus:ring-[#B58A30] accent-[#B58A30]"
+                          className="w-4 h-4 text-[#D4AF37] focus:ring-[#D4AF37] accent-[#D4AF37]"
                         />
-                        <span className="font-bold text-sm text-[#4A2F13]">{typeof pm.name === "function" ? pm.name(pm) : pm.name}</span>
+                        <span className="font-bold text-sm text-[#1F1106]">{typeof pm.name === "function" ? pm.name(pm) : pm.name}</span>
                       </label>
                     ))}
                   </div>
 
                   {/* Dynamic Bank Transfer details block if selected */}
                   {paymentMethod === "transfer" && (
-                    <div className="bg-[#FCFAF7] border border-[#EADFC9] rounded-xl p-4 md:p-5 mt-4 space-y-3 transform animate-in fade-in duration-200 text-[#4A2F13]">
-                      <h4 className="font-bold text-sm text-[#4A2F13] flex items-center gap-1.5">
-                        <ShieldCheck className="w-4 h-4 text-[#B58A30]" />
+                    <div className="bg-[#FDFBF7] border border-[#EADFC9] rounded-xl p-4 md:p-5 mt-4 space-y-3 transform animate-in fade-in duration-200 text-[#1F1106]">
+                      <h4 className="font-bold text-sm text-[#1F1106] flex items-center gap-1.5">
+                        <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
                         {t.transferInfoTitle}
                       </h4>
-                      <div className="text-xs text-[#4A2F13]/80 space-y-2 leading-relaxed">
+                      <div className="text-xs text-[#1F1106]/80 space-y-2 leading-relaxed">
                         <div>
-                          <span className="font-bold block text-[#B58A30]">{language === "ar" ? "اسم البنك:" : "Bank Name:"}</span>
+                          <span className="font-bold block text-[#D4AF37]">{language === "ar" ? "اسم البنك:" : "Bank Name:"}</span>
                           <span>{t.transferBankName}</span>
                         </div>
                         <div>
-                          <span className="font-bold block text-[#B58A30]">{language === "ar" ? "اسم الحساب:" : "Account Name:"}</span>
+                          <span className="font-bold block text-[#D4AF37]">{language === "ar" ? "اسم الحساب:" : "Account Name:"}</span>
                           <span>{t.transferAccountName}</span>
                         </div>
                         <div>
-                          <span className="font-bold block text-[#B58A30]">{language === "ar" ? "رقم الآيبان IBAN:" : "IBAN Code:"}</span>
-                          <span className="font-mono bg-[#FCFAF7] border border-[#EADFC9] px-2 py-1 rounded text-[#B58A30] block md:inline-block mt-1">{t.transferIBAN}</span>
+                          <span className="font-bold block text-[#D4AF37]">{language === "ar" ? "رقم الآيبان IBAN:" : "IBAN Code:"}</span>
+                          <span className="font-mono bg-[#FDFBF7] border border-[#EADFC9] px-2 py-1 rounded text-[#D4AF37] block md:inline-block mt-1">{t.transferIBAN}</span>
                         </div>
-                        <p className="border-t border-[#EADFC9]/40 pt-2 text-[#4A2F13]/60 mt-2 italic">
+                        <p className="border-t border-[#EADFC9]/40 pt-2 text-[#1F1106]/60 mt-2 italic">
                           {t.transferInstruction}
                         </p>
                       </div>
@@ -1697,11 +1699,11 @@ export default function App() {
                 <button
                   type="submit"
                   disabled={isProcessingOrder}
-                  className="w-full bg-gradient-to-r from-[#B58A30] to-[#D8B157] hover:from-[#D8B157] hover:to-[#B58A30] text-[#FCFAF7] font-extrabold font-sans py-4 rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-gradient-to-r from-[#D4AF37] to-[#D8B157] hover:from-[#D8B157] hover:to-[#D4AF37] text-[#FDFBF7] font-extrabold font-sans py-4 rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer text-base disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isProcessingOrder ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-[#FCFAF7] border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-[#FDFBF7] border-t-transparent rounded-full animate-spin"></div>
                       <span>{t.processingOrder}</span>
                     </>
                   ) : (
@@ -1716,7 +1718,7 @@ export default function App() {
                 
                 {/* Promo Code Block */}
                 <div className="bg-[#FFFFFF] border border-[#EADFC9]/70 rounded-2xl p-5 shadow-sm space-y-3.5">
-                  <label className="block text-sm font-bold text-[#4A2F13] font-sans">
+                  <label className="block text-sm font-bold text-[#1F1106] font-sans">
                     {t.promoCodeLabel}
                   </label>
                   <div className="flex gap-2">
@@ -1725,23 +1727,23 @@ export default function App() {
                       placeholder={t.promoCodePlaceholder}
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value)}
-                      className="flex-1 bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3 py-2 text-sm outline-none text-[#4A2F13] placeholder-[#4A2F13]/40 uppercase font-mono"
+                      className="flex-1 bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3 py-2 text-sm outline-none text-[#1F1106] placeholder-[#1F1106]/40 uppercase font-mono"
                     />
                     <button
                       type="button"
                       onClick={applyPromoCode}
-                      className="bg-[#B58A30] hover:bg-[#D8B157] text-white font-extrabold text-xs px-4 py-2 rounded-lg transition cursor-pointer font-sans"
+                      className="bg-[#D4AF37] hover:bg-[#D8B157] text-white font-extrabold text-xs px-4 py-2 rounded-lg transition cursor-pointer font-sans"
                     >
                       {t.promoApplyBtn}
                     </button>
                   </div>
 
                   {/* Loyalty Voucher Demo helper list */}
-                  <div className="text-[11px] text-[#4A2F13]/70 bg-[#FCFAF7] p-2.5 rounded-lg border border-[#EADFC9]/40 space-y-1">
-                    <p className="font-bold text-[#B58A30]">{language === "ar" ? "أكواد ترويجية للتجربة (اضغط للنسخ):" : "Try these demo promo codes (click to copy):"}</p>
+                  <div className="text-[11px] text-[#1F1106]/70 bg-[#FDFBF7] p-2.5 rounded-lg border border-[#EADFC9]/40 space-y-1">
+                    <p className="font-bold text-[#D4AF37]">{language === "ar" ? "أكواد ترويجية للتجربة (اضغط للنسخ):" : "Try these demo promo codes (click to copy):"}</p>
                     <div className="flex flex-wrap gap-2 pt-1 font-mono">
-                      <button onClick={() => { setCouponCode("WELCOME10"); }} className="bg-[#FFFFFF] hover:bg-[#B58A30]/10 border border-[#EADFC9] px-1.5 py-0.5 rounded text-[#B58A30] font-bold transition">WELCOME10 (10%)</button>
-                      <button onClick={() => { setCouponCode("DUMALWAH20"); }} className="bg-[#FFFFFF] hover:bg-[#B58A30]/10 border border-[#EADFC9] px-1.5 py-0.5 rounded text-[#B58A30] font-bold transition">DUMALWAH20 (20%)</button>
+                      <button onClick={() => { setCouponCode("WELCOME10"); }} className="bg-[#FFFFFF] hover:bg-[#D4AF37]/10 border border-[#EADFC9] px-1.5 py-0.5 rounded text-[#D4AF37] font-bold transition">WELCOME10 (10%)</button>
+                      <button onClick={() => { setCouponCode("DUMALWAH20"); }} className="bg-[#FFFFFF] hover:bg-[#D4AF37]/10 border border-[#EADFC9] px-1.5 py-0.5 rounded text-[#D4AF37] font-bold transition">DUMALWAH20 (20%)</button>
                     </div>
                   </div>
 
@@ -1754,9 +1756,9 @@ export default function App() {
 
                 {/* Items Checkout list */}
                 <div className="bg-[#FFFFFF] border border-[#EADFC9]/70 rounded-2xl p-6 shadow-sm space-y-5">
-                  <h3 className="text-base font-bold text-[#4A2F13] font-sans border-b border-[#EADFC9]/40 pb-3 flex items-center justify-between">
+                  <h3 className="text-base font-bold text-[#1F1106] font-sans border-b border-[#EADFC9]/40 pb-3 flex items-center justify-between">
                     <span>{t.checkoutSummaryTitle}</span>
-                    <span className="text-xs bg-[#B58A30]/10 text-[#B58A30] border border-[#B58A30]/25 rounded-full px-2.5 py-0.5 font-mono">
+                    <span className="text-xs bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/25 rounded-full px-2.5 py-0.5 font-mono">
                       {translations[language].checkoutItemCount.replace("{count}", cart.reduce((sum, item) => sum + item.quantity, 0).toString())}
                     </span>
                   </h3>
@@ -1770,14 +1772,14 @@ export default function App() {
                           className="w-14 h-14 rounded-lg object-cover border border-[#EADFC9]/40 shrink-0"
                         />
                         <div className="flex-grow min-w-0">
-                          <h4 className="font-bold text-xs md:text-sm text-[#4A2F13] truncate">
+                          <h4 className="font-bold text-xs md:text-sm text-[#1F1106] truncate">
                             {language === "ar" ? item.product.nameAr : item.product.nameEn}
                           </h4>
-                          <span className="text-[11px] text-[#4A2F13]/60 font-mono block mt-0.5">
+                          <span className="text-[11px] text-[#1F1106]/60 font-mono block mt-0.5">
                             {item.selectedSize.weight} × {item.quantity}
                           </span>
                         </div>
-                        <span className="font-mono font-bold text-sm text-[#4A2F13] shrink-0">
+                        <span className="font-mono font-bold text-sm text-[#1F1106] shrink-0">
                           {item.selectedSize.price * item.quantity} {language === "ar" ? "د.أ" : "JOD"}
                         </span>
                       </div>
@@ -1785,15 +1787,15 @@ export default function App() {
                   </div>
 
                   {/* Pricing Sum Breakdown */}
-                  <div className="border-t border-[#EADFC9]/40 pt-4 space-y-3.5 text-sm font-medium text-[#4A2F13]/70">
+                  <div className="border-t border-[#EADFC9]/40 pt-4 space-y-3.5 text-sm font-medium text-[#1F1106]/70">
                     <div className="flex justify-between">
                       <span>{t.cartSubtotal}</span>
-                      <span className="font-mono font-bold text-[#4A2F13]">{cartSubtotal} {language === "ar" ? "د.أ" : "JOD"}</span>
+                      <span className="font-mono font-bold text-[#1F1106]">{cartSubtotal} {language === "ar" ? "د.أ" : "JOD"}</span>
                     </div>
 
                     <div className="flex justify-between">
                       <span>{t.cartShipping}</span>
-                      <span className="font-mono font-bold text-[#4A2F13]">
+                      <span className="font-mono font-bold text-[#1F1106]">
                         {shippingCost === 0 ? t.shipFree : `${shippingCost} د.أ`}
                       </span>
                     </div>
@@ -1806,20 +1808,20 @@ export default function App() {
                     )}
 
                     {paymentMethod === "cod" && (
-                      <div className="flex justify-between text-[#4A2F13]/80 bg-[#FCFAF7] p-2 rounded-lg text-xs border border-[#EADFC9]/30">
+                      <div className="flex justify-between text-[#1F1106]/80 bg-[#FDFBF7] p-2 rounded-lg text-xs border border-[#EADFC9]/30">
                         <span>{language === "ar" ? "رسوم الدفع عند الاستلام:" : "COD Convenience Fee:"}</span>
                         <span className="font-mono font-bold">+3 {language === "ar" ? "د.أ" : "JOD"}</span>
                       </div>
                     )}
 
-                    <div className="flex justify-between text-[#4A2F13] font-black text-base md:text-lg border-t border-[#EADFC9]/40 pt-3.5">
+                    <div className="flex justify-between text-[#1F1106] font-black text-base md:text-lg border-t border-[#EADFC9]/40 pt-3.5">
                       <span>{t.cartTotal}</span>
-                      <span className="font-mono text-[#B58A30]">{checkoutTotal} {language === "ar" ? "د.أ" : "JOD"}</span>
+                      <span className="font-mono text-[#D4AF37]">{checkoutTotal} {language === "ar" ? "د.أ" : "JOD"}</span>
                     </div>
 
-                    <div className="bg-[#B58A30]/10 p-3 rounded-lg border border-[#B58A30]/20 flex items-center justify-between text-xs text-[#B58A30]">
+                    <div className="bg-[#D4AF37]/10 p-3 rounded-lg border border-[#D4AF37]/20 flex items-center justify-between text-xs text-[#D4AF37]">
                       <span className="flex items-center gap-1">
-                        <Award className="w-4 h-4 text-[#B58A30]" />
+                        <Award className="w-4 h-4 text-[#D4AF37]" />
                         {language === "ar" ? "النقاط المكتسبة من طلبك:" : "Points you earn from this order:"}
                       </span>
                       <span className="font-mono font-bold">+{Math.floor(cartSubtotal * 1)} {language === "ar" ? "نقطة ولاء" : "Pts"}</span>
@@ -1847,58 +1849,198 @@ export default function App() {
                 id="home-tab-container"
               >
                 
-                {/* --- HERO BANNER --- */}
-                <section className="bg-gradient-to-br from-[#FCFAF7] via-[#FFF8EC] to-[#F3E6CD] rounded-3xl overflow-hidden shadow-md border-2 border-[#EADFC9]/80 relative qamariyah-grid" id="hero-banner-section">
-                  {/* Beautiful sunset colorful Qamariyah stained-glass overlay */}
-                  <div className="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-qamariyah-amber/20 via-qamariyah-red/15 to-qamariyah-blue/15"></div>
+                {/* --- HOLY QURANIC HEADER BANNER (Luxurious Quranic Frieze) --- */}
+                <div 
+                  className="w-full text-center py-6 px-4 bg-luxury-brown border-y border-luxury-gold/40 relative overflow-hidden flex flex-col items-center justify-center rounded-2xl shadow-xl" 
+                  id="quranic-header-banner"
+                >
+                  {/* Subtle golden honeycomb background pattern */}
+                  <div 
+                    className="absolute inset-0 opacity-[0.06] bg-repeat pointer-events-none mix-blend-overlay"
+                    style={{ backgroundImage: `url(${goldenHoneycombBg})`, backgroundSize: "180px" }}
+                  ></div>
                   
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 p-8 md:p-14 lg:p-16 relative z-10 items-center">
-                    
-                    {/* Left: Text headings (Lg: 6) */}
-                    <div className="lg:col-span-6 space-y-6 text-center md:text-right flex flex-col md:items-start items-center">
-                      <div className="inline-flex items-center gap-1.5 bg-gradient-to-r from-qamariyah-amber/15 to-qamariyah-red/15 border border-qamariyah-amber/40 text-[#4A2F13] text-xs px-4 py-1.5 rounded-full font-black uppercase tracking-wider shadow-xs" id="hero-badge">
-                        <Star className="w-3.5 h-3.5 text-qamariyah-amber fill-qamariyah-amber" />
-                        {language === "ar" ? "حصري وممتاز ١٠٠٪" : "100% EXCLUSIVE & RAW"}
-                      </div>
+                  <div className="relative z-10 max-w-4xl mx-auto space-y-3">
+                    {/* Decorative Top Ornament */}
+                    <div className="flex items-center justify-center gap-3 text-luxury-gold">
+                      <span className="w-12 md:w-24 h-[1px] bg-gradient-to-r from-transparent to-luxury-gold"></span>
+                      <span className="text-xs md:text-sm">✦</span>
+                      <span className="w-12 md:w-24 h-[1px] bg-gradient-to-l from-transparent to-luxury-gold"></span>
+                    </div>
+
+                    {/* Basmala */}
+                    <h2 
+                      className="text-xl md:text-2.5xl text-luxury-gold-light font-serif leading-relaxed font-bold tracking-wide text-center" 
+                      style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
+                    >
+                      بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                    </h2>
+
+                    {/* Quranic Verse */}
+                    <p 
+                      className="text-xl md:text-2.5xl text-luxury-gold font-serif leading-relaxed font-black text-center px-4 max-w-3xl mx-auto"
+                      style={{ textShadow: "0 2px 3px rgba(0,0,0,0.4)" }}
+                    >
+                      "يَخْرُجُ مِنْ بُطُونِهَا شَرَابٌ مُخْتَلِفٌ أَلْوَانُهُ فِيهِ شِفَاءٌ لِلنَّاسِ ۗ إِنَّ فِي ذَلِكَ لَآيَةً لِقَوْمٍ يَتَفَكَّرُونَ"
+                    </p>
+
+                    {/* Surah Citation / English Translation */}
+                    <div className="text-center pt-1">
+                      {language === "ar" ? (
+                        <span className="text-xs text-luxury-gold/80 font-bold tracking-widest block font-serif">
+                          [ سورة النحل: ٦٩ ]
+                        </span>
+                      ) : (
+                        <div className="space-y-1.5">
+                          <p className="text-xs md:text-sm italic text-luxury-beige/90 font-serif max-w-3xl mx-auto leading-relaxed px-4">
+                            "There emerges from their bellies a drink, varying in colors, in which there is healing for people. Indeed in that is a sign for a people who give thought."
+                          </p>
+                          <span className="text-[10px] md:text-xs text-luxury-gold/80 font-mono tracking-wider block font-bold">
+                            [ Surah An-Nahl: 69 ]
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Decorative Bottom Ornament */}
+                    <div className="flex items-center justify-center gap-3 text-luxury-gold">
+                      <span className="w-12 md:w-24 h-[1px] bg-gradient-to-r from-transparent to-luxury-gold"></span>
+                      <span className="text-xs md:text-sm">✦</span>
+                      <span className="w-12 md:w-24 h-[1px] bg-gradient-to-l from-transparent to-luxury-gold"></span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* --- MODERN LUXURY SPLIT HERO BANNER (Image 3 & Image 1 Inspired) --- */}
+                <section 
+                  className="grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden shadow-2xl border border-luxury-gold/30 bg-[#FDFBF7] relative min-h-[520px]" 
+                  id="hero-banner-section"
+                >
+                  {/* Left Column (Luxury Chocolate Brown with Golden Honeycomb Pattern) */}
+                  <div className="lg:col-span-5 bg-luxury-brown p-8 md:p-12 lg:p-16 flex flex-col justify-center relative overflow-hidden text-right">
+                    {/* Golden Honeycomb texture with overlay for high-end look */}
+                    <div 
+                      className="absolute inset-0 opacity-15 bg-cover bg-center pointer-events-none mix-blend-overlay"
+                      style={{ backgroundImage: `url(${goldenHoneycombBg})` }}
+                    ></div>
+                    {/* Extra geometric SVG hexagons floating in background */}
+                    <div className="absolute top-4 left-4 opacity-5 text-luxury-gold pointer-events-none">
+                      <svg width="120" height="120" viewBox="0 0 100 100" fill="currentColor">
+                        <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" />
+                      </svg>
+                    </div>
+
+                    <div className="relative z-10 space-y-6">
+                      <span className="inline-block border border-luxury-gold text-luxury-gold text-xs px-3 py-1 rounded-full font-bold uppercase tracking-widest bg-luxury-gold/5">
+                        {language === "ar" ? "شهد فاخر وراقي" : "Luxurious Raw Nectar"}
+                      </span>
                       
-                      <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#4A2F13] font-sans tracking-tight leading-[1.15] md:leading-tight">
-                        {t.heroTitle}
+                      <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-white leading-tight">
+                        {language === "ar" ? (
+                          <>
+                            عسل طبيعي <span className="text-luxury-gold block mt-2">١٠٠٪ ونقي</span>
+                          </>
+                        ) : (
+                          <>
+                            Pure Organic <span className="text-luxury-gold block mt-2">100% Raw Honey</span>
+                          </>
+                        )}
                       </h1>
-                      
-                      <p className="text-sm md:text-base text-[#4A2F13]/90 leading-relaxed max-w-2xl md:text-right text-center">
-                        {t.heroSubtitle}
+
+                      <p className="text-sm md:text-base text-luxury-beige/80 leading-relaxed max-w-md">
+                        {language === "ar" ? 
+                          "نستخلص أفخر أنواع العسل اليمني الطبيعي من أعماق الوديان الجبلية، لنقدم لكم جودة استثنائية وطعماً ملكياً لا يُنسى." : 
+                          "Sourced from pristine mountain valleys, our honey represents the pinnacle of natural purity, therapeutic benefits, and rich royal heritage."}
                       </p>
 
-                      <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
+                      <div className="pt-4 flex flex-wrap gap-4 justify-start md:justify-start">
                         <motion.button
                           onClick={() => setActiveTab("products")}
-                          whileHover={{ scale: 1.04 }}
-                          whileTap={{ scale: 0.98 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                          className="bg-gradient-to-r from-qamariyah-amber to-qamariyah-red hover:from-qamariyah-red hover:to-qamariyah-amber text-white font-extrabold font-sans px-8 py-4 rounded-xl shadow-lg hover:shadow-xl cursor-pointer text-center"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-brown font-extrabold px-6 py-3 rounded-lg shadow-lg cursor-pointer text-sm tracking-wider uppercase transition-colors"
                         >
                           {t.heroActionBuy}
                         </motion.button>
                         <motion.button
                           onClick={() => setActiveTab("chat")}
-                          whileHover={{ scale: 1.04 }}
-                          whileTap={{ scale: 0.98 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                          className="bg-white hover:bg-[#FCFAF7] border-2 border-qamariyah-blue/20 hover:border-qamariyah-blue/40 text-[#4A2F13] font-extrabold font-sans px-8 py-4 rounded-xl shadow-sm cursor-pointer flex items-center justify-center gap-2 group"
+                          whileHover={{ scale: 1.05, bg: "rgba(255,255,255,0.05)" }}
+                          whileTap={{ scale: 0.95 }}
+                          className="border border-white/20 hover:border-white/40 text-white font-extrabold px-6 py-3 rounded-lg cursor-pointer text-sm transition-all"
                         >
-                          <Sparkles className="w-5 h-5 text-qamariyah-blue group-hover:animate-spin" />
                           {t.heroActionChat}
                         </motion.button>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Right: Splendid Logo Showcase (Lg: 6) */}
-                    <div className="lg:col-span-6 flex justify-center items-center p-4">
-                      <div className="bg-[#FFFFFF] border-4 border-qamariyah-amber/35 rounded-full p-6 md:p-10 shadow-2xl w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] aspect-square flex items-center justify-center transform hover:scale-[1.03] hover:rotate-2 transition-all duration-500 relative group animate-pulse-glow" id="hero-logo-frame">
-                        {/* Soft gold glow behind circle */}
-                        <div className="absolute inset-0 rounded-full bg-qamariyah-amber/10 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
-                        <Logo className="w-full h-full" showText={false} />
+                  {/* Right Column (Elegant Cream/Beige Showcase with Leaf Shadows) */}
+                  <div className="lg:col-span-7 bg-luxury-beige p-8 md:p-12 lg:p-16 flex flex-col justify-center items-center relative overflow-hidden">
+                    {/* Animated Leaf Shadows Overlay */}
+                    <div className="absolute inset-0 pointer-events-none opacity-[0.07] bg-cover bg-no-repeat bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-luxury-brown via-transparent to-transparent"></div>
+                    
+                    {/* Floating Leaves decoration (CSS representation of leaf shadows in Image 3) */}
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-black/10 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-luxury-gold/20 rounded-full blur-3xl opacity-20"></div>
+
+                    {/* Honey Jar Showcase (Central focus of Image 3) */}
+                    <div className="relative w-full max-w-sm aspect-square flex items-center justify-center">
+                      {/* Outer Honeycomb Orbit */}
+                      <div className="absolute inset-0 border border-luxury-gold/10 rounded-full animate-slow-orbit pointer-events-none flex items-center justify-center">
+                        <div className="w-full h-full border-dashed border border-luxury-gold/20 rounded-full"></div>
                       </div>
+
+                      {/* Giant Hexagonal Glass Panel Backing */}
+                      <div className="absolute w-[80%] h-[80%] clip-hexagon bg-gradient-to-tr from-luxury-gold/10 to-transparent flex items-center justify-center opacity-60">
+                        <div className="w-[95%] h-[95%] clip-hexagon bg-[#FDFBF7] flex items-center justify-center shadow-inner">
+                          {/* Inside Golden Honeycomb texture background */}
+                          <div 
+                            className="w-full h-full bg-cover bg-center opacity-40 mix-blend-multiply"
+                            style={{ backgroundImage: `url(${goldenHoneycombBg})` }}
+                          ></div>
+                        </div>
+                      </div>
+
+                      {/* Main Featured Bottle Image */}
+                      <motion.div 
+                        initial={{ y: 15, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative z-10 w-[65%] max-w-[260px] drop-shadow-[0_20px_35px_rgba(31,17,6,0.25)] hover:scale-[1.05] transition-transform duration-500"
+                      >
+                        <img 
+                          src={doanImg} 
+                          alt="Premium Honey Jar" 
+                          className="w-full h-auto object-contain rounded-2xl border border-white/40"
+                          referrerPolicy="no-referrer"
+                        />
+                        {/* Golden shine accent */}
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none"></div>
+                      </motion.div>
+
+                      {/* Little Badge overlay */}
+                      <div className="absolute bottom-4 right-4 bg-luxury-brown text-luxury-gold border border-luxury-gold/30 px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg flex items-center gap-1 z-20">
+                        <Star className="w-3.5 h-3.5 text-luxury-gold fill-luxury-gold" />
+                        <span>{language === "ar" ? "الأعلى طلباً" : "Best Seller"}</span>
+                      </div>
+                    </div>
+
+                    {/* Mini Featured products with hexagonal framing (Image 4 concept) */}
+                    <div className="mt-8 flex gap-3 justify-center z-10">
+                      {[
+                        { img: usaimiImg, name: language === "ar" ? "عسل العصيمي" : "Usaimi Sidr" },
+                        { img: sumarImg, name: language === "ar" ? "عسل السمر" : "Sumar Honey" },
+                        { img: maraiImg, name: language === "ar" ? "عسل المراعي" : "Marai Honey" }
+                      ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col items-center gap-1 group cursor-pointer" onClick={() => setSelectedCategory(idx === 0 ? "sidr" : idx === 1 ? "sumar" : "marai")}>
+                          <div className="w-14 h-14 clip-hexagon p-[1.5px] bg-luxury-gold/30 group-hover:bg-luxury-gold transition-colors duration-300">
+                            <div className="w-full h-full clip-hexagon bg-white flex items-center justify-center overflow-hidden">
+                              <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" referrerPolicy="no-referrer" />
+                            </div>
+                          </div>
+                          <span className="text-[10px] text-luxury-brown/80 font-bold tracking-tight">{item.name}</span>
+                        </div>
+                      ))}
                     </div>
 
                   </div>
@@ -1926,10 +2068,10 @@ export default function App() {
                         {stat.icon}
                       </motion.div>
                       <div className="space-y-0.5">
-                        <span className="block font-black text-2xl md:text-3xl text-[#4A2F13] font-sans tracking-tight">
+                        <span className="block font-black text-2xl md:text-3xl text-[#1F1106] font-sans tracking-tight">
                           {stat.title}
                         </span>
-                        <span className="block text-xs text-[#4A2F13]/70 font-bold leading-tight">
+                        <span className="block text-xs text-[#1F1106]/70 font-bold leading-tight">
                           {stat.subtitle}
                         </span>
                       </div>
@@ -1941,14 +2083,14 @@ export default function App() {
                 <section className="bg-[#FFFFFF] border-2 border-[#EADFC9]/70 rounded-3xl p-6 md:p-10 shadow-md space-y-8" id="customer-reviews-section">
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#EADFC9]/50 pb-6">
                     <div className="space-y-2">
-                      <div className="inline-flex items-center gap-1.5 bg-qamariyah-amber/10 border border-qamariyah-amber/30 text-[#4A2F13] text-xs px-3 py-1 rounded-full font-bold">
+                      <div className="inline-flex items-center gap-1.5 bg-qamariyah-amber/10 border border-qamariyah-amber/30 text-[#1F1106] text-xs px-3 py-1 rounded-full font-bold">
                         <MessageSquare className="w-3.5 h-3.5 text-qamariyah-amber fill-qamariyah-amber/20" />
                         {language === "ar" ? "آراء قلعتنا المعتمدة" : "Castle Certified Reviews"}
                       </div>
-                      <h2 className="text-2xl md:text-3.5xl font-black text-[#4A2F13] font-sans tracking-tight">
+                      <h2 className="text-2xl md:text-3.5xl font-black text-[#1F1106] font-sans tracking-tight">
                         {language === "ar" ? "تقييمات وآراء عملائنا" : "Customer Reviews & Testimonials"}
                       </h2>
-                      <p className="text-xs md:text-sm text-[#4A2F13]/70">
+                      <p className="text-xs md:text-sm text-[#1F1106]/70">
                         {language === "ar" 
                           ? "نفتخر بتقديم أجود أنواع العسل اليمني الأصيل، وهذه شهادات وتجارب عملائنا الموثقة."
                           : "We take absolute pride in our pure honey. Read verified experiences from our beloved customers."}
@@ -1974,12 +2116,12 @@ export default function App() {
                       whileHover={{ y: -4, transition: { duration: 0.2 } }}
                       className="md:col-span-4 bg-gradient-to-br from-[#FFFBF2] to-[#FDF8EC] border border-[#EADFC9] rounded-2xl p-6 text-center flex flex-col justify-center items-center space-y-3 shadow-xs hover:shadow-md transition-shadow"
                     >
-                      <span className="text-sm font-bold text-[#4A2F13]/70 uppercase tracking-wider">
+                      <span className="text-sm font-bold text-[#1F1106]/70 uppercase tracking-wider">
                         {language === "ar" ? "التقييم العام" : "Overall Rating"}
                       </span>
-                      <div className="text-5xl font-black text-[#4A2F13] font-mono tracking-tight flex items-baseline gap-1">
+                      <div className="text-5xl font-black text-[#1F1106] font-mono tracking-tight flex items-baseline gap-1">
                         <span>{(reviews.reduce((sum, r) => sum + r.rating, 0) / (reviews.length || 1)).toFixed(1)}</span>
-                        <span className="text-lg font-bold text-[#4A2F13]/50">/5</span>
+                        <span className="text-lg font-bold text-[#1F1106]/50">/5</span>
                       </div>
                       <div className="flex items-center gap-1">
                         {[1, 2, 3, 4, 5].map((star) => {
@@ -1992,7 +2134,7 @@ export default function App() {
                           );
                         })}
                       </div>
-                      <span className="text-xs font-semibold text-[#4A2F13]/80">
+                      <span className="text-xs font-semibold text-[#1F1106]/80">
                         {language === "ar" 
                           ? `بناءً على ${reviews.length} تقييم حقيقي من عملائنا`
                           : `Based on ${reviews.length} verified buyer reviews`}
@@ -2008,7 +2150,7 @@ export default function App() {
                         const count = reviews.filter(r => r.rating === stars).length;
                         const pct = reviews.length ? (count / reviews.length) * 100 : 0;
                         return (
-                          <div key={stars} className="flex items-center gap-3 text-xs font-bold text-[#4A2F13]">
+                          <div key={stars} className="flex items-center gap-3 text-xs font-bold text-[#1F1106]">
                             <span className="w-3 text-right">{stars}★</span>
                             <div className="flex-1 h-2.5 bg-gray-100 rounded-full overflow-hidden">
                               <div 
@@ -2016,7 +2158,7 @@ export default function App() {
                                 style={{ width: `${pct}%` }}
                               ></div>
                             </div>
-                            <span className="w-10 text-left text-[#4A2F13]/60">({count})</span>
+                            <span className="w-10 text-left text-[#1F1106]/60">({count})</span>
                           </div>
                         );
                       })}
@@ -2030,8 +2172,8 @@ export default function App() {
                       <div className="w-12 h-12 rounded-full bg-qamariyah-green/10 border border-qamariyah-green/20 flex items-center justify-center text-qamariyah-green">
                         <CheckCircle className="w-6 h-6 fill-qamariyah-green/15" />
                       </div>
-                      <span className="text-2xl font-black text-[#4A2F13] font-sans">98.2%</span>
-                      <span className="text-xs text-[#4A2F13]/80 font-bold leading-relaxed px-2">
+                      <span className="text-2xl font-black text-[#1F1106] font-sans">98.2%</span>
+                      <span className="text-xs text-[#1F1106]/80 font-bold leading-relaxed px-2">
                         {language === "ar" 
                           ? "من المشترين ينصحون بالتعامل معنا لجودة عسلنا وأمانته."
                           : "of buyers highly recommend our pure honey for medicinal use."}
@@ -2051,7 +2193,7 @@ export default function App() {
                         id="add-review-form-container"
                       >
                       <div className="flex justify-between items-center pb-4 border-b border-[#EADFC9]/50">
-                        <h3 className="font-extrabold text-lg text-[#4A2F13] flex items-center gap-2 font-sans">
+                        <h3 className="font-extrabold text-lg text-[#1F1106] flex items-center gap-2 font-sans">
                           <Edit3 className="w-5 h-5 text-qamariyah-amber" />
                           {language === "ar" ? "شاركنا رأيك الصادق بالعسل" : "Share Your Honest Experience"}
                         </h3>
@@ -2076,7 +2218,7 @@ export default function App() {
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             {/* Full Name input */}
                             <div className="space-y-2">
-                              <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                              <label className="block text-xs font-black text-[#1F1106] uppercase tracking-wider">
                                 {language === "ar" ? "الاسم الكامل" : "Full Name"} <span className="text-qamariyah-red">*</span>
                               </label>
                               <input
@@ -2086,7 +2228,7 @@ export default function App() {
                                 onChange={(e) => setReviewName(e.target.value)}
                                 placeholder={language === "ar" ? "أدخل اسمك ليظهر على تقييمك..." : "Enter your name..."}
                                 disabled={!!loyaltyProfile}
-                                className="w-full bg-[#FCFAF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#4A2F13] font-bold disabled:opacity-75 disabled:bg-gray-100"
+                                className="w-full bg-[#FDFBF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#1F1106] font-bold disabled:opacity-75 disabled:bg-gray-100"
                               />
                               {loyaltyProfile && (
                                 <span className="text-[10px] text-qamariyah-green font-bold block">
@@ -2099,13 +2241,13 @@ export default function App() {
 
                             {/* Honey Product Selector */}
                             <div className="space-y-2">
-                              <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                              <label className="block text-xs font-black text-[#1F1106] uppercase tracking-wider">
                                 {language === "ar" ? "الصنف الذي جربته (اختياري)" : "Product Sourced (Optional)"}
                               </label>
                               <select
                                 value={reviewProductId}
                                 onChange={(e) => setReviewProductId(e.target.value)}
-                                className="w-full bg-[#FCFAF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#4A2F13] font-bold cursor-pointer"
+                                className="w-full bg-[#FDFBF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#1F1106] font-bold cursor-pointer"
                               >
                                 <option value="">
                                   {language === "ar" ? "-- اختر صنف العسل --" : "-- Choose Honey Variety --"}
@@ -2134,10 +2276,10 @@ export default function App() {
 
                           {/* Star Rating Selectors */}
                           <div className="space-y-2">
-                            <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                            <label className="block text-xs font-black text-[#1F1106] uppercase tracking-wider">
                               {language === "ar" ? "تقييمك بالنجوم" : "Your Rating"} <span className="text-qamariyah-red">*</span>
                             </label>
-                            <div className="flex items-center gap-2 bg-[#FCFAF7] border-2 border-[#EADFC9] rounded-xl px-4 py-3.5 w-full md:w-fit">
+                            <div className="flex items-center gap-2 bg-[#FDFBF7] border-2 border-[#EADFC9] rounded-xl px-4 py-3.5 w-full md:w-fit">
                               {[1, 2, 3, 4, 5].map((star) => (
                                 <button
                                   type="button"
@@ -2154,7 +2296,7 @@ export default function App() {
                                   />
                                 </button>
                               ))}
-                              <span className="text-xs font-extrabold text-[#4A2F13]/70 ml-2 font-mono">
+                              <span className="text-xs font-extrabold text-[#1F1106]/70 ml-2 font-mono">
                                 {reviewRating} / 5
                               </span>
                             </div>
@@ -2162,7 +2304,7 @@ export default function App() {
 
                           {/* Review comment Textarea */}
                           <div className="space-y-2">
-                            <label className="block text-xs font-black text-[#4A2F13] uppercase tracking-wider">
+                            <label className="block text-xs font-black text-[#1F1106] uppercase tracking-wider">
                               {language === "ar" ? "رأيك بالتفصيل" : "Your Review Description"} <span className="text-qamariyah-red">*</span>
                             </label>
                             <textarea
@@ -2175,7 +2317,7 @@ export default function App() {
                                   ? "اكتب تجربتك مع طعم العسل، فوائده العلاجية، التغليف، أو جودة الخدمة..."
                                   : "How was the honey taste, its therapeutic impact, packaging, or customer service experience?..."
                               }
-                              className="w-full bg-[#FCFAF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#4A2F13] font-bold placeholder-gray-400"
+                              className="w-full bg-[#FDFBF7] border-2 border-[#EADFC9] focus:border-qamariyah-amber focus:ring-0 rounded-xl px-4 py-3 text-sm text-[#1F1106] font-bold placeholder-gray-400"
                             ></textarea>
                           </div>
 
@@ -2219,11 +2361,11 @@ export default function App() {
                             <div className="flex items-center gap-3 justify-between">
                               <div className="flex items-center gap-3">
                                 {/* Letter Avatar */}
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-qamariyah-amber/10 to-qamariyah-red/10 border border-[#EADFC9] flex items-center justify-center text-[#4A2F13] font-black text-sm">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-qamariyah-amber/10 to-qamariyah-red/10 border border-[#EADFC9] flex items-center justify-center text-[#1F1106] font-black text-sm">
                                   {rev.name.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
-                                  <h4 className="font-extrabold text-sm text-[#4A2F13] font-sans">
+                                  <h4 className="font-extrabold text-sm text-[#1F1106] font-sans">
                                     {rev.name}
                                   </h4>
                                   <span className="text-[10px] text-gray-400 font-mono font-bold block">
@@ -2253,9 +2395,9 @@ export default function App() {
                               </div>
                               
                               {rev.productId && (
-                                <div className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#4A2F13]/70 bg-gradient-to-r from-[#FCFAF7] to-[#FFFBF2] border border-[#EADFC9]/50 rounded-lg px-2 py-0.5 w-fit">
+                                <div className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#1F1106]/70 bg-gradient-to-r from-[#FDFBF7] to-[#FFFBF2] border border-[#EADFC9]/50 rounded-lg px-2 py-0.5 w-fit">
                                   <span className="opacity-60">{language === "ar" ? "اشترى:" : "Bought:"}</span>
-                                  <span className="text-[#4A2F13]">
+                                  <span className="text-[#1F1106]">
                                     {language === "ar" ? (rev.productNameAr || rev.productId) : (rev.productNameEn || rev.productId)}
                                   </span>
                                 </div>
@@ -2263,14 +2405,14 @@ export default function App() {
                             </div>
 
                             {/* Review Content */}
-                            <p className="text-xs md:text-sm text-[#4A2F13]/85 leading-relaxed font-medium">
+                            <p className="text-xs md:text-sm text-[#1F1106]/85 leading-relaxed font-medium">
                               {rev.text}
                             </p>
                           </div>
 
                           {/* Upvote & Social Actions Footer */}
                           <div className="flex items-center justify-between pt-2 border-t border-gray-100/50">
-                            <span className="text-[10px] font-extrabold text-[#4A2F13]/55">
+                            <span className="text-[10px] font-extrabold text-[#1F1106]/55">
                               {language === "ar" ? "هل كان هذا مفيداً؟" : "Was this helpful?"}
                             </span>
                             
@@ -2279,7 +2421,7 @@ export default function App() {
                               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer ${
                                 isLiked 
                                   ? "bg-qamariyah-amber/15 text-qamariyah-amber border border-qamariyah-amber/30" 
-                                  : "bg-gray-50 text-gray-500 border border-gray-200 hover:bg-gray-100 hover:text-[#4A2F13]"
+                                  : "bg-gray-50 text-gray-500 border border-gray-200 hover:bg-gray-100 hover:text-[#1F1106]"
                               }`}
                             >
                               <ThumbsUp className={`w-3.5 h-3.5 ${isLiked ? "fill-qamariyah-amber/30 text-current" : ""}`} />
@@ -2296,48 +2438,57 @@ export default function App() {
                 {/* --- SECTIONS OF PRODUCTS INTRO --- */}
                 <section className="space-y-8" id="products-introduction-section">
                   <div className="text-center space-y-2.5 max-w-2xl mx-auto">
-                    <h2 className="text-2xl md:text-4xl font-extrabold text-[#4A2F13] font-sans tracking-tight">
+                    <h2 className="text-2xl md:text-4xl font-extrabold text-[#1F1106] font-sans tracking-tight">
                       {language === "ar" ? "أصناف العسل الفاخرة المعتمدة" : "Our Certified Premium Varieties"}
                     </h2>
-                    <p className="text-xs md:text-sm text-[#4A2F13]/70 leading-relaxed">
+                    <p className="text-xs md:text-sm text-[#1F1106]/70 leading-relaxed">
                       {language === "ar" 
                         ? "نقدم لكم تشكيلة فاخرة من العسل اليمني البري المستخلص بالطرق التقليدية لضمان أقصى تركيز للفوائد الدوائية والطعم الأصيل."
                         : "We offer you a select lineup of wild Yemeni honey extracted using ancient, ethical practices to guarantee medicinal purity and flavor."}
                     </p>
                   </div>
 
-                  {/* Mini categories shortcut tiles (Vibrant Custom Hover Styling) */}
+                  {/* Mini categories shortcut tiles (Luxurious Gold & Cream Hover Styling) */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4" id="categories-shortcut-grid">
                     {[
-                      { id: "sidr", title: t.catSidr, icon: <ShieldCheck className="w-8 h-8" />, desc: language === "ar" ? "علاج المناعة والوهن" : "Immunity & vitality", hoverClass: "hover:border-qamariyah-purple hover:bg-qamariyah-purple/5 text-qamariyah-purple" },
-                      { id: "sumar", title: t.catSumar, icon: <FlaskConical className="w-8 h-8" />, desc: language === "ar" ? "المعدة والقولون والأنيميا" : "Ulcer & iron-rich remedy", hoverClass: "hover:border-qamariyah-red hover:bg-qamariyah-red/5 text-qamariyah-red" },
-                      { id: "marai", title: t.catMarai, icon: <Flower2 className="w-8 h-8" />, desc: language === "ar" ? "للتحلية اليومية العائلية" : "Daily sweetener", hoverClass: "hover:border-qamariyah-green hover:bg-qamariyah-green/5 text-qamariyah-green" },
-                      { id: "blends", title: t.catBlends, icon: <Crown className="w-8 h-8" />, desc: language === "ar" ? "غذاء ملكات وجينسنج" : "Fresh royal mixes", hoverClass: "hover:border-qamariyah-blue hover:bg-qamariyah-blue/5 text-qamariyah-blue" }
+                      { id: "sidr", title: t.catSidr, icon: <ShieldCheck className="w-8 h-8 text-[#D4AF37]" />, desc: language === "ar" ? "علاج المناعة والوهن" : "Immunity & vitality" },
+                      { id: "sumar", title: t.catSumar, icon: <FlaskConical className="w-8 h-8 text-[#D4AF37]" />, desc: language === "ar" ? "المعدة والقولون والأنيميا" : "Ulcer & iron-rich remedy" },
+                      { id: "marai", title: t.catMarai, icon: <Flower2 className="w-8 h-8 text-[#D4AF37]" />, desc: language === "ar" ? "للتحلية اليومية العائلية" : "Daily sweetener" },
+                      { id: "blends", title: t.catBlends, icon: <Crown className="w-8 h-8 text-[#D4AF37]" />, desc: language === "ar" ? "غذاء ملكات وجينسنج" : "Fresh royal mixes" }
                     ].map((cat) => (
                       <div
                         key={cat.id}
                         onClick={() => { setSelectedCategory(cat.id); setActiveTab("products"); }}
-                        className={`bg-[#FFFFFF] border-2 border-[#EADFC9]/70 rounded-2xl p-5 text-center cursor-pointer transition-all duration-300 shadow-xs hover:shadow-lg group flex flex-col items-center gap-2 ${cat.hoverClass}`}
+                        className="bg-[#FDFBF7] border border-[#EADFC9] rounded-2xl p-5 text-center cursor-pointer transition-all duration-300 shadow-sm hover:shadow-lg hover:border-[#D4AF37] hover:bg-[#1F1106]/[0.02] group flex flex-col items-center gap-2"
                       >
-                        <div className="filter drop-shadow group-hover:scale-115 transition duration-300">{cat.icon}</div>
-                        <h4 className="font-extrabold text-sm text-[#4A2F13] group-hover:text-current font-sans transition duration-200">{cat.title}</h4>
-                        <span className="text-[10px] text-[#4A2F13]/60 group-hover:text-current font-bold leading-none transition duration-200">{cat.desc}</span>
+                        <div className="filter drop-shadow group-hover:scale-110 transition duration-300">{cat.icon}</div>
+                        <h4 className="font-extrabold text-sm text-[#1F1106] group-hover:text-[#D4AF37] font-sans transition duration-200">{cat.title}</h4>
+                        <span className="text-[10px] text-[#1F1106]/60 group-hover:text-[#1F1106]/80 font-bold leading-none transition duration-200">{cat.desc}</span>
                       </div>
                     ))}
                   </div>
                 </section>
 
-                {/* --- QUICK EXPLAINER FOR PROGRAM --- */}
-                <section className="bg-gradient-to-r from-qamariyah-blue/10 via-qamariyah-purple/5 to-qamariyah-amber/10 border-2 border-qamariyah-purple/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 justify-between shadow-md" id="loyalty-teaser-section">
-                  <div className="flex items-center gap-4 text-center md:text-right flex-col md:flex-row">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-qamariyah-purple to-qamariyah-blue border-2 border-white flex items-center justify-center text-white shadow-md shrink-0">
+                {/* --- QUICK EXPLAINER FOR PROGRAM (Luxurious Loyalty Frieze Style) --- */}
+                <section 
+                  className="bg-luxury-brown border border-luxury-gold/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 justify-between shadow-2xl relative overflow-hidden" 
+                  id="loyalty-teaser-section"
+                >
+                  {/* Subtle golden honeycomb background pattern matching the Quranic banner */}
+                  <div 
+                    className="absolute inset-0 opacity-[0.06] bg-repeat pointer-events-none mix-blend-overlay"
+                    style={{ backgroundImage: `url(${goldenHoneycombBg})`, backgroundSize: "180px" }}
+                  ></div>
+
+                  <div className="flex items-center gap-4 text-center md:text-right flex-col md:flex-row relative z-10">
+                    <div className="w-14 h-14 rounded-full bg-luxury-brown-light border border-luxury-gold/40 flex items-center justify-center text-luxury-gold shadow-lg shrink-0">
                       <Gift className="w-7 h-7" />
                     </div>
                     <div className="space-y-1">
-                      <h4 className="font-extrabold text-[#4A2F13] text-base md:text-lg font-sans">
+                      <h4 className="font-extrabold text-luxury-gold-light text-base md:text-lg font-sans">
                         {language === "ar" ? "تسوّق واجمع نقاط الولاء الملكية!" : "Earn Royal Loyalty Points as You Shop!"}
                       </h4>
-                      <p className="text-xs text-[#4A2F13]/80 font-bold">
+                      <p className="text-xs text-luxury-beige/90 font-bold leading-relaxed">
                         {language === "ar" 
                           ? "اكسب نقطة واحدة عن كل دينار تنفقه. استبدل نقاطك بخصومات نقدية فورية تبدأ من ١ دينار وتصل لعشرات الدنانير!"
                           : "Earn 1 point for every 1 JOD spent. Exchange points for cash savings starting from 1 JOD to dozens of Dinars!"}
@@ -2346,7 +2497,7 @@ export default function App() {
                   </div>
                   <button
                     onClick={() => setActiveTab("loyalty")}
-                    className="bg-gradient-to-r from-qamariyah-purple to-qamariyah-blue hover:from-qamariyah-blue hover:to-qamariyah-purple text-white font-black font-sans text-xs px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer shrink-0"
+                    className="relative z-10 bg-luxury-gold hover:bg-luxury-gold/90 text-luxury-brown font-black font-sans text-xs px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer shrink-0"
                   >
                     {t.navLoyalty}
                   </button>
@@ -2372,10 +2523,10 @@ export default function App() {
                 
                 {/* Title */}
                 <div className="space-y-1.5" id="products-tab-title">
-                  <h1 className="text-2xl md:text-3.5xl font-black font-sans text-[#4A2F13]">
+                  <h1 className="text-2xl md:text-3.5xl font-black font-sans text-[#1F1106]">
                     {t.navProducts}
                   </h1>
-                  <p className="text-xs md:text-sm text-[#4A2F13]/70 max-w-3xl">
+                  <p className="text-xs md:text-sm text-[#1F1106]/70 max-w-3xl">
                     {language === "ar" 
                       ? "اختر من قائمتنا الممتازة من أجود أعسال اليمن المختارة بعناية. تصفح التفاصيل والأوزان والفوائد الطبية لكل علبة."
                       : "Browse our premium selection of lab-tested authentic Yemeni honey. Explore weights, detailed pricing, and health benefits."}
@@ -2388,7 +2539,7 @@ export default function App() {
                   {/* Category select badges */}
                   <div className="flex flex-wrap gap-2 justify-center md:justify-start w-full md:w-auto" id="category-filter-container">
                     {[
-                      { id: "all", name: t.catAll, activeClass: "bg-[#B58A30] text-white shadow-md" },
+                      { id: "all", name: t.catAll, activeClass: "bg-[#D4AF37] text-white shadow-md" },
                       { id: "sidr", name: t.catSidr, activeClass: "bg-qamariyah-purple text-white shadow-md shadow-qamariyah-purple/20" },
                       { id: "sumar", name: t.catSumar, activeClass: "bg-qamariyah-red text-white shadow-md shadow-qamariyah-red/20" },
                       { id: "marai", name: t.catMarai, activeClass: "bg-qamariyah-green text-white shadow-md shadow-qamariyah-green/20" },
@@ -2398,7 +2549,7 @@ export default function App() {
                       <button
                         key={cat.id}
                         onClick={() => setSelectedCategory(cat.id)}
-                        className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${selectedCategory === cat.id ? cat.activeClass : "bg-[#FCFAF7] hover:bg-[#EADFC9]/50 text-[#4A2F13]/80 hover:text-current hover:border-current border border-[#EADFC9]"}`}
+                        className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 cursor-pointer ${selectedCategory === cat.id ? cat.activeClass : "bg-[#FDFBF7] hover:bg-[#EADFC9]/50 text-[#1F1106]/80 hover:text-current hover:border-current border border-[#EADFC9]"}`}
                       >
                         {cat.name}
                       </button>
@@ -2415,16 +2566,16 @@ export default function App() {
                         placeholder={t.searchPlaceholder}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-xl pl-3 pr-9 py-2 text-xs outline-none focus:border-[#B58A30] focus:bg-[#FFFFFF] text-[#4A2F13] placeholder-[#4A2F13]/40 transition"
+                        className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-xl pl-3 pr-9 py-2 text-xs outline-none focus:border-[#D4AF37] focus:bg-[#FFFFFF] text-[#1F1106] placeholder-[#1F1106]/40 transition"
                       />
-                      <Search className={`w-4 h-4 text-[#B58A30]/70 absolute top-2.5 ${language === "ar" ? "left-3" : "right-3"}`} />
+                      <Search className={`w-4 h-4 text-[#D4AF37]/70 absolute top-2.5 ${language === "ar" ? "left-3" : "right-3"}`} />
                     </div>
 
                     {/* Sorting dropdown */}
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="bg-[#FCFAF7] border border-[#EADFC9] rounded-xl px-2.5 py-2 text-xs text-[#4A2F13] outline-none focus:border-[#B58A30] transition cursor-pointer"
+                      className="bg-[#FDFBF7] border border-[#EADFC9] rounded-xl px-2.5 py-2 text-xs text-[#1F1106] outline-none focus:border-[#D4AF37] transition cursor-pointer"
                     >
                       <option value="default">{t.sortDefault}</option>
                       <option value="priceLow">{t.sortPriceLow}</option>
@@ -2453,7 +2604,7 @@ export default function App() {
                           id={`product-card-${prod.id}`}
                         >
                            {/* Image frame */}
-                           <div className="relative aspect-[4/3] overflow-hidden bg-[#FCFAF7]">
+                           <div className="relative aspect-[4/3] overflow-hidden bg-[#FDFBF7]">
                              <motion.img
                                src={prod.image}
                                alt={prod.nameEn}
@@ -2464,13 +2615,13 @@ export default function App() {
                              />
                              {/* Best seller ribbon */}
                              {prod.bestSeller && (
-                               <span className="absolute top-3 right-3 bg-[#B58A30] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
+                               <span className="absolute top-3 right-3 bg-[#D4AF37] text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
                                  {t.bestSellerBadge}
                                </span>
                              )}
                              {/* Honey Type tag */}
                              {prod.honeyType && (
-                               <span className="absolute bottom-3 left-3 bg-[#FCFAF7]/90 backdrop-blur-xs text-[#B58A30] text-[10px] font-bold px-2 py-0.5 rounded border border-[#EADFC9]/40">
+                               <span className="absolute bottom-3 left-3 bg-[#FDFBF7]/90 backdrop-blur-xs text-[#D4AF37] text-[10px] font-bold px-2 py-0.5 rounded border border-[#EADFC9]/40">
                                  {prod.honeyType}
                                </span>
                              )}
@@ -2481,49 +2632,49 @@ export default function App() {
                              
                              {/* Title & Tagline */}
                              <div className="space-y-1">
-                               <div className="flex items-center justify-between gap-1.5 text-xs text-[#B58A30] font-bold w-full">
+                               <div className="flex items-center justify-between gap-1.5 text-xs text-[#D4AF37] font-bold w-full">
                                  <div className="flex items-center gap-1.5">
                                    <span className="flex items-center gap-0.5">
-                                     <Star className="w-3.5 h-3.5 fill-[#B58A30] text-[#B58A30]" />
+                                     <Star className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]" />
                                      <span className="font-mono font-bold mt-0.5">{prod.rating}</span>
                                    </span>
                                    <span className="text-[#EADFC9]">|</span>
-                                   <span className="text-[#4A2F13]/60 font-mono font-medium">{prod.reviewsCount} {t.reviewsCountLabel}</span>
+                                   <span className="text-[#1F1106]/60 font-mono font-medium">{prod.reviewsCount} {t.reviewsCountLabel}</span>
                                  </div>
                                  <button
                                    onClick={(e) => {
                                       e.stopPropagation();
                                       handleRateProduct(prod.id);
                                    }}
-                                   className="text-[11.5px] text-[#B58A30] hover:text-qamariyah-red underline font-extrabold cursor-pointer transition-colors duration-200 flex items-center gap-1 shrink-0"
+                                   className="text-[11.5px] text-[#D4AF37] hover:text-qamariyah-red underline font-extrabold cursor-pointer transition-colors duration-200 flex items-center gap-1 shrink-0"
                                    title={language === "ar" ? "قيم هذا المنتج" : "Rate this product"}
                                  >
                                    <Edit3 className="w-3 h-3" />
                                    <span>{language === "ar" ? "قيم المنتج" : "Rate Product"}</span>
                                  </button>
                                </div>
-                               <h3 className="font-extrabold text-base md:text-lg text-[#4A2F13] font-sans tracking-tight">
+                               <h3 className="font-extrabold text-base md:text-lg text-[#1F1106] font-sans tracking-tight">
                                  {language === "ar" ? prod.nameAr : prod.nameEn}
                                </h3>
-                               <p className="text-xs text-[#B58A30] italic font-medium leading-normal">
+                               <p className="text-xs text-[#D4AF37] italic font-medium leading-normal">
                                  {language === "ar" ? prod.taglineAr : prod.taglineEn}
                                </p>
                              </div>
   
                              {/* Short Description */}
-                             <p className="text-xs text-[#4A2F13]/80 leading-relaxed">
+                             <p className="text-xs text-[#1F1106]/80 leading-relaxed">
                                {language === "ar" ? prod.descriptionAr.slice(0, 110) + "..." : prod.descriptionEn.slice(0, 110) + "..."}
                              </p>
   
                              {/* Sizes options block */}
                              <div className="space-y-1.5">
-                               <span className="block text-[11px] font-bold text-[#4A2F13]/60 uppercase tracking-wider">{t.selectSizeLabel}</span>
+                               <span className="block text-[11px] font-bold text-[#1F1106]/60 uppercase tracking-wider">{t.selectSizeLabel}</span>
                                <div className="flex flex-wrap gap-2 font-mono">
                                  {prod.sizes.map((size, sIdx) => (
                                    <button
                                      key={sIdx}
                                      onClick={() => handleSizeChange(prod.id, sIdx)}
-                                     className={`px-2.5 py-1 text-xs border rounded-lg transition cursor-pointer ${selectedSizeIdx === sIdx ? "bg-[#B58A30]/10 border-[#B58A30] text-[#B58A30] font-bold" : "bg-[#FCFAF7] border-[#EADFC9]/70 hover:bg-[#FCFAF7] text-[#4A2F13]/80"}`}
+                                     className={`px-2.5 py-1 text-xs border rounded-lg transition cursor-pointer ${selectedSizeIdx === sIdx ? "bg-[#D4AF37]/10 border-[#D4AF37] text-[#D4AF37] font-bold" : "bg-[#FDFBF7] border-[#EADFC9]/70 hover:bg-[#FDFBF7] text-[#1F1106]/80"}`}
                                    >
                                      {size.weight}
                                    </button>
@@ -2532,9 +2683,9 @@ export default function App() {
                              </div>
   
                              {/* Benefits bullets list */}
-                             <div className="space-y-1.5 bg-[#FCFAF7] p-3 rounded-xl border border-[#EADFC9]/50">
-                               <span className="block text-[11px] font-bold text-[#B58A30] uppercase tracking-wider">{t.benefitsLabel}</span>
-                               <ul className="text-[11px] text-[#4A2F13]/70 space-y-1 pr-1 list-disc list-inside">
+                             <div className="space-y-1.5 bg-[#FDFBF7] p-3 rounded-xl border border-[#EADFC9]/50">
+                               <span className="block text-[11px] font-bold text-[#D4AF37] uppercase tracking-wider">{t.benefitsLabel}</span>
+                               <ul className="text-[11px] text-[#1F1106]/70 space-y-1 pr-1 list-disc list-inside">
                                  {(language === "ar" ? prod.benefitsAr : prod.benefitsEn).map((ben, bIdx) => (
                                    <li key={bIdx} className="leading-relaxed">{ben}</li>
                                  ))}
@@ -2545,25 +2696,25 @@ export default function App() {
                              <div className="border-t border-[#EADFC9]/50 pt-4 mt-auto flex items-center justify-between">
                                <div className="text-right leading-none">
                                  {currentSize.originalPrice && (
-                                   <span className="block text-[11px] text-[#4A2F13]/40 line-through font-mono mb-1">
+                                   <span className="block text-[11px] text-[#1F1106]/40 line-through font-mono mb-1">
                                      {currentSize.originalPrice} {language === "ar" ? "د.أ" : "JOD"}
                                    </span>
                                  )}
-                                 <span className="font-mono font-black text-[#B58A30] text-lg md:text-xl">
+                                 <span className="font-mono font-black text-[#D4AF37] text-lg md:text-xl">
                                    {currentSize.price} <span className="text-xs md:text-sm">{language === "ar" ? "د.أ" : "JOD"}</span>
                                  </span>
                                </div>
   
                                <button
                                  onClick={() => addToCart(prod)}
-                                 className="bg-gradient-to-r from-[#B58A30] to-[#D8B157] hover:from-[#D8B157] hover:to-[#B58A30] text-white font-extrabold font-sans text-xs px-5 py-3 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer"
+                                 className="bg-gradient-to-r from-[#D4AF37] to-[#D8B157] hover:from-[#D8B157] hover:to-[#D4AF37] text-white font-extrabold font-sans text-xs px-5 py-3 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer"
                                >
                                  {t.addToCartButton}
                                </button>
                              </div>
   
                              {/* Loyalty point estimation display */}
-                             <div className="text-[10px] text-[#B58A30]/90 font-semibold bg-[#B58A30]/5 px-2.5 py-1 rounded border border-[#B58A30]/20 mt-1 leading-none">
+                             <div className="text-[10px] text-[#D4AF37]/90 font-semibold bg-[#D4AF37]/5 px-2.5 py-1 rounded border border-[#D4AF37]/20 mt-1 leading-none">
                                {t.pointsReward.replace("{points}", Math.floor(currentSize.price * 1).toString())}
                              </div>
   
@@ -2573,7 +2724,7 @@ export default function App() {
                      })}
                    </div>
                  ) : (
-                   <div className="bg-[#FFFFFF] border border-[#EADFC9]/75 rounded-2xl p-10 text-center text-[#4A2F13]/50 font-medium" id="no-products-found">
+                   <div className="bg-[#FFFFFF] border border-[#EADFC9]/75 rounded-2xl p-10 text-center text-[#1F1106]/50 font-medium" id="no-products-found">
                      {language === "ar" ? "لم يتم العثور على أي منتج يطابق معايير البحث." : "No premium honey found matching search filters."}
                    </div>
                  )}
@@ -2598,10 +2749,10 @@ export default function App() {
                 
                 {/* Intro section */}
                 <div className="text-center space-y-2 max-w-3xl mx-auto" id="loyalty-intro">
-                   <h1 className="text-2xl md:text-4xl font-black font-sans text-[#4A2F13]">
+                   <h1 className="text-2xl md:text-4xl font-black font-sans text-[#1F1106]">
                     {language === "ar" ? "بوابة العملاء ونقاط الولاء" : "Customer Portal & Loyalty"}
                   </h1>
-                   <p className="text-xs md:text-sm text-[#4A2F13]/70">
+                   <p className="text-xs md:text-sm text-[#1F1106]/70">
                     {language === "ar" 
                       ? "قم بإدارة حسابك الفاخر، تتبع طلبياتك ومستوى التسليم، واستبدل نقاط ولائك بكوبونات خصم نقدية فورية."
                       : "Manage your premium profile, track delivery of orders, submit suggestions, and redeem loyalty points."}
@@ -2616,13 +2767,13 @@ export default function App() {
                     <div className="flex border-b border-[#EADFC9]/40 pb-1 justify-center gap-6" id="auth-tabs">
                       <button
                         onClick={() => { setAuthTab("login"); setAuthError(null); }}
-                        className={`pb-2.5 text-sm font-bold font-sans transition cursor-pointer ${authTab === "login" ? "text-[#B58A30] border-b-2 border-[#B58A30]" : "text-[#4A2F13]/50 hover:text-[#4A2F13]"}`}
+                        className={`pb-2.5 text-sm font-bold font-sans transition cursor-pointer ${authTab === "login" ? "text-[#D4AF37] border-b-2 border-[#D4AF37]" : "text-[#1F1106]/50 hover:text-[#1F1106]"}`}
                       >
                         {language === "ar" ? "تسجيل الدخول" : "Sign In"}
                       </button>
                       <button
                         onClick={() => { setAuthTab("register"); setAuthError(null); }}
-                        className={`pb-2.5 text-sm font-bold font-sans transition cursor-pointer ${authTab === "register" ? "text-[#B58A30] border-b-2 border-[#B58A30]" : "text-[#4A2F13]/50 hover:text-[#4A2F13]"}`}
+                        className={`pb-2.5 text-sm font-bold font-sans transition cursor-pointer ${authTab === "register" ? "text-[#D4AF37] border-b-2 border-[#D4AF37]" : "text-[#1F1106]/50 hover:text-[#1F1106]"}`}
                       >
                         {language === "ar" ? "إنشاء حساب جديد" : "Create Account"}
                       </button>
@@ -2640,44 +2791,44 @@ export default function App() {
                       /* LOGIN FORM */
                       <form onSubmit={handleUserLogin} className="space-y-4" id="login-form-block">
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "البريد الإلكتروني *" : "Email Address *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "البريد الإلكتروني *" : "Email Address *"}</label>
                           <div className="relative">
-                            <Mail className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4A2F13]/40" />
+                            <Mail className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1F1106]/40" />
                             <input
                               type="email"
                               required
                               placeholder="you@example.com"
                               value={loginEmail}
                               onChange={(e) => setLoginEmail(e.target.value)}
-                              className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl pr-10 pl-3.5 py-3 text-sm outline-none text-[#4A2F13] transition text-right md:text-right"
+                              className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl pr-10 pl-3.5 py-3 text-sm outline-none text-[#1F1106] transition text-right md:text-right"
                             />
                           </div>
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "كلمة المرور *" : "Password *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "كلمة المرور *" : "Password *"}</label>
                           <div className="relative">
-                            <Lock className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#4A2F13]/40" />
+                            <Lock className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1F1106]/40" />
                             <input
                               type="password"
                               required
                               placeholder="••••••••"
                               value={loginPassword}
                               onChange={(e) => setLoginPassword(e.target.value)}
-                              className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl pr-10 pl-3.5 py-3 text-sm outline-none text-[#4A2F13] transition text-right md:text-right"
+                              className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl pr-10 pl-3.5 py-3 text-sm outline-none text-[#1F1106] transition text-right md:text-right"
                             />
                           </div>
                         </div>
 
                         <button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-[#B58A30] to-[#D8B157] hover:from-[#D8B157] hover:to-[#B58A30] text-white font-extrabold font-sans py-3 rounded-xl transition shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-1.5 text-sm"
+                          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#D8B157] hover:from-[#D8B157] hover:to-[#D4AF37] text-white font-extrabold font-sans py-3 rounded-xl transition shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-1.5 text-sm"
                         >
                           <User className="w-4 h-4" />
                           <span>{language === "ar" ? "دخول إلى حسابي" : "Sign In to My Account"}</span>
                         </button>
 
-                        <div className="text-center pt-2 text-[11px] text-[#4A2F13]/50">
+                        <div className="text-center pt-2 text-[11px] text-[#1F1106]/50">
                           {language === "ar" ? "البريد التجريبي للتجربة: abdullah@qrizq.com (كلمة المرور: user123)" : "Demo user: abdullah@qrizq.com (pass: user123)"}
                         </div>
                       </form>
@@ -2685,68 +2836,68 @@ export default function App() {
                       /* REGISTRATION FORM */
                       <form onSubmit={handleUserRegister} className="space-y-4" id="register-form-block">
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "الاسم الكامل *" : "Full Name *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "الاسم الكامل *" : "Full Name *"}</label>
                           <input
                             type="text"
                             required
                             placeholder={language === "ar" ? "عبدالله الحربي" : "Abdullah Al-Harbi"}
                             value={regName}
                             onChange={(e) => setRegName(e.target.value)}
-                            className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] transition"
+                            className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#1F1106] transition"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "رقم الجوال *" : "Phone Number *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "رقم الجوال *" : "Phone Number *"}</label>
                           <input
                             type="tel"
                             required
                             placeholder="079xxxxxxxx"
                             value={regPhone}
                             onChange={(e) => setRegPhone(e.target.value)}
-                            className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] font-mono transition"
+                            className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#1F1106] font-mono transition"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "البريد الإلكتروني *" : "Email Address *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "البريد الإلكتروني *" : "Email Address *"}</label>
                           <input
                             type="email"
                             required
                             placeholder="name@example.com"
                             value={regEmail}
                             onChange={(e) => setRegEmail(e.target.value)}
-                            className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] transition"
+                            className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#1F1106] transition"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "كلمة المرور *" : "Password *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "كلمة المرور *" : "Password *"}</label>
                           <input
                             type="password"
                             required
                             placeholder="••••••••"
                             value={regPassword}
                             onChange={(e) => setRegPassword(e.target.value)}
-                            className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] transition"
+                            className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#1F1106] transition"
                           />
                         </div>
 
                         <div className="space-y-1.5">
-                          <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "تأكيد كلمة المرور *" : "Confirm Password *"}</label>
+                          <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "تأكيد كلمة المرور *" : "Confirm Password *"}</label>
                           <input
                             type="password"
                             required
                             placeholder="••••••••"
                             value={regConfirmPassword}
                             onChange={(e) => setRegConfirmPassword(e.target.value)}
-                            className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#4A2F13] transition"
+                            className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3.5 py-2.5 text-sm outline-none text-[#1F1106] transition"
                           />
                         </div>
 
                         <button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-[#B58A30] to-[#D8B157] hover:from-[#D8B157] hover:to-[#B58A30] text-white font-extrabold font-sans py-3 rounded-xl transition shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-1.5 text-sm"
+                          className="w-full bg-gradient-to-r from-[#D4AF37] to-[#D8B157] hover:from-[#D8B157] hover:to-[#D4AF37] text-white font-extrabold font-sans py-3 rounded-xl transition shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-1.5 text-sm"
                         >
                           <Plus className="w-4 h-4" />
                           <span>{language === "ar" ? "إنشاء حساب جديد" : "Sign Up Now"}</span>
@@ -2755,24 +2906,24 @@ export default function App() {
                     )}
 
                     {/* Member Perk Banner */}
-                    <div className="bg-[#B58A30]/5 p-4 rounded-xl border border-[#B58A30]/20 text-center text-xs space-y-1 text-[#B58A30] font-semibold" id="auth-perk-banner">
+                    <div className="bg-[#D4AF37]/5 p-4 rounded-xl border border-[#D4AF37]/20 text-center text-xs space-y-1 text-[#D4AF37] font-semibold" id="auth-perk-banner">
                       <span>✨ {language === "ar" ? "احصل على ٥٠ نقطة ولاء ترحيبية فورية عند التسجيل!" : "Instantly receive 50 Loyalty points upon registration!"}</span>
                     </div>
 
                     {/* Guest Lookup block */}
                     <div className="border-t border-[#EADFC9]/50 pt-5 space-y-3">
-                      <span className="block text-xs font-bold text-[#4A2F13]/70 text-center">{language === "ar" ? "أو تحقق من نقاطك كزائر باستخدام هاتفك" : "Or check your points balance as a guest by phone"}</span>
+                      <span className="block text-xs font-bold text-[#1F1106]/70 text-center">{language === "ar" ? "أو تحقق من نقاطك كزائر باستخدام هاتفك" : "Or check your points balance as a guest by phone"}</span>
                       <div className="flex gap-2.5">
                         <input
                           type="tel"
                           placeholder={t.phonePlaceholder}
                           value={loyaltyPhone}
                           onChange={(e) => setLoyaltyPhone(e.target.value)}
-                          className="flex-grow bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3 py-2 text-xs outline-none text-[#4A2F13] placeholder-[#4A2F13]/40 font-mono"
+                          className="flex-grow bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3 py-2 text-xs outline-none text-[#1F1106] placeholder-[#1F1106]/40 font-mono"
                         />
                         <button
                           onClick={handleCheckLoyalty}
-                          className="bg-[#FCFAF7] hover:bg-[#EADFC9]/40 border border-[#EADFC9] text-[#4A2F13] font-bold text-xs px-4 py-2 rounded-xl transition cursor-pointer"
+                          className="bg-[#FDFBF7] hover:bg-[#EADFC9]/40 border border-[#EADFC9] text-[#1F1106] font-bold text-xs px-4 py-2 rounded-xl transition cursor-pointer"
                         >
                           {language === "ar" ? "تحقق" : "Check"}
                         </button>
@@ -2783,13 +2934,13 @@ export default function App() {
                             ? "bg-emerald-50 border-emerald-200 text-emerald-700" 
                             : loyaltyMessage.type === "error"
                             ? "bg-red-50 border-red-200 text-red-700"
-                            : "bg-[#FCFAF7] border-[#EADFC9] text-[#4A2F13] space-y-2"
+                            : "bg-[#FDFBF7] border-[#EADFC9] text-[#1F1106] space-y-2"
                         }`}>
                           <p>{loyaltyMessage.text}</p>
                           {loyaltyMessage.type === "register" && (
                             <button
                               onClick={handleRegisterLoyalty}
-                              className="w-full bg-[#B58A30] hover:bg-[#D8B157] text-white font-extrabold text-[10px] py-1.5 px-3 rounded-lg shadow transition cursor-pointer"
+                              className="w-full bg-[#D4AF37] hover:bg-[#D8B157] text-white font-extrabold text-[10px] py-1.5 px-3 rounded-lg shadow transition cursor-pointer"
                             >
                               {t.loyaltyRegisterBtn}
                             </button>
@@ -2806,11 +2957,14 @@ export default function App() {
                     <div className="lg:col-span-7 space-y-8">
                       
                       {/* Active profile dashboard details if signed in */}
-                      <div className="bg-gradient-to-br from-[#06241C] via-[#0E4B3E] to-[#162E28] border-2 border-white/20 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 transform animate-in fade-in duration-500 text-white relative overflow-hidden" id="loyalty-royal-card">
-                        {/* Interactive backdrop patterns mimicking Sana'a glass qamariyahs */}
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-qamariyah-blue/20 via-qamariyah-purple/25 to-transparent"></div>
-                        <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-qamariyah-amber/15 blur-3xl"></div>
-                        <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full bg-qamariyah-purple/15 blur-3xl"></div>
+                      <div className="bg-gradient-to-br from-luxury-brown via-luxury-brown-light to-luxury-brown border-2 border-luxury-gold/30 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 transform animate-in fade-in duration-500 text-white relative overflow-hidden" id="loyalty-royal-card">
+                        {/* Subtle golden honeycomb background pattern matching the Quranic banner */}
+                        <div 
+                          className="absolute inset-0 opacity-[0.08] bg-repeat pointer-events-none mix-blend-overlay"
+                          style={{ backgroundImage: `url(${goldenHoneycombBg})`, backgroundSize: "180px" }}
+                        ></div>
+                        <div className="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-luxury-gold/10 blur-3xl"></div>
+                        <div className="absolute -bottom-12 -right-12 w-48 h-48 rounded-full bg-luxury-gold/10 blur-3xl"></div>
 
                         <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/20 pb-6 relative z-10">
                           <div className="text-center md:text-right space-y-1">
@@ -2838,13 +2992,13 @@ export default function App() {
                         {/* Equivalency calculator and Voucher generator */}
                         <div className="space-y-4 relative z-10">
                           <h4 className="font-extrabold text-sm text-white font-sans flex items-center gap-1.5 drop-shadow-xs">
-                            <Gift className="w-4.5 h-4.5 text-qamariyah-amber-light" />
+                            <Gift className="w-4.5 h-4.5 text-[#D4AF37]" />
                             {t.loyaltyRedeemTitle}
                           </h4>
                           <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl flex flex-col md:flex-row items-center gap-4 justify-between">
                             <div className="text-center md:text-right space-y-1">
                               <span className="text-xs text-white/80 block">{t.loyaltyEquivalentText}</span>
-                              <span className="font-mono font-black text-qamariyah-amber-light text-xl drop-shadow-sm">
+                              <span className="font-mono font-black text-[#D4AF37] text-xl drop-shadow-sm">
                                 {Math.floor(loyaltyProfile.points / 10) * 1} {language === "ar" ? "دينار خصم" : "JOD Discount"}
                               </span>
                             </div>
@@ -2852,16 +3006,16 @@ export default function App() {
                               <select
                                 value={redeemPointsAmount}
                                 onChange={(e) => setRedeemPointsAmount(Number(e.target.value))}
-                                className="bg-stone-900 border-2 border-stone-700 rounded-lg px-2.5 py-2 text-xs font-mono text-white outline-none focus:border-qamariyah-amber cursor-pointer"
+                                className="bg-[#FDFBF7] border border-[#EADFC9] rounded-xl px-3 py-2 text-xs font-sans text-[#1F1106] outline-none focus:border-[#D4AF37] cursor-pointer shadow-sm font-semibold"
                               >
                                 {Array.from({ length: Math.floor(loyaltyProfile.points / 10) }, (_, i) => (i + 1) * 10).map((val) => (
-                                  <option key={val} value={val} className="text-stone-900">{val} {language === "ar" ? "نقطة" : "Pts"} (= {val / 10 * 1} JOD)</option>
+                                  <option key={val} value={val} className="bg-[#FDFBF7] text-[#1F1106] font-semibold">{val} {language === "ar" ? "نقطة" : "Pts"} (= {val / 10 * 1} JOD)</option>
                                 ))}
                               </select>
                               <button
                                 onClick={handleRedeemPoints}
                                 disabled={loyaltyProfile.points < 10}
-                                className="bg-gradient-to-r from-qamariyah-amber to-amber-500 hover:from-amber-500 hover:to-qamariyah-amber text-white font-black text-xs px-4 py-2 rounded-lg disabled:opacity-50 transition-all duration-300 cursor-pointer shadow-md"
+                                className="bg-gradient-to-r from-[#D4AF37] to-[#D8B157] hover:from-[#D8B157] hover:to-[#D4AF37] text-[#1F1106] font-black text-xs px-4 py-2 rounded-xl disabled:opacity-50 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
                               >
                                 {t.loyaltyRedeemBtn}
                               </button>
@@ -2878,18 +3032,18 @@ export default function App() {
                           <div className="border border-white/10 rounded-xl overflow-hidden text-xs shadow-md">
                             <table className="w-full text-right border-collapse bg-white">
                               <thead>
-                                <tr className="bg-[#FCFAF7] font-bold border-b border-[#EADFC9]/40 text-[#4A2F13]/70">
+                                <tr className="bg-[#FDFBF7] font-bold border-b border-[#EADFC9]/40 text-[#1F1106]/70">
                                   <th className="p-3 font-sans">{t.loyaltyHistoryDate}</th>
                                   <th className="p-3 font-sans">{t.loyaltyHistoryAction}</th>
                                   <th className="p-3 font-sans text-left">{t.loyaltyHistoryPoints}</th>
                                 </tr>
                               </thead>
-                              <tbody className="divide-y divide-[#EADFC9]/30 font-medium text-[#4A2F13]/80">
+                              <tbody className="divide-y divide-[#EADFC9]/30 font-medium text-[#1F1106]/80">
                                 {loyaltyProfile.history.map((log) => (
-                                  <tr key={log.id} className="hover:bg-[#FCFAF7] transition">
+                                  <tr key={log.id} className="hover:bg-[#FDFBF7] transition">
                                     <td className="p-3 font-mono">{log.date}</td>
                                     <td className="p-3 font-sans">{language === "ar" ? log.actionAr : log.actionEn}</td>
-                                    <td className={`p-3 text-left font-mono font-bold ${log.points > 0 ? "text-emerald-600" : "text-[#B58A30]"}`}>
+                                    <td className={`p-3 text-left font-mono font-bold ${log.points > 0 ? "text-emerald-600" : "text-[#D4AF37]"}`}>
                                       {log.points > 0 ? `+${log.points}` : log.points}
                                     </td>
                                   </tr>
@@ -2903,8 +3057,8 @@ export default function App() {
 
                       {/* CUSTOMER COMPLAINTS & SUGGESTIONS */}
                       <div className="bg-[#FFFFFF] border border-[#EADFC9]/70 rounded-2xl p-6 shadow-sm space-y-6" id="dashboard-support-center">
-                        <h3 className="text-base font-bold text-[#4A2F13] font-sans flex items-center gap-1.5 border-b border-[#EADFC9]/40 pb-3">
-                          <MessageSquare className="w-5 h-5 text-[#B58A30]" />
+                        <h3 className="text-base font-bold text-[#1F1106] font-sans flex items-center gap-1.5 border-b border-[#EADFC9]/40 pb-3">
+                          <MessageSquare className="w-5 h-5 text-[#D4AF37]" />
                           {language === "ar" ? "قسم المقترحات والشكاوى" : "Suggestions & Complaints Portal"}
                         </h3>
 
@@ -2918,18 +3072,18 @@ export default function App() {
                         <form onSubmit={handleSubmissionFeedback} className="space-y-4" id="ticket-submission-form">
                           <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1.5">
-                              <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "نوع الرسالة *" : "Ticket Type *"}</label>
+                              <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "نوع الرسالة *" : "Ticket Type *"}</label>
                               <select
                                 value={feedbackType}
                                 onChange={(e) => setFeedbackType(e.target.value as "complaint" | "suggestion")}
-                                className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-lg px-3 py-2.5 text-sm text-[#4A2F13] outline-none cursor-pointer"
+                                className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-lg px-3 py-2.5 text-sm text-[#1F1106] outline-none cursor-pointer"
                               >
                                 <option value="complaint">{language === "ar" ? "تقديم شكوى (Complaint)" : "Submit Complaint"}</option>
                                 <option value="suggestion">{language === "ar" ? "تقديم اقتراح (Suggestion)" : "Submit Suggestion"}</option>
                               </select>
                             </div>
                             <div className="space-y-1.5">
-                              <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "الاسم *" : "Your Name *"}</label>
+                              <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "الاسم *" : "Your Name *"}</label>
                               <input
                                 type="text"
                                 disabled
@@ -2940,20 +3094,20 @@ export default function App() {
                           </div>
 
                           <div className="space-y-1.5">
-                            <label className="text-xs font-bold text-[#4A2F13]/60 uppercase tracking-wider">{language === "ar" ? "نص الرسالة أو تفاصيل الشكوى والاقتراح *" : "Message details *"}</label>
+                            <label className="text-xs font-bold text-[#1F1106]/60 uppercase tracking-wider">{language === "ar" ? "نص الرسالة أو تفاصيل الشكوى والاقتراح *" : "Message details *"}</label>
                             <textarea
                               required
                               rows={3}
                               placeholder={language === "ar" ? "يرجى كتابة رسالتكم بالتفصيل هنا..." : "Write your message in detail here..."}
                               value={feedbackText}
                               onChange={(e) => { setFeedbackText(e.target.value); setFeedbackSuccess(null); }}
-                              className="w-full bg-[#FCFAF7] border border-[#EADFC9] focus:border-[#B58A30] rounded-xl px-3.5 py-3 text-sm outline-none text-[#4A2F13]"
+                              className="w-full bg-[#FDFBF7] border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl px-3.5 py-3 text-sm outline-none text-[#1F1106]"
                             ></textarea>
                           </div>
 
                           <button
                             type="submit"
-                            className="bg-[#B58A30] hover:bg-[#D8B157] text-white font-bold text-xs py-2.5 px-6 rounded-xl transition cursor-pointer"
+                            className="bg-[#D4AF37] hover:bg-[#D8B157] text-white font-bold text-xs py-2.5 px-6 rounded-xl transition cursor-pointer"
                           >
                             {language === "ar" ? "إرسال المعاملة" : "Submit Ticket"}
                           </button>
@@ -2961,24 +3115,24 @@ export default function App() {
 
                         {/* Customer Ticket History list with responses */}
                         <div className="space-y-3 pt-3 border-t border-[#EADFC9]/30">
-                          <h4 className="font-extrabold text-sm text-[#4A2F13]">{language === "ar" ? "تذاكري السابقة ومتابعة الحلول" : "My Submission History"}</h4>
+                          <h4 className="font-extrabold text-sm text-[#1F1106]">{language === "ar" ? "تذاكري السابقة ومتابعة الحلول" : "My Submission History"}</h4>
                           
                           {feedbackTickets.filter(t => t.senderEmail.toLowerCase() === loyaltyProfile.email?.toLowerCase()).length === 0 ? (
-                            <p className="text-xs text-[#4A2F13]/40 italic">{language === "ar" ? "لم تقم بتقديم أي شكاوى أو اقتراحات بعد." : "You have not submitted any tickets yet."}</p>
+                            <p className="text-xs text-[#1F1106]/40 italic">{language === "ar" ? "لم تقم بتقديم أي شكاوى أو اقتراحات بعد." : "You have not submitted any tickets yet."}</p>
                           ) : (
                             <div className="space-y-3">
                               {feedbackTickets
                                 .filter(t => t.senderEmail.toLowerCase() === loyaltyProfile.email?.toLowerCase())
                                 .map((ticket) => (
-                                  <div key={ticket.id} className="border border-[#EADFC9]/60 rounded-xl p-4 bg-[#FCFAF7] space-y-2 text-xs" id={`user-ticket-${ticket.id}`}>
+                                  <div key={ticket.id} className="border border-[#EADFC9]/60 rounded-xl p-4 bg-[#FDFBF7] space-y-2 text-xs" id={`user-ticket-${ticket.id}`}>
                                     <div className="flex justify-between items-center">
-                                      <span className="font-mono font-bold text-[#B58A30]">{ticket.id}</span>
+                                      <span className="font-mono font-bold text-[#D4AF37]">{ticket.id}</span>
                                       <span className="font-mono text-gray-400">{ticket.date}</span>
                                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                                         ticket.status === "pending" 
                                           ? "bg-yellow-100 text-yellow-800" 
                                           : ticket.status === "replied" 
-                                          ? "bg-[#B58A30]/10 text-[#B58A30]" 
+                                          ? "bg-[#D4AF37]/10 text-[#D4AF37]" 
                                           : "bg-emerald-100 text-emerald-800"
                                       }`}>
                                         {ticket.status === "pending" 
@@ -2989,15 +3143,15 @@ export default function App() {
                                         }
                                       </span>
                                     </div>
-                                    <div className="text-[#4A2F13] font-medium leading-relaxed">
-                                      <span className="font-bold block text-[#B58A30] mb-0.5">
+                                    <div className="text-[#1F1106] font-medium leading-relaxed">
+                                      <span className="font-bold block text-[#D4AF37] mb-0.5">
                                         {ticket.type === "complaint" ? (language === "ar" ? "⚠️ شكوى:" : "⚠️ Complaint:") : (language === "ar" ? "💡 اقتراح:" : "💡 Suggestion:")}
                                       </span>
                                       {ticket.text}
                                     </div>
                                     {ticket.replyText && (
                                       <div className="mt-2.5 p-3 rounded-lg bg-white border border-[#EADFC9]/50 space-y-1 text-right md:text-right">
-                                        <span className="font-black text-[10px] text-[#B58A30] block">👑 {language === "ar" ? "رد المدير زكريى السلام (إدارة قلعة الدملؤة):" : "Reply from Manager Zakaria Al-Salam (Al-Dumalwah Admin):"}</span>
+                                        <span className="font-black text-[10px] text-[#D4AF37] block">👑 {language === "ar" ? "رد المدير زكريى السلام (إدارة قلعة الدملؤة):" : "Reply from Manager Zakaria Al-Salam (Al-Dumalwah Admin):"}</span>
                                         <p className="text-gray-700 leading-relaxed italic">{ticket.replyText}</p>
                                         <span className="block text-[9px] text-gray-400 font-mono text-left">{ticket.replyDate}</span>
                                       </div>
@@ -3017,27 +3171,27 @@ export default function App() {
                       
                       {/* ORDER HISTORY & DISPATCH LIST */}
                       <div className="bg-[#FFFFFF] border border-[#EADFC9]/70 rounded-2xl p-6 shadow-sm space-y-5" id="dashboard-orders-list">
-                        <h3 className="text-base font-bold text-[#4A2F13] font-sans flex items-center gap-1.5 border-b border-[#EADFC9]/40 pb-3">
-                          <FileText className="w-5 h-5 text-[#B58A30]" />
+                        <h3 className="text-base font-bold text-[#1F1106] font-sans flex items-center gap-1.5 border-b border-[#EADFC9]/40 pb-3">
+                          <FileText className="w-5 h-5 text-[#D4AF37]" />
                           {language === "ar" ? "سجل طلباتي ومتابعة الشحن" : "Order History & Shipping Status"}
                         </h3>
 
                         {orders.filter(o => o.shippingDetails.email.toLowerCase() === loyaltyProfile.email?.toLowerCase()).length === 0 ? (
                           <div className="text-center py-10 space-y-3">
-                            <ShoppingBag className="w-10 h-10 mx-auto text-[#4A2F13]/20" />
-                            <p className="text-xs text-[#4A2F13]/50 font-medium italic">{language === "ar" ? "لم تقم بإنشاء أي طلبات حتى الآن." : "You have not placed any orders yet."}</p>
+                            <ShoppingBag className="w-10 h-10 mx-auto text-[#1F1106]/20" />
+                            <p className="text-xs text-[#1F1106]/50 font-medium italic">{language === "ar" ? "لم تقم بإنشاء أي طلبات حتى الآن." : "You have not placed any orders yet."}</p>
                           </div>
                         ) : (
                           <div className="space-y-4">
                             {orders
                               .filter(o => o.shippingDetails.email.toLowerCase() === loyaltyProfile.email?.toLowerCase())
                               .map((order) => (
-                                <div key={order.id} className="border border-[#EADFC9]/50 rounded-xl p-4 bg-[#FCFAF7] space-y-3 text-xs" id={`user-order-${order.id}`}>
+                                <div key={order.id} className="border border-[#EADFC9]/50 rounded-xl p-4 bg-[#FDFBF7] space-y-3 text-xs" id={`user-order-${order.id}`}>
                                   
                                   {/* Top Row: Order Details */}
                                   <div className="flex justify-between items-center pb-2.5 border-b border-[#EADFC9]/30">
                                     <div className="text-right">
-                                      <span className="font-mono font-black text-sm text-[#B58A30] block">{order.id}</span>
+                                      <span className="font-mono font-black text-sm text-[#D4AF37] block">{order.id}</span>
                                       <span className="text-[10px] text-gray-400 font-mono">{order.date}</span>
                                     </div>
                                     <div className="flex items-center gap-1.5">
@@ -3047,7 +3201,7 @@ export default function App() {
                                         order.status === "processing" ? "bg-blue-500" :
                                         order.status === "shipped" ? "bg-orange-500" : "bg-emerald-500"
                                       }`}></span>
-                                      <span className="font-bold text-[#4A2F13]">
+                                      <span className="font-bold text-[#1F1106]">
                                         {order.status === "pending" ? (language === "ar" ? "قيد الانتظار" : "Pending") :
                                          order.status === "processing" ? (language === "ar" ? "جاري التجهيز" : "Processing") :
                                          order.status === "shipped" ? (language === "ar" ? "تم الشحن" : "Shipped") :
@@ -3070,12 +3224,12 @@ export default function App() {
                                   </div>
 
                                   {/* Shipping and Total summary */}
-                                  <div className="bg-[#FFFFFF] border border-[#EADFC9]/40 p-2.5 rounded-lg flex justify-between items-center text-[11px] font-bold mt-2 text-[#4A2F13]/80">
+                                  <div className="bg-[#FFFFFF] border border-[#EADFC9]/40 p-2.5 rounded-lg flex justify-between items-center text-[11px] font-bold mt-2 text-[#1F1106]/80">
                                     <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest">
                                       🚚 {order.shippingMethod.toUpperCase()}
                                     </span>
                                     <span>
-                                      {language === "ar" ? "الإجمالي:" : "Total:"} <span className="font-mono font-black text-sm text-[#B58A30]">{order.total} JOD</span>
+                                      {language === "ar" ? "الإجمالي:" : "Total:"} <span className="font-mono font-black text-sm text-[#D4AF37]">{order.total} JOD</span>
                                     </span>
                                   </div>
 
@@ -3088,7 +3242,7 @@ export default function App() {
                       {/* SIGN OUT BOX */}
                       <button
                         onClick={handleUserLogout}
-                        className="w-full bg-[#FCFAF7] hover:bg-red-50 border border-red-200 text-red-600 font-bold text-xs py-3 rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                        className="w-full bg-[#FDFBF7] hover:bg-red-50 border border-red-200 text-red-600 font-bold text-xs py-3 rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                         id="logout-btn"
                       >
                         <LogOut className="w-4 h-4" />
@@ -3124,16 +3278,16 @@ export default function App() {
                     <ShieldCheck className="w-4 h-4 text-red-500" />
                     SECURE SITE ADMINISTRATOR CONTROL CENTER
                   </span>
-                  <h1 className="text-2xl md:text-4xl font-black font-sans text-[#4A2F13]">
+                  <h1 className="text-2xl md:text-4xl font-black font-sans text-[#1F1106]">
                     {language === "ar" ? "لوحة التحكم وإدارة المتجر" : "Al-Dumalwah Admin Control Center"}
                   </h1>
                 </div>
 
                 {!isAdminLoggedIn ? (
                   /* --- ADMIN LOGIN PANEL --- */
-                  <div className="max-w-md mx-auto bg-stone-900 border-2 border-[#B58A30]/50 rounded-2xl p-6 md:p-8 shadow-2xl space-y-6 text-[#FCFAF7]">
+                  <div className="max-w-md mx-auto bg-stone-900 border-2 border-[#D4AF37]/50 rounded-2xl p-6 md:p-8 shadow-2xl space-y-6 text-[#FDFBF7]">
                     <div className="text-center space-y-1.5">
-                      <Lock className="w-12 h-12 text-[#B58A30] mx-auto" />
+                      <Lock className="w-12 h-12 text-[#D4AF37] mx-auto" />
                       <h3 className="text-lg font-black font-sans text-white">{language === "ar" ? "تسجيل دخول الإدارة" : "Administrator Sign In"}</h3>
                       <p className="text-xs text-stone-400">{language === "ar" ? "يرجى إدخال بيانات الاعتماد المشفرة للوصول" : "Enter authorized credentials to proceed"}</p>
                     </div>
@@ -3164,7 +3318,7 @@ export default function App() {
                           placeholder="admin@qrizq.com"
                           value={adminEmail}
                           onChange={(e) => setAdminEmail(e.target.value)}
-                          className="w-full bg-stone-800 border border-stone-700 focus:border-[#B58A30] rounded-xl px-3.5 py-3 text-sm text-white outline-none"
+                          className="w-full bg-stone-800 border border-stone-700 focus:border-[#D4AF37] rounded-xl px-3.5 py-3 text-sm text-white outline-none"
                         />
                       </div>
                       <div className="space-y-1">
@@ -3175,13 +3329,13 @@ export default function App() {
                           placeholder="••••••••"
                           value={adminPassword}
                           onChange={(e) => setAdminPassword(e.target.value)}
-                          className="w-full bg-stone-800 border border-stone-700 focus:border-[#B58A30] rounded-xl px-3.5 py-3 text-sm text-white outline-none"
+                          className="w-full bg-stone-800 border border-stone-700 focus:border-[#D4AF37] rounded-xl px-3.5 py-3 text-sm text-white outline-none"
                         />
                       </div>
 
                       <button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-[#B58A30] to-amber-500 hover:from-amber-500 hover:to-[#B58A30] text-white font-black py-3 rounded-xl shadow transition duration-300 cursor-pointer"
+                        className="w-full bg-gradient-to-r from-[#D4AF37] to-amber-500 hover:from-amber-500 hover:to-[#D4AF37] text-white font-black py-3 rounded-xl shadow transition duration-300 cursor-pointer"
                       >
                         {language === "ar" ? "فتح اللوحة الأمنية" : "Unlock Secure Control"}
                       </button>
@@ -3189,8 +3343,8 @@ export default function App() {
 
                     <div className="bg-stone-800/40 p-3.5 rounded-xl border border-stone-800 text-center text-[11px] space-y-0.5 text-stone-400 font-medium">
                       <p className="font-bold text-stone-300">{language === "ar" ? "بيانات الدخول التجريبية للإدارة:" : "Default Admin Credentials:"}</p>
-                      <p className="font-mono mt-1 text-[#B58A30]">Email: admin@qrizq.com</p>
-                      <p className="font-mono text-[#B58A30]">Password: admin123</p>
+                      <p className="font-mono mt-1 text-[#D4AF37]">Email: admin@qrizq.com</p>
+                      <p className="font-mono text-[#D4AF37]">Password: admin123</p>
                     </div>
                   </div>
                 ) : (
@@ -3198,9 +3352,9 @@ export default function App() {
                   <div className="space-y-8" id="admin-active-dashboard">
                     
                     {/* Welcome Banner for the Admin */}
-                    <div className="bg-stone-900 border border-[#B58A30]/40 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[#FCFAF7] shadow-lg animate-in fade-in duration-300">
+                    <div className="bg-stone-900 border border-[#D4AF37]/40 rounded-2xl p-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[#FDFBF7] shadow-lg animate-in fade-in duration-300">
                       <div className="text-center sm:text-right">
-                        <span className="inline-block bg-amber-500/10 border border-amber-500/30 text-[#B58A30] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1.5">
+                        <span className="inline-block bg-amber-500/10 border border-amber-500/30 text-[#D4AF37] text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1.5">
                           {language === "ar" ? "المدير العام للمتجر" : "Store Director General"}
                         </span>
                         <h2 className="text-lg md:text-xl font-black font-sans text-white">
@@ -3231,8 +3385,8 @@ export default function App() {
                           onClick={() => setAdminActiveTab(t.id)}
                           className={`px-4 py-2.5 rounded-lg text-xs md:text-sm font-bold font-sans transition cursor-pointer ${
                             adminActiveTab === t.id 
-                              ? "bg-[#B58A30] text-white shadow-md" 
-                              : "bg-white hover:bg-[#F5EFE4] border border-[#EADFC9]/40 text-[#4A2F13]"
+                              ? "bg-[#D4AF37] text-white shadow-md" 
+                              : "bg-white hover:bg-[#F5EFE4] border border-[#EADFC9]/40 text-[#1F1106]"
                           }`}
                         >
                           {t.label}
@@ -3257,7 +3411,7 @@ export default function App() {
                     {adminActiveTab === "products" && (
                       <div className="space-y-6 animate-in fade-in duration-300">
                         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                          <h3 className="text-lg font-black text-[#4A2F13]">{language === "ar" ? "إدارة منتجات العسل الفاخر" : "Premium Products Catalog"}</h3>
+                          <h3 className="text-lg font-black text-[#1F1106]">{language === "ar" ? "إدارة منتجات العسل الفاخر" : "Premium Products Catalog"}</h3>
                           <button
                             onClick={() => {
                               setEditingProductId(null);
@@ -3280,7 +3434,7 @@ export default function App() {
                               });
                               setShowAddProductModal(true);
                             }}
-                            className="bg-[#B58A30] hover:bg-[#D8B157] text-white font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5 cursor-pointer"
+                            className="bg-[#D4AF37] hover:bg-[#D8B157] text-white font-extrabold text-xs px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5 cursor-pointer"
                           >
                             <Plus className="w-4 h-4" />
                             <span>{language === "ar" ? "إضافة منتج جديد" : "Add New Honey Product"}</span>
@@ -3293,7 +3447,7 @@ export default function App() {
                             <div className="bg-white border border-[#EADFC9] rounded-2xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl space-y-4 text-right">
                               <div className="flex justify-between items-center border-b pb-3 border-[#EADFC9]/50">
                                 <button type="button" onClick={() => setShowAddProductModal(false)} className="text-gray-400 hover:text-stone-700 text-lg font-bold font-mono">✕</button>
-                                <h4 className="text-base font-black text-[#4A2F13]">
+                                <h4 className="text-base font-black text-[#1F1106]">
                                   {editingProductId ? (language === "ar" ? "تعديل تفاصيل المنتج" : "Edit Product Details") : (language === "ar" ? "إدخال منتج جديد بالكامل" : "Create New Honey Catalog Entry")}
                                 </h4>
                               </div>
@@ -3347,7 +3501,7 @@ export default function App() {
                                 }
                                 setShowAddProductModal(false);
                                 alert(language === "ar" ? "تم حفظ التغييرات والمنتجات بنجاح!" : "Catalog products database updated successfully!");
-                              }} className="space-y-4 text-xs font-semibold text-[#4A2F13]/80">
+                              }} className="space-y-4 text-xs font-semibold text-[#1F1106]/80">
                                 
                                 <div className="grid grid-cols-2 gap-4 text-right">
                                   <div className="space-y-1 text-right">
@@ -3356,7 +3510,7 @@ export default function App() {
                                       type="text" required
                                       value={newProductForm.nameAr}
                                       onChange={(e) => setNewProductForm(p => ({ ...p, nameAr: e.target.value }))}
-                                      className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
+                                      className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
                                     />
                                   </div>
                                   <div className="space-y-1 text-right">
@@ -3365,7 +3519,7 @@ export default function App() {
                                       type="text" required
                                       value={newProductForm.nameEn}
                                       onChange={(e) => setNewProductForm(p => ({ ...p, nameEn: e.target.value }))}
-                                      className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs font-sans"
+                                      className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs font-sans"
                                     />
                                   </div>
                                 </div>
@@ -3377,7 +3531,7 @@ export default function App() {
                                       type="text" required
                                       value={newProductForm.taglineAr}
                                       onChange={(e) => setNewProductForm(p => ({ ...p, taglineAr: e.target.value }))}
-                                      className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
+                                      className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
                                     />
                                   </div>
                                   <div className="space-y-1 text-right">
@@ -3386,7 +3540,7 @@ export default function App() {
                                       type="text" required
                                       value={newProductForm.taglineEn}
                                       onChange={(e) => setNewProductForm(p => ({ ...p, taglineEn: e.target.value }))}
-                                      className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs font-sans"
+                                      className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs font-sans"
                                     />
                                   </div>
                                 </div>
@@ -3397,7 +3551,7 @@ export default function App() {
                                     <select
                                       value={newProductForm.category}
                                       onChange={(e) => setNewProductForm(p => ({ ...p, category: e.target.value }))}
-                                      className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs outline-none"
+                                      className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs outline-none"
                                     >
                                       <option value="sidr">{language === "ar" ? "عسل سدر" : "Sidr Honey"}</option>
                                       <option value="sumar">{language === "ar" ? "عسل سمر" : "Sumar Honey"}</option>
@@ -3410,12 +3564,12 @@ export default function App() {
                                     <div className="space-y-2">
                                       <div className="flex items-center gap-2">
                                         {newProductForm.image && (
-                                          <div className="w-10 h-10 rounded-lg overflow-hidden border border-[#EADFC9] bg-[#FCFAF7] shrink-0">
+                                          <div className="w-10 h-10 rounded-lg overflow-hidden border border-[#EADFC9] bg-[#FDFBF7] shrink-0">
                                             <img src={newProductForm.image} alt="Preview" className="w-full h-full object-cover" />
                                           </div>
                                         )}
-                                        <label className="flex-grow flex items-center justify-center gap-1.5 bg-[#FCFAF7] hover:bg-[#F5EFE4] border border-dashed border-[#EADFC9] hover:border-[#B58A30] rounded-lg px-2.5 py-2 text-[11px] text-[#4A2F13] cursor-pointer transition duration-200">
-                                          <Upload className="w-3.5 h-3.5 text-[#B58A30]" />
+                                        <label className="flex-grow flex items-center justify-center gap-1.5 bg-[#FDFBF7] hover:bg-[#F5EFE4] border border-dashed border-[#EADFC9] hover:border-[#D4AF37] rounded-lg px-2.5 py-2 text-[11px] text-[#1F1106] cursor-pointer transition duration-200">
+                                          <Upload className="w-3.5 h-3.5 text-[#D4AF37]" />
                                           <span className="font-bold">
                                             {language === "ar" ? "تحميل صورة مباشرة" : "Upload Direct Image"}
                                           </span>
@@ -3441,12 +3595,12 @@ export default function App() {
                                         </label>
                                       </div>
                                       <div className="space-y-0.5">
-                                        <span className="text-[10px] text-[#4A2F13]/60 block">{language === "ar" ? "أو أدخل رابط صورة:" : "Or enter image URL:"}</span>
+                                        <span className="text-[10px] text-[#1F1106]/60 block">{language === "ar" ? "أو أدخل رابط صورة:" : "Or enter image URL:"}</span>
                                         <input
                                           type="text" required
                                           value={newProductForm.image}
                                           onChange={(e) => setNewProductForm(p => ({ ...p, image: e.target.value }))}
-                                          className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-1.5 text-xs font-sans"
+                                          className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-1.5 text-xs font-sans"
                                           placeholder="https://..."
                                         />
                                       </div>
@@ -3460,7 +3614,7 @@ export default function App() {
                                     required rows={3}
                                     value={newProductForm.descriptionAr}
                                     onChange={(e) => setNewProductForm(p => ({ ...p, descriptionAr: e.target.value }))}
-                                    className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
+                                    className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs"
                                   />
                                 </div>
 
@@ -3470,17 +3624,17 @@ export default function App() {
                                     required rows={3}
                                     value={newProductForm.descriptionEn}
                                     onChange={(e) => setNewProductForm(p => ({ ...p, descriptionEn: e.target.value }))}
-                                    className="w-full bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs font-sans"
+                                    className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs font-sans"
                                   />
                                 </div>
 
                                 {/* Sizes & Pricing block */}
-                                <div className="border border-[#EADFC9]/60 p-4 rounded-xl space-y-3 bg-[#FCFAF7] text-right">
-                                  <span className="block font-bold text-[#B58A30]">{language === "ar" ? "الأوزان المتوفرة والأسعار المخصصة (د.أ) *" : "Available weights & pricing (JOD) *"}</span>
+                                <div className="border border-[#EADFC9]/60 p-4 rounded-xl space-y-3 bg-[#FDFBF7] text-right">
+                                  <span className="block font-bold text-[#D4AF37]">{language === "ar" ? "الأوزان المتوفرة والأسعار المخصصة (د.أ) *" : "Available weights & pricing (JOD) *"}</span>
                                   <div className="grid grid-cols-3 gap-3">
                                     {newProductForm.sizes.map((size, idx) => (
                                       <div key={idx} className="space-y-1 border p-2.5 rounded-lg bg-white text-center">
-                                        <span className="block font-mono font-bold text-[#4A2F13]/70">{size.weight}</span>
+                                        <span className="block font-mono font-bold text-[#1F1106]/70">{size.weight}</span>
                                         <div className="space-y-1">
                                           <label className="text-[9px] text-gray-400 block text-center">{language === "ar" ? "السعر د.أ" : "Price JOD"}</label>
                                           <input
@@ -3509,7 +3663,7 @@ export default function App() {
                                   </button>
                                   <button
                                     type="submit"
-                                    className="bg-[#B58A30] hover:bg-[#D8B157] text-white px-6 py-2.5 rounded-xl shadow cursor-pointer font-bold"
+                                    className="bg-[#D4AF37] hover:bg-[#D8B157] text-white px-6 py-2.5 rounded-xl shadow cursor-pointer font-bold"
                                   >
                                     {language === "ar" ? "حفظ وتثبيت" : "Save Changes"}
                                   </button>
@@ -3524,7 +3678,7 @@ export default function App() {
                         <div className="bg-white border border-[#EADFC9]/70 rounded-2xl overflow-hidden shadow-sm">
                           <table className="w-full text-right border-collapse text-xs md:text-sm">
                             <thead>
-                              <tr className="bg-[#FCFAF7] border-b border-[#EADFC9]/40 text-[#4A2F13]/70 font-bold">
+                              <tr className="bg-[#FDFBF7] border-b border-[#EADFC9]/40 text-[#1F1106]/70 font-bold">
                                 <th className="p-4">{language === "ar" ? "المنتج" : "Product"}</th>
                                 <th className="p-4">{language === "ar" ? "التصنيف" : "Category"}</th>
                                 <th className="p-4">{language === "ar" ? "أسعار الأوزان" : "Weights & Prices"}</th>
@@ -3532,17 +3686,17 @@ export default function App() {
                                 <th className="p-4 text-left">{language === "ar" ? "الإجراءات" : "Actions"}</th>
                               </tr>
                             </thead>
-                            <tbody className="divide-y divide-[#EADFC9]/25 text-[#4A2F13] font-medium">
+                            <tbody className="divide-y divide-[#EADFC9]/25 text-[#1F1106] font-medium">
                               {products.map((p) => (
-                                <tr key={p.id} className="hover:bg-[#FCFAF7]/50 transition">
+                                <tr key={p.id} className="hover:bg-[#FDFBF7]/50 transition">
                                   <td className="p-4 flex items-center gap-3">
                                     <img src={p.image} className="w-10 h-10 rounded-lg object-cover" />
                                     <div>
-                                      <span className="block font-bold text-sm text-[#4A2F13]">{language === "ar" ? p.nameAr : p.nameEn}</span>
+                                      <span className="block font-bold text-sm text-[#1F1106]">{language === "ar" ? p.nameAr : p.nameEn}</span>
                                       <span className="text-[10px] text-gray-400 block max-w-xs truncate">{language === "ar" ? p.taglineAr : p.taglineEn}</span>
                                     </div>
                                   </td>
-                                  <td className="p-4 font-bold uppercase font-mono text-[11px] text-[#B58A30]">{p.category}</td>
+                                  <td className="p-4 font-bold uppercase font-mono text-[11px] text-[#D4AF37]">{p.category}</td>
                                   <td className="p-4 font-mono text-xs">
                                     {p.sizes.map(s => `${s.weight}: ${s.price} JOD`).join(" | ")}
                                   </td>
@@ -3566,9 +3720,9 @@ export default function App() {
                                         });
                                         setShowAddProductModal(true);
                                       }}
-                                      className="inline-flex items-center gap-1 bg-[#FCFAF7] hover:bg-[#EADFC9]/40 border border-[#EADFC9] px-2.5 py-1.5 rounded-lg text-xs cursor-pointer"
+                                      className="inline-flex items-center gap-1 bg-[#FDFBF7] hover:bg-[#EADFC9]/40 border border-[#EADFC9] px-2.5 py-1.5 rounded-lg text-xs cursor-pointer"
                                     >
-                                      <Edit3 className="w-3.5 h-3.5 text-[#B58A30]" />
+                                      <Edit3 className="w-3.5 h-3.5 text-[#D4AF37]" />
                                       <span>{language === "ar" ? "تعديل" : "Edit"}</span>
                                     </button>
                                     <button
@@ -3599,12 +3753,12 @@ export default function App() {
                     {/* ======================================= */}
                     {adminActiveTab === "users" && (
                       <div className="space-y-6 animate-in fade-in duration-300">
-                        <h3 className="text-lg font-black text-[#4A2F13]">{language === "ar" ? "دليل حسابات ومستويات العملاء" : "Registered Customers Directory"}</h3>
+                        <h3 className="text-lg font-black text-[#1F1106]">{language === "ar" ? "دليل حسابات ومستويات العملاء" : "Registered Customers Directory"}</h3>
                         
                         <div className="bg-white border border-[#EADFC9]/70 rounded-2xl overflow-hidden shadow-sm">
                           <table className="w-full text-right border-collapse text-xs md:text-sm">
                             <thead>
-                              <tr className="bg-[#FCFAF7] border-b border-[#EADFC9]/40 text-[#4A2F13]/70 font-bold">
+                              <tr className="bg-[#FDFBF7] border-b border-[#EADFC9]/40 text-[#1F1106]/70 font-bold">
                                 <th className="p-4">{language === "ar" ? "اسم العميل" : "Customer Name"}</th>
                                 <th className="p-4">{language === "ar" ? "البريد الإلكتروني" : "Email"}</th>
                                 <th className="p-4">{language === "ar" ? "رقم الهاتف" : "Phone"}</th>
@@ -3612,10 +3766,10 @@ export default function App() {
                                 <th className="p-4">{language === "ar" ? "تاريخ التسجيل" : "Registration Date"}</th>
                               </tr>
                             </thead>
-                            <tbody className="divide-y divide-[#EADFC9]/25 text-[#4A2F13] font-medium">
+                            <tbody className="divide-y divide-[#EADFC9]/25 text-[#1F1106] font-medium">
                               {(Object.values(usersDB) as LoyaltyProfile[]).map((user, idx) => (
-                                <tr key={idx} className="hover:bg-[#FCFAF7]/50 transition">
-                                  <td className="p-4 font-bold text-[#4A2F13]">{user.username}</td>
+                                <tr key={idx} className="hover:bg-[#FDFBF7]/50 transition">
+                                  <td className="p-4 font-bold text-[#1F1106]">{user.username}</td>
                                   <td className="p-4 font-mono text-gray-500">{user.email}</td>
                                   <td className="p-4 font-mono text-gray-500">{user.phone}</td>
                                   <td className="p-4 font-mono font-bold text-emerald-600 text-sm">★ {user.points} Pts</td>
@@ -3633,7 +3787,7 @@ export default function App() {
                     {/* ======================================= */}
                     {adminActiveTab === "orders" && (
                       <div className="space-y-6 animate-in fade-in duration-300">
-                        <h3 className="text-lg font-black text-[#4A2F13]">{language === "ar" ? "متابعة وتحديث حالة شحن الطلبيات" : "E-Commerce Orders & Delivery Dispatch"}</h3>
+                        <h3 className="text-lg font-black text-[#1F1106]">{language === "ar" ? "متابعة وتحديث حالة شحن الطلبيات" : "E-Commerce Orders & Delivery Dispatch"}</h3>
                         
                         {orders.length === 0 ? (
                           <div className="bg-white border border-[#EADFC9]/70 rounded-2xl p-10 text-center text-gray-400 font-medium">
@@ -3643,7 +3797,7 @@ export default function App() {
                           <div className="bg-white border border-[#EADFC9]/70 rounded-2xl overflow-hidden shadow-sm">
                             <table className="w-full text-right border-collapse text-xs md:text-sm">
                               <thead>
-                                <tr className="bg-[#FCFAF7] border-b border-[#EADFC9]/40 text-[#4A2F13]/70 font-bold">
+                                <tr className="bg-[#FDFBF7] border-b border-[#EADFC9]/40 text-[#1F1106]/70 font-bold">
                                   <th className="p-4">{language === "ar" ? "معرف الطلب" : "Order ID"}</th>
                                   <th className="p-4">{language === "ar" ? "بيانات المستلم" : "Recipient Details"}</th>
                                   <th className="p-4">{language === "ar" ? "المنتجات والأوزان" : "Honey Items Purchased"}</th>
@@ -3651,10 +3805,10 @@ export default function App() {
                                   <th className="p-4">{language === "ar" ? "تحديث حالة التوصيل" : "Delivery Follow-up"}</th>
                                 </tr>
                               </thead>
-                              <tbody className="divide-y divide-[#EADFC9]/25 text-[#4A2F13] font-medium">
+                              <tbody className="divide-y divide-[#EADFC9]/25 text-[#1F1106] font-medium">
                                 {orders.map((order) => (
-                                  <tr key={order.id} className="hover:bg-[#FCFAF7]/50 transition">
-                                    <td className="p-4 font-mono font-black text-[#B58A30] text-sm">{order.id}</td>
+                                  <tr key={order.id} className="hover:bg-[#FDFBF7]/50 transition">
+                                    <td className="p-4 font-mono font-black text-[#D4AF37] text-sm">{order.id}</td>
                                     <td className="p-4 text-stone-700">
                                       <span className="block font-bold">{order.shippingDetails.fullName}</span>
                                       <span className="block font-mono text-[11px] text-gray-500">{order.shippingDetails.phone} | {order.shippingDetails.email}</span>
@@ -3667,7 +3821,7 @@ export default function App() {
                                         </div>
                                       ))}
                                     </td>
-                                    <td className="p-4 font-mono font-black text-[#B58A30]">{order.total} JOD</td>
+                                    <td className="p-4 font-mono font-black text-[#D4AF37]">{order.total} JOD</td>
                                     <td className="p-4">
                                       <div className="flex items-center gap-2">
                                         <select
@@ -3680,7 +3834,7 @@ export default function App() {
                                             // Optional: update points if delivered for the first time
                                             alert(language === "ar" ? `تم تحديث حالة شحن الطلب ${order.id} إلى: ${updatedStatus}` : `Order ${order.id} delivery status updated to: ${updatedStatus}`);
                                           }}
-                                          className="bg-[#FCFAF7] border border-[#EADFC9] rounded-lg px-2.5 py-1.5 text-xs text-[#4A2F13] font-bold outline-none cursor-pointer"
+                                          className="bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-2.5 py-1.5 text-xs text-[#1F1106] font-bold outline-none cursor-pointer"
                                         >
                                           <option value="pending">⏳ {language === "ar" ? "قيد الانتظار" : "Pending"}</option>
                                           <option value="processing">⚙️ {language === "ar" ? "جاري التجهيز" : "Processing"}</option>
@@ -3703,7 +3857,7 @@ export default function App() {
                     {/* ======================================= */}
                     {adminActiveTab === "tickets" && (
                       <div className="space-y-6 animate-in fade-in duration-300">
-                        <h3 className="text-lg font-black text-[#4A2F13]">{language === "ar" ? "الرد على الشكاوى والاقتراحات والتفاعل معها" : "Complaints & Suggestions Resolution Hub"}</h3>
+                        <h3 className="text-lg font-black text-[#1F1106]">{language === "ar" ? "الرد على الشكاوى والاقتراحات والتفاعل معها" : "Complaints & Suggestions Resolution Hub"}</h3>
                         
                         {feedbackTickets.length === 0 ? (
                           <div className="bg-white border border-[#EADFC9]/70 rounded-2xl p-10 text-center text-gray-400 font-medium">
@@ -3717,7 +3871,7 @@ export default function App() {
                                 {/* Info row */}
                                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-[#EADFC9]/30 pb-3">
                                   <div className="flex items-center gap-2">
-                                    <span className="font-mono font-black text-sm text-[#B58A30]">{ticket.id}</span>
+                                    <span className="font-mono font-black text-sm text-[#D4AF37]">{ticket.id}</span>
                                     <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                                       ticket.status === "pending" ? "bg-yellow-100 text-yellow-800" : "bg-emerald-100 text-emerald-800"
                                     }`}>
@@ -3725,21 +3879,21 @@ export default function App() {
                                     </span>
                                   </div>
                                   <div className="text-xs text-gray-400 space-y-0.5 text-right sm:text-left">
-                                    <span className="block font-bold text-[#4A2F13]">👤 {ticket.senderName} ({ticket.senderPhone})</span>
+                                    <span className="block font-bold text-[#1F1106]">👤 {ticket.senderName} ({ticket.senderPhone})</span>
                                     <span className="block font-mono text-right">{ticket.senderEmail} | {ticket.date}</span>
                                   </div>
                                 </div>
 
                                 {/* Text details */}
-                                <div className="text-sm font-medium text-[#4A2F13] leading-relaxed">
-                                  <span className="font-black text-xs text-[#B58A30] block mb-1">
+                                <div className="text-sm font-medium text-[#1F1106] leading-relaxed">
+                                  <span className="font-black text-xs text-[#D4AF37] block mb-1">
                                     {ticket.type === "complaint" ? (language === "ar" ? "⚠️ تفاصيل الشكوى المقدمة:" : "⚠️ Complaint Statement:") : (language === "ar" ? "💡 تفاصيل المقترح المقدم:" : "💡 Suggestion Statement:")}
                                   </span>
                                   {ticket.text}
                                 </div>
 
                                 {/* Display reply input or saved response */}
-                                <div className="bg-[#FCFAF7] border border-[#EADFC9]/50 p-4 rounded-xl space-y-3">
+                                <div className="bg-[#FDFBF7] border border-[#EADFC9]/50 p-4 rounded-xl space-y-3">
                                   <span className="block text-xs font-bold text-stone-600">👑 {language === "ar" ? "الرد الرسمي باسم المدير زكريى السلام:" : "Official Reply by Manager Zakaria Al-Salam:"}</span>
                                   
                                   {ticket.replyText ? (
@@ -3753,7 +3907,7 @@ export default function App() {
                                         rows={2}
                                         placeholder={language === "ar" ? "اكتب الرد الرسمي للإرسال للعميل..." : "Write official reply to resolve and notify customer..."}
                                         id={`reply-text-input-${ticket.id}`}
-                                        className="w-full bg-white border border-[#EADFC9] rounded-lg px-3 py-2 text-xs outline-none text-[#4A2F13]"
+                                        className="w-full bg-white border border-[#EADFC9] rounded-lg px-3 py-2 text-xs outline-none text-[#1F1106]"
                                       ></textarea>
                                       <button
                                         onClick={() => {
@@ -3774,7 +3928,7 @@ export default function App() {
 
                                           alert(language === "ar" ? "تم إرسال ردك بنجاح! سيتمكن العميل من رؤيته على الفور في حسابه." : "Your response was submitted! The customer can read it instantly under their profile.");
                                         }}
-                                        className="bg-[#B58A30] hover:bg-[#D8B157] text-white text-xs font-bold px-4 py-2 rounded-lg cursor-pointer transition shadow"
+                                        className="bg-[#D4AF37] hover:bg-[#D8B157] text-white text-xs font-bold px-4 py-2 rounded-lg cursor-pointer transition shadow"
                                       >
                                         {language === "ar" ? "إرسال الرد وحل التذكرة" : "Submit Reply & Resolve"}
                                       </button>
@@ -3810,11 +3964,11 @@ export default function App() {
                 id="chatbot-tab-container"
               >
                 <div className="text-center space-y-2">
-                  <span className="text-xs font-bold text-[#B58A30] font-mono tracking-widest uppercase">AL-DUMALWAH AI SOMMELIER</span>
-                  <h1 className="text-2xl md:text-4xl font-black font-sans text-[#4A2F13]">
+                  <span className="text-xs font-bold text-[#D4AF37] font-mono tracking-widest uppercase">AL-DUMALWAH AI SOMMELIER</span>
+                  <h1 className="text-2xl md:text-4xl font-black font-sans text-[#1F1106]">
                     {t.navChat}
                   </h1>
-                  <p className="text-xs md:text-sm text-[#4A2F13]/70">
+                  <p className="text-xs md:text-sm text-[#1F1106]/70">
                     {language === "ar" 
                       ? "اطرح على مستشارنا الذكي أي سؤال طبيعي في كبسولة تواصل مشفرة وسيساعدك في إيجاد العسل الأمثل لأهدافك وصحتك."
                       : "Unleash our AI advisor to map your health goals with the corresponding Yemeni therapeutic honey variety."}
@@ -3839,16 +3993,16 @@ export default function App() {
           <div className="bg-[#FFFFFF] w-full max-w-md h-full shadow-2xl flex flex-col border-l border-[#EADFC9] transform animate-in slide-in-from-left duration-300" id="cart-drawer-panel">
             
             {/* Drawer Header */}
-            <div className="p-5 border-b border-[#EADFC9]/50 flex items-center justify-between bg-[#FCFAF7]" id="cart-header">
+            <div className="p-5 border-b border-[#EADFC9]/50 flex items-center justify-between bg-[#FDFBF7]" id="cart-header">
               <div className="flex items-center gap-2">
-                <ShoppingBag className="w-5 h-5 text-[#B58A30]" />
-                <h3 className="font-black text-base md:text-lg text-[#4A2F13] font-sans">
+                <ShoppingBag className="w-5 h-5 text-[#D4AF37]" />
+                <h3 className="font-black text-base md:text-lg text-[#1F1106] font-sans">
                   {t.cartTitle}
                 </h3>
               </div>
               <button
                 onClick={() => setCartOpen(false)}
-                className="w-8 h-8 rounded-full bg-[#FCFAF7] hover:bg-[#EADFC9]/50 flex items-center justify-center text-[#4A2F13]/70 hover:text-[#4A2F13] transition cursor-pointer"
+                className="w-8 h-8 rounded-full bg-[#FDFBF7] hover:bg-[#EADFC9]/50 flex items-center justify-center text-[#1F1106]/70 hover:text-[#1F1106] transition cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -3859,7 +4013,7 @@ export default function App() {
               
               {/* Free shipping banner meter */}
               {cart.length > 0 && (
-                <div className="bg-[#FCFAF7] border border-[#EADFC9]/70 p-3.5 rounded-xl text-center space-y-2 text-xs text-[#4A2F13]/80 font-semibold" id="shipping-progress-meter">
+                <div className="bg-[#FDFBF7] border border-[#EADFC9]/70 p-3.5 rounded-xl text-center space-y-2 text-xs text-[#1F1106]/80 font-semibold" id="shipping-progress-meter">
                   {isFreeShipping ? (
                     <div className="flex items-center justify-center gap-1.5 text-emerald-600">
                       <CheckCircle className="w-4 h-4 text-emerald-500" />
@@ -3873,7 +4027,7 @@ export default function App() {
                   {/* Gauge bar */}
                   <div className="w-full bg-[#FFFFFF] rounded-full h-2 overflow-hidden shadow-inner border border-[#EADFC9]/30">
                     <div 
-                      className={`h-full rounded-full transition-all duration-500 ${isFreeShipping ? "bg-emerald-500" : "bg-[#B58A30]"}`}
+                      className={`h-full rounded-full transition-all duration-500 ${isFreeShipping ? "bg-emerald-500" : "bg-[#D4AF37]"}`}
                       style={{ width: `${Math.min(100, (cartSubtotal / freeShippingThreshold) * 100)}%` }}
                     ></div>
                   </div>
@@ -3891,23 +4045,23 @@ export default function App() {
                       />
                       
                       <div className="flex-grow min-w-0 text-right md:text-right">
-                        <h4 className="font-extrabold text-sm text-[#4A2F13] truncate">
+                        <h4 className="font-extrabold text-sm text-[#1F1106] truncate">
                           {language === "ar" ? item.product.nameAr : item.product.nameEn}
                         </h4>
-                        <span className="block text-[11px] text-[#4A2F13]/60 font-mono mt-0.5">{item.selectedSize.weight}</span>
+                        <span className="block text-[11px] text-[#1F1106]/60 font-mono mt-0.5">{item.selectedSize.weight}</span>
                         
                         {/* Qty controller buttons */}
                         <div className="flex items-center gap-2 mt-2" id="qty-controller">
                           <button
                             onClick={() => updateCartQuantity(item.product.id, item.selectedSize.weight, -1)}
-                            className="w-6 h-6 rounded border border-[#EADFC9] hover:bg-[#EADFC9]/40 text-[#4A2F13] text-xs font-bold flex items-center justify-center transition cursor-pointer"
+                            className="w-6 h-6 rounded border border-[#EADFC9] hover:bg-[#EADFC9]/40 text-[#1F1106] text-xs font-bold flex items-center justify-center transition cursor-pointer"
                           >
                             -
                           </button>
-                          <span className="font-mono text-xs text-[#4A2F13] w-5 text-center font-bold">{item.quantity}</span>
+                          <span className="font-mono text-xs text-[#1F1106] w-5 text-center font-bold">{item.quantity}</span>
                           <button
                             onClick={() => updateCartQuantity(item.product.id, item.selectedSize.weight, 1)}
-                            className="w-6 h-6 rounded border border-[#EADFC9] hover:bg-[#EADFC9]/40 text-[#4A2F13] text-xs font-bold flex items-center justify-center transition cursor-pointer"
+                            className="w-6 h-6 rounded border border-[#EADFC9] hover:bg-[#EADFC9]/40 text-[#1F1106] text-xs font-bold flex items-center justify-center transition cursor-pointer"
                           >
                             +
                           </button>
@@ -3918,11 +4072,11 @@ export default function App() {
                       <div className="flex flex-col items-end justify-between self-stretch shrink-0" id="cart-item-actions">
                         <button
                           onClick={() => removeFromCart(item.product.id, item.selectedSize.weight)}
-                          className="text-[#4A2F13]/40 hover:text-red-600 transition cursor-pointer"
+                          className="text-[#1F1106]/40 hover:text-red-600 transition cursor-pointer"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
-                        <span className="font-mono font-bold text-sm text-[#4A2F13] mt-2">
+                        <span className="font-mono font-bold text-sm text-[#1F1106] mt-2">
                           {item.selectedSize.price * item.quantity} {language === "ar" ? "د.أ" : "JOD"}
                         </span>
                       </div>
@@ -3931,8 +4085,8 @@ export default function App() {
                   ))}
                 </div>
               ) : (
-                <div className="h-64 flex flex-col items-center justify-center text-[#4A2F13]/40 text-center gap-3 p-6" id="empty-cart-display">
-                  <ShoppingBag className="w-12 h-12 text-[#4A2F13]/30" />
+                <div className="h-64 flex flex-col items-center justify-center text-[#1F1106]/40 text-center gap-3 p-6" id="empty-cart-display">
+                  <ShoppingBag className="w-12 h-12 text-[#1F1106]/30" />
                   <p className="text-xs leading-relaxed font-medium">
                     {t.cartEmpty}
                   </p>
@@ -3943,22 +4097,22 @@ export default function App() {
 
             {/* Drawer Footer - Summary & Action */}
             {cart.length > 0 && (
-              <div className="p-5 border-t border-[#EADFC9] bg-[#FCFAF7] space-y-4" id="cart-drawer-footer">
+              <div className="p-5 border-t border-[#EADFC9] bg-[#FDFBF7] space-y-4" id="cart-drawer-footer">
                 
-                <div className="space-y-2 text-sm font-semibold text-[#4A2F13]/80">
+                <div className="space-y-2 text-sm font-semibold text-[#1F1106]/80">
                   <div className="flex justify-between">
                     <span>{t.cartSubtotal}</span>
-                    <span className="font-mono font-bold text-[#4A2F13]">{cartSubtotal} {language === "ar" ? "د.أ" : "JOD"}</span>
+                    <span className="font-mono font-bold text-[#1F1106]">{cartSubtotal} {language === "ar" ? "د.أ" : "JOD"}</span>
                   </div>
-                  <div className="flex justify-between border-t border-[#EADFC9]/30 pt-2.5 text-[#4A2F13] font-black text-base md:text-lg">
+                  <div className="flex justify-between border-t border-[#EADFC9]/30 pt-2.5 text-[#1F1106] font-black text-base md:text-lg">
                     <span>{t.cartTotal}</span>
-                    <span className="font-mono text-[#B58A30]">{cartSubtotal} {language === "ar" ? "د.أ" : "JOD"}</span>
+                    <span className="font-mono text-[#D4AF37]">{cartSubtotal} {language === "ar" ? "د.أ" : "JOD"}</span>
                   </div>
                 </div>
 
                 <button
                   onClick={() => { setCartOpen(false); setCheckoutMode(true); }}
-                  className="w-full bg-gradient-to-r from-[#B58A30] to-[#D8B157] hover:from-[#D8B157] hover:to-[#B58A30] text-white font-extrabold font-sans py-3.5 rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full bg-gradient-to-r from-[#D4AF37] to-[#D8B157] hover:from-[#D8B157] hover:to-[#D4AF37] text-white font-extrabold font-sans py-3.5 rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <span>{t.checkoutButton}</span>
                 </button>
@@ -3973,7 +4127,7 @@ export default function App() {
       {/* ======================================= */}
       {/* --- PRESTIGIOUS FOOTER --- */}
       {/* ======================================= */}
-      <footer className="bg-gradient-to-br from-[#140D07] to-[#1C120A] text-[#FCFAF7]/85 border-t-2 border-[#B58A30] mt-16 py-12 md:py-16 px-4 md:px-6 relative" id="app-footer-section">
+      <footer className="bg-gradient-to-br from-[#140D07] to-[#1C120A] text-[#FDFBF7]/85 border-t-2 border-[#D4AF37] mt-16 py-12 md:py-16 px-4 md:px-6 relative" id="app-footer-section">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           
           {/* Logo & Description (Md: 5) */}
@@ -3981,39 +4135,39 @@ export default function App() {
             <div className="flex items-center gap-3">
               <Logo className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl p-1 shadow-md" showText={false} />
               <div className="text-right">
-                <span className="block font-bold text-lg md:text-xl text-[#FCFAF7] font-sans tracking-tight leading-none">{t.appName}</span>
-                <span className="text-[10px] text-[#B58A30] font-mono tracking-widest">{t.appSubtitle}</span>
+                <span className="block font-bold text-lg md:text-xl text-[#FDFBF7] font-sans tracking-tight leading-none">{t.appName}</span>
+                <span className="text-[10px] text-[#D4AF37] font-mono tracking-widest">{t.appSubtitle}</span>
               </div>
             </div>
-            <p className="text-xs leading-relaxed text-[#FCFAF7]/70 max-w-sm">
+            <p className="text-xs leading-relaxed text-[#FDFBF7]/70 max-w-sm">
               {t.footerDesc}
             </p>
-            <span className="block text-[11px] font-mono text-[#B58A30]">
+            <span className="block text-[11px] font-mono text-[#D4AF37]">
               📍 {t.footerAddress}
             </span>
           </div>
 
           {/* Nav quicklinks (Md: 3) */}
           <div className="md:col-span-3 space-y-4 text-center md:text-right">
-            <h4 className="font-extrabold text-[#FCFAF7] text-sm font-sans uppercase tracking-wider border-b border-[#3A2A1A]/60 pb-2 inline-block md:block">
+            <h4 className="font-extrabold text-[#FDFBF7] text-sm font-sans uppercase tracking-wider border-b border-[#3A2A1A]/60 pb-2 inline-block md:block">
               {language === "ar" ? "وصول سريع" : "Quick Navigation"}
             </h4>
             <div className="flex flex-col gap-2.5 text-xs font-semibold">
-              <button onClick={() => { setActiveTab("home"); setCheckoutMode(false); }} className="hover:text-[#B58A30] transition text-right">{t.navHome}</button>
-              <button onClick={() => { setActiveTab("products"); setCheckoutMode(false); }} className="hover:text-[#B58A30] transition text-right">{t.navProducts}</button>
-              <button onClick={() => { setActiveTab("loyalty"); setCheckoutMode(false); }} className="hover:text-[#B58A30] transition text-right">{t.navLoyalty}</button>
-              <button onClick={() => { setActiveTab("chat"); setCheckoutMode(false); }} className="hover:text-[#B58A30] transition text-right">{t.navChat}</button>
-              <button onClick={() => { setActiveTab("admin"); setCheckoutMode(false); }} className="hover:text-[#B58A30] transition text-right text-[#B58A30] font-bold">🔒 {language === "ar" ? "لوحة الإدارة" : "Admin Portal"}</button>
+              <button onClick={() => { setActiveTab("home"); setCheckoutMode(false); }} className="hover:text-[#D4AF37] transition text-right">{t.navHome}</button>
+              <button onClick={() => { setActiveTab("products"); setCheckoutMode(false); }} className="hover:text-[#D4AF37] transition text-right">{t.navProducts}</button>
+              <button onClick={() => { setActiveTab("loyalty"); setCheckoutMode(false); }} className="hover:text-[#D4AF37] transition text-right">{t.navLoyalty}</button>
+              <button onClick={() => { setActiveTab("chat"); setCheckoutMode(false); }} className="hover:text-[#D4AF37] transition text-right">{t.navChat}</button>
+              <button onClick={() => { setActiveTab("admin"); setCheckoutMode(false); }} className="hover:text-[#D4AF37] transition text-right text-[#D4AF37] font-bold">🔒 {language === "ar" ? "لوحة الإدارة" : "Admin Portal"}</button>
             </div>
           </div>
 
           {/* Customer support (Md: 4) */}
           <div className="md:col-span-4 space-y-4 text-center md:text-right flex flex-col md:items-start items-center">
-            <h4 className="font-extrabold text-[#FCFAF7] text-sm font-sans uppercase tracking-wider border-b border-[#3A2A1A]/60 pb-2 inline-block md:block">
+            <h4 className="font-extrabold text-[#FDFBF7] text-sm font-sans uppercase tracking-wider border-b border-[#3A2A1A]/60 pb-2 inline-block md:block">
               {t.footerSupport}
             </h4>
             <div className="space-y-3 text-xs">
-              <p className="leading-relaxed text-[#FCFAF7]/70">
+              <p className="leading-relaxed text-[#FDFBF7]/70">
                 {language === "ar" 
                   ? "لأي استفسارات طبية أو صحية أو لمتابعة طلبياتكم الفاخرة، يسعد طاقم خدمة العملاء بقلعة الدملؤة خدمتكم على مدار الساعة." 
                   : "For therapeutic inquiries, order status tracking, or phone ordering, our helpdesk team is operational 24/7."}
@@ -4026,7 +4180,7 @@ export default function App() {
                   href="https://wa.me/962799695547?text=السلام%20عليكم%20قلعة%20الدملؤة%20للعسل%20اليمني%20أود%20الاستفسار"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-md transition hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#E5C158] text-[#1F1106] font-bold py-2.5 px-4 rounded-xl shadow-md transition hover:-translate-y-0.5 border border-[#F3E5AB]/20"
                   id="footer-whatsapp-cta"
                 >
                   <PhoneCall className="w-4 h-4 animate-bounce" />
@@ -4039,15 +4193,15 @@ export default function App() {
         </div>
 
         {/* Legal copyright line */}
-        <div className="max-w-7xl mx-auto border-t border-[#3A2A1A]/50 pt-6 mt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#FCFAF7]/40 font-medium" id="footer-copyright-row">
+        <div className="max-w-7xl mx-auto border-t border-[#3A2A1A]/50 pt-6 mt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#FDFBF7]/40 font-medium" id="footer-copyright-row">
           <span>{t.footerCopy}</span>
-          <span className="mt-2 sm:mt-0 font-mono tracking-wider text-[#B58A30]/70">SECURED & LAB GUARANTEED CERTIFIED</span>
+          <span className="mt-2 sm:mt-0 font-mono tracking-wider text-[#D4AF37]/70">SECURED & LAB GUARANTEED CERTIFIED</span>
         </div>
 
         {/* Floating WhatsApp Action button */}
         <button
           onClick={() => setShowFeedbackForm(true)}
-          className="fixed bottom-6 left-6 z-40 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border border-blue-400 flex items-center justify-center group"
+          className="fixed bottom-6 left-6 z-40 bg-[#1F1106] hover:bg-[#321E0D] text-[#D4AF37] p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border border-[#D4AF37]/40 flex items-center justify-center group"
           id="floating-feedback-button"
         >
           <MessageSquare className="w-6 h-6" />
@@ -4059,7 +4213,7 @@ export default function App() {
           href="https://wa.me/962799695547?text=السلام%20عليكم%20قلعة%20الدملؤة%20أود%20الاستفسار%20عن%20العسل"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border border-emerald-400 flex items-center justify-center group"
+          className="fixed bottom-6 right-6 z-40 bg-[#D4AF37] hover:bg-[#E5C158] text-[#1F1106] p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border border-[#F3E5AB]/30 flex items-center justify-center group"
           id="floating-whatsapp-action"
         >
           <PhoneCall className="w-6 h-6" />
@@ -4068,7 +4222,7 @@ export default function App() {
           </span>
         </a>
         {showFeedbackForm && <FeedbackForm onClose={() => setShowFeedbackForm(false)} language={language} />}
-        {showAdmin && <AdminFeedback />}
+        {showAdmin && <AdminFeedback language={language} />}
 
       </footer>
 

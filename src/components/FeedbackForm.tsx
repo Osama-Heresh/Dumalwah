@@ -29,20 +29,31 @@ export function FeedbackForm({ onClose, language }: { onClose: () => void, langu
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg w-full max-w-md text-gray-900">
-        <h2 className="text-xl font-bold mb-4">{language === "ar" ? "اقتراحات وشكاوى" : "Suggestions & Complaints"}</h2>
-        <select value={type} onChange={(e) => setType(e.target.value as any)} className="w-full mb-2 p-2 border rounded text-gray-900">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+      <form onSubmit={handleSubmit} className="bg-[#FDFBF7] border border-[#EADFC9] p-6 rounded-2xl w-full max-w-md text-[#1F1106] shadow-2xl relative">
+        <h2 className="text-xl font-serif font-bold mb-4 border-b border-[#EADFC9]/40 pb-2 text-[#1F1106]">{language === "ar" ? "تقديم اقتراح أو شكوى" : "Suggestions & Complaints"}</h2>
+        
+        <label className="block text-[11px] font-bold text-[#1F1106]/60 uppercase tracking-wider mb-1">{language === "ar" ? "النوع" : "Type"}</label>
+        <select value={type} onChange={(e) => setType(e.target.value as any)} className="w-full mb-3 p-2.5 border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl text-[#1F1106] bg-[#FDFBF7] outline-none transition">
           <option value="suggestion">{language === "ar" ? "اقتراح" : "Suggestion"}</option>
           <option value="complaint">{language === "ar" ? "شكوى" : "Complaint"}</option>
         </select>
-        <input type="text" placeholder={language === "ar" ? "الاسم" : "Name"} value={senderName} onChange={(e) => setSenderName(e.target.value)} className="w-full mb-2 p-2 border rounded text-gray-900" required />
-        <input type="email" placeholder={language === "ar" ? "البريد الإلكتروني" : "Email"} value={senderEmail} onChange={(e) => setSenderEmail(e.target.value)} className="w-full mb-2 p-2 border rounded text-gray-900" required />
-        <input type="tel" placeholder={language === "ar" ? "الهاتف" : "Phone"} value={senderPhone} onChange={(e) => setSenderPhone(e.target.value)} className="w-full mb-2 p-2 border rounded text-gray-900" />
-        <textarea placeholder={language === "ar" ? "التفاصيل" : "Details"} value={text} onChange={(e) => setText(e.target.value)} className="w-full mb-4 p-2 border rounded text-gray-900" required />
-        <div className="flex justify-end gap-2">
-          <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-200 rounded">{language === "ar" ? "إلغاء" : "Cancel"}</button>
-          <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">{language === "ar" ? "إرسال" : "Submit"}</button>
+
+        <label className="block text-[11px] font-bold text-[#1F1106]/60 uppercase tracking-wider mb-1">{language === "ar" ? "الاسم كامل *" : "Name *"}</label>
+        <input type="text" placeholder={language === "ar" ? "الاسم" : "Name"} value={senderName} onChange={(e) => setSenderName(e.target.value)} className="w-full mb-3 p-2.5 border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl text-[#1F1106] bg-[#FDFBF7] outline-none transition" required />
+        
+        <label className="block text-[11px] font-bold text-[#1F1106]/60 uppercase tracking-wider mb-1">{language === "ar" ? "البريد الإلكتروني *" : "Email *"}</label>
+        <input type="email" placeholder={language === "ar" ? "البريد الإلكتروني" : "Email"} value={senderEmail} onChange={(e) => setSenderEmail(e.target.value)} className="w-full mb-3 p-2.5 border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl text-[#1F1106] bg-[#FDFBF7] outline-none transition" required />
+        
+        <label className="block text-[11px] font-bold text-[#1F1106]/60 uppercase tracking-wider mb-1">{language === "ar" ? "رقم الهاتف" : "Phone"}</label>
+        <input type="tel" placeholder={language === "ar" ? "الهاتف" : "Phone"} value={senderPhone} onChange={(e) => setSenderPhone(e.target.value)} className="w-full mb-3 p-2.5 border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl text-[#1F1106] bg-[#FDFBF7] outline-none transition" />
+        
+        <label className="block text-[11px] font-bold text-[#1F1106]/60 uppercase tracking-wider mb-1">{language === "ar" ? "التفاصيل والرسالة *" : "Details *"}</label>
+        <textarea placeholder={language === "ar" ? "يرجى كتابة التفاصيل هنا..." : "Details"} value={text} onChange={(e) => setText(e.target.value)} className="w-full mb-4 p-2.5 border border-[#EADFC9] focus:border-[#D4AF37] rounded-xl text-[#1F1106] bg-[#FDFBF7] outline-none transition h-24 resize-none" required />
+        
+        <div className="flex justify-end gap-2 border-t border-[#EADFC9]/40 pt-4">
+          <button type="button" onClick={onClose} className="px-4 py-2 bg-[#EADFC9]/50 hover:bg-[#EADFC9] text-[#1F1106] font-semibold rounded-xl transition cursor-pointer">{language === "ar" ? "إلغاء" : "Cancel"}</button>
+          <button type="submit" className="px-5 py-2 bg-[#D4AF37] hover:bg-[#E5C158] text-[#1F1106] font-bold rounded-xl shadow transition cursor-pointer">{language === "ar" ? "إرسال" : "Submit"}</button>
         </div>
       </form>
     </div>

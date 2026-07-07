@@ -6,34 +6,103 @@
   --font-serif: "Amiri", "Playfair Display", Georgia, serif;
   --font-mono: "JetBrains Mono", monospace;
   
-  --color-gold: #D4A327;
-  --color-charcoal: #FAF8F5;
-  --color-dark-wood: #FFFFFF;
-  --color-border-wood: #E6DFD3;
-  --color-amber-cream: #1C2D27;
-  --color-dark-amber: #F4EFE6;
-  --color-dark-dense: #FAF7F2;
+  --color-gold: #D4AF37;
+  --color-charcoal: #FDFBF7;
+  --color-dark-wood: #1F1106;
+  --color-border-wood: #EADFC9;
+  --color-amber-cream: #1F1106;
+  --color-dark-amber: #F9F3E6;
+  --color-dark-dense: #FDFBF7;
 
-  /* Luxurious Qrizq Emerald & Gold Sovereign Palette */
-  --color-qamariyah-blue: #0E4B3E;
-  --color-qamariyah-blue-light: #10B981;
-  --color-qamariyah-red: #0B352D;
-  --color-qamariyah-red-light: #34D399;
-  --color-qamariyah-green: #164E41;
-  --color-qamariyah-green-light: #059669;
-  --color-qamariyah-amber: #B58A30;
-  --color-qamariyah-amber-light: #E5C158;
-  --color-qamariyah-purple: #063127;
-  --color-qamariyah-purple-light: #D4A327;
-  --color-qamariyah-teal: #0F4C3F;
-  --color-qamariyah-teal-light: #FBBF24;
-  --color-qamariyah-pink: #E5C158;
+  /* Luxurious Qrizq Emerald & Gold Sovereign Palette mapped to Luxury Brown & Gold */
+  --color-qamariyah-blue: #1F1106;
+  --color-qamariyah-blue-light: #D4AF37;
+  --color-qamariyah-red: #321E0D;
+  --color-qamariyah-red-light: #F3E5AB;
+  --color-qamariyah-green: #1F1106;
+  --color-qamariyah-green-light: #D4AF37;
+  --color-qamariyah-amber: #D4AF37;
+  --color-qamariyah-amber-light: #F3E5AB;
+  --color-qamariyah-purple: #1F1106;
+  --color-qamariyah-purple-light: #D4AF37;
+  --color-qamariyah-teal: #321E0D;
+  --color-qamariyah-teal-light: #D4AF37;
+  --color-qamariyah-pink: #F3E5AB;
+
+  /* Luxury Image 3 inspired colors */
+  --color-luxury-brown: #1F1106;
+  --color-luxury-brown-light: #321E0D;
+  --color-luxury-beige: #F9F3E6;
+  --color-luxury-gold: #D4AF37;
+  --color-luxury-gold-light: #F3E5AB;
 }
 
 body {
-  background-color: #FAF8F5;
-  color: #1C2D27;
+  background-color: #FDFBF7;
+  color: #1F1106;
   font-family: var(--font-sans);
+}
+
+/* Honeycomb grid css */
+.honeycomb-grid {
+  position: relative;
+}
+.honeycomb-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 50% 50%, #D4AF37 1px, transparent 1px),
+                    linear-gradient(to right, rgba(212, 175, 55, 0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Beautiful custom honeycomb pattern CSS */
+.honeycomb-pattern {
+  background-color: #1F1106;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 1.5px, transparent 1.5px),
+    linear-gradient(30deg, rgba(212, 175, 55, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.04) 87.5%, rgba(212, 175, 55, 0.04)),
+    linear-gradient(150deg, rgba(212, 175, 55, 0.04) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.04) 87.5%, rgba(212, 175, 55, 0.04)),
+    linear-gradient(270deg, rgba(212, 175, 55, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(212, 175, 55, 0.04) 75.5%, rgba(212, 175, 55, 0.04));
+  background-size: 32px 56px;
+}
+
+.clip-hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Premium Gold Shimmer Card */
+.gold-shimmer-card {
+  background: linear-gradient(135deg, #2E1A08 0%, #150A02 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(212, 175, 55, 0.1) 48%,
+    rgba(212, 175, 55, 0.3) 50%,
+    rgba(212, 175, 55, 0.1) 52%,
+    transparent 55%
+  );
+  transform: rotate(45deg);
+  animation: shimmer 8s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { transform: translate(-30%, -30%) rotate(45deg); }
+  100% { transform: translate(30%, 30%) rotate(45deg); }
 }
 
 /* Custom scrollbar styling for a premium feel */
@@ -84,55 +153,37 @@ body {
   animation: slowOrbit 30s infinite linear;
 }
 
-/* Custom cards for each honey variety with gorgeous color themes */
-.card-theme-sidr {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(253, 251, 247, 0.96) 100%);
-  border-top: 5px solid var(--color-qamariyah-purple);
-  box-shadow: 0 10px 30px -15px rgba(14, 75, 62, 0.15);
-}
-.card-theme-sidr:hover {
-  box-shadow: 0 20px 40px -10px rgba(212, 163, 39, 0.25);
-  border-color: var(--color-qamariyah-purple-light);
-}
-
-.card-theme-sumar {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 249, 245, 0.96) 100%);
-  border-top: 5px solid var(--color-qamariyah-red);
-  box-shadow: 0 10px 30px -15px rgba(14, 75, 62, 0.15);
-}
-.card-theme-sumar:hover {
-  box-shadow: 0 20px 40px -10px rgba(181, 138, 48, 0.25);
-  border-color: var(--color-qamariyah-red-light);
+/* Unified Luxurious Honey Collection Card Styling */
+.card-theme-sidr, .card-theme-sumar, .card-theme-marai, .card-theme-blends, .card-theme-bee-products {
+  background: #FFFFFF;
+  border-top: 5px solid var(--color-luxury-gold);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px -15px rgba(31, 17, 6, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.card-theme-marai {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 252, 248, 0.96) 100%);
-  border-top: 5px solid var(--color-qamariyah-green);
-  box-shadow: 0 10px 30px -15px rgba(14, 75, 62, 0.15);
-}
-.card-theme-marai:hover {
-  box-shadow: 0 20px 40px -10px rgba(181, 138, 48, 0.25);
-  border-color: var(--color-qamariyah-green-light);
+.card-theme-sidr:hover, .card-theme-sumar:hover, .card-theme-marai:hover, .card-theme-blends:hover, .card-theme-bee-products:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 45px -15px rgba(212, 175, 55, 0.22);
+  border-top-color: #E5C158;
 }
 
-.card-theme-blends {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 253, 0.96) 100%);
-  border-top: 5px solid var(--color-qamariyah-blue);
-  box-shadow: 0 10px 30px -15px rgba(14, 75, 62, 0.15);
-}
-.card-theme-blends:hover {
-  box-shadow: 0 20px 40px -10px rgba(212, 163, 39, 0.25);
-  border-color: var(--color-qamariyah-blue-light);
+/* Subtle honeycomb watermark showing inside product cards on hover */
+.card-theme-sidr::after, .card-theme-sumar::after, .card-theme-marai::after, .card-theme-blends::after, .card-theme-bee-products::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+  transition: opacity 0.35s ease;
 }
 
-.card-theme-bee-products {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 251, 243, 0.96) 100%);
-  border-top: 5px solid var(--color-qamariyah-amber);
-  box-shadow: 0 10px 30px -15px rgba(14, 75, 62, 0.15);
-}
-.card-theme-bee-products:hover {
-  box-shadow: 0 20px 40px -10px rgba(212, 163, 39, 0.25);
-  border-color: var(--color-qamariyah-amber-light);
+.card-theme-sidr:hover::after, .card-theme-sumar:hover::after, .card-theme-marai:hover::after, .card-theme-blends:hover::after, .card-theme-bee-products:hover::after {
+  opacity: 0.4;
 }
 
 /* Qamariyah Stained Glass Mosaic Grid Background for Hero or Accents */
