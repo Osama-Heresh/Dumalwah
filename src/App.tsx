@@ -6,7 +6,7 @@ import Logo from "./components/Logo";
 import Chatbot from "./components/Chatbot";
 import { FeedbackForm } from "./components/FeedbackForm";
 import { AdminFeedback } from "./components/AdminFeedback";
-import { db } from "./lib/firebase";
+import { db, handleFirestoreError, OperationType } from "./lib/firebase";
 import { collection, getDocs, setDoc, doc, deleteDoc } from "firebase/firestore";
 
 // @ts-ignore
@@ -248,6 +248,182 @@ const LOCAL_PRODUCTS: Product[] = [
     benefitsEn: ["Extremely potent antibacterial, antiviral, and antifungal agent", "Sterilizes oral cavity, combats gum bleeding and sore throat", "Promotes cellular regeneration and supports recovery from burns"],
     bestSeller: false,
     honeyType: "Bee Products"
+  },
+  {
+    id: "manuka-umf25",
+    category: "manuka",
+    nameAr: "عسل المانوكا النيوزيلندي الملكي UMF 25+ (MGO 1200+)",
+    nameEn: "Royal New Zealand Manuka Honey UMF 25+ (MGO 1200+)",
+    taglineAr: "أندر وأجود أنواع عسل المانوكا بتركيز علاج خيالي فائق",
+    taglineEn: "Rare super-potent Manuka honey for ultimate healing & immunity",
+    descriptionAr: "عسل مانوكا نيوزيلندي أصلي 100% معتمد من منظمة UMF العالمية بتركيز MGO 1200+. يتميز بمركب الميثيل جليوكسال (Methylglyoxal) الفعال في القضاء على الجراثيم والبكتيريا الحلزونية، وعلاج جرثومة المعدة وتقرحات الجهاز الهضمي الحادة وتسريع التئام الجروح وتعزيز المناعة.",
+    descriptionEn: "Authentic 100% New Zealand Manuka honey certified UMF 25+ with MGO 1200+. Packed with concentrated Methylglyoxal for super-potent antibacterial power, stomach ulcer healing, H. Pylori eradication, and ultimate immune protection.",
+    image: usaimiImg,
+    rating: 4.95,
+    reviewsCount: 86,
+    sizes: [
+      { weight: "250g", price: 65, originalPrice: 75 },
+      { weight: "500g", price: 120, originalPrice: 140 },
+      { weight: "1kg", price: 220, originalPrice: 250 }
+    ],
+    benefitsAr: ["أعلى تركيز للمركبات العلاجية والمضادة للبكتيريا MGO 1200+", "علاج فعال جداً لجرثومة وقرحة المعدة الحادة", "تقوية مناعة الجسم وتطهير للجهاز الهضمي والجروح"],
+    benefitsEn: ["Highest therapeutic concentration of antibacterial MGO 1200+", "Potent treatment for severe stomach ulcers & H. Pylori", "Ultimate immune support and deep digestive sterilization"],
+    bestSeller: true,
+    honeyType: "Manuka"
+  },
+  {
+    id: "manuka-umf16",
+    category: "manuka",
+    nameAr: "عسل المانوكا النيوزيلندي المميز UMF 16+ (MGO 570+)",
+    nameEn: "Premium New Zealand Manuka Honey UMF 16+ (MGO 570+)",
+    taglineAr: "الخيار العلاجي اليومي المتوازن لصحة المعدة والجهاز الهضمي",
+    taglineEn: "Balanced daily therapeutic Manuka honey for digestive health",
+    descriptionAr: "عسل مانوكا نيوزيلندي مرخص بتركيز UMF 16+ وMGO 570+ الموصى به للاستخدام العلاجي اليومي. يتميز بقوامه الكريمي الغني ونكهته الفاخرة المعتدلة، ويعمل كدرع واقٍ للمعدة، ويهدئ حموضة وارتجاع المريء وينشط الجسم.",
+    descriptionEn: "Certified New Zealand Manuka honey with UMF 16+ and MGO 570+. Smooth, rich texture offering daily therapeutic support for acid reflux relief, stomach soothing, and overall health defense.",
+    image: doanImg,
+    rating: 4.85,
+    reviewsCount: 64,
+    sizes: [
+      { weight: "250g", price: 40, originalPrice: 48 },
+      { weight: "500g", price: 75, originalPrice: 88 },
+      { weight: "1kg", price: 140, originalPrice: 165 }
+    ],
+    benefitsAr: ["خصائص مضادة للبكتيريا والالتهابات بدرجة علاجية ممتازة", "يهدئ حموضة المعدة والارتجاع ويحسن الهضم", "بديل طبيعي رائع لتقوية الجسم ومقاومة الأمراض"],
+    benefitsEn: ["Daily therapeutic antibacterial and anti-inflammatory properties", "Relieves acid reflux and aids comfortable digestion", "Natural immune defense and vitality booster"],
+    bestSeller: false,
+    honeyType: "Manuka"
+  },
+  {
+    id: "black-seed-honey",
+    category: "blends",
+    nameAr: "عسل حبة البركة (الحبة السوداء) الأصلي",
+    nameEn: "Pure Black Seed Flower Honey",
+    taglineAr: "رحيق زهور حبة البركة لتقوية المناعة وحماية الجهاز التنفسي",
+    taglineEn: "Pure Black Seed blossom nectar for respiratory & immune strength",
+    descriptionAr: "ينتج عن تغذية النحل على رحيق أزهار نبات حبة البركة السوداء. يتميز بلونه الداكن المميز ونكهته العطرية الدافئة، يجمع بين فوائد العسل الخام والخصائص الشفائية المذهلة للحبة السوداء في دعم المناعة ومكافحة حساسية الصدر والالتهابات.",
+    descriptionEn: "Produced by bees feeding on the nectar of Nigella sativa (Black Seed) flowers. Dark amber in color with a warm aromatic flavor, combining pure honey with the therapeutic virtues of black seed for immunity and bronchial support.",
+    image: sumarImg,
+    rating: 4.8,
+    reviewsCount: 52,
+    sizes: [
+      { weight: "250g", price: 20, originalPrice: 25 },
+      { weight: "500g", price: 35, originalPrice: 42 },
+      { weight: "1kg", price: 65, originalPrice: 78 }
+    ],
+    benefitsAr: ["مقوٍ مضاعف للجهاز المناعي ومكافح للالتهابات", "مفيد جداً لحساسية الصدر والجهاز التنفسي والسعال", "يحتوي على ثيموكينون ومضادات أكسدة قوية"],
+    benefitsEn: ["Doubly potent immune booster & natural anti-inflammatory", "Great for chest allergies, asthma support & cough relief", "Rich in thymoquinone and active antioxidants"],
+    bestSeller: true,
+    honeyType: "Blends"
+  },
+  {
+    id: "lavender-honey",
+    category: "wildflowers",
+    nameAr: "عسل زهرة اللافندر العطري",
+    nameEn: "Aromatic Lavender Blossom Honey",
+    taglineAr: "رحيق أزهار اللافندر الناعم للاسترخاء والهدوء ونضارة البشرة",
+    taglineEn: "Delicate lavender nectar promoting relaxation & radiant skin",
+    descriptionAr: "عسل راقٍ وساحر يجني النحل رحيقه من حقول زهور اللافندر الأرجوانية. يتميز برائحة عطرية زكية ونكهة زهرية ناعمة خفيفة. غني بالحمضيات الفينولية والانزيمات ومضادات الفطريات، ويسهم بشكل ممتاز في تهدئة الأعصاب والمساعدة على النوم العميق وتغذية البشرة.",
+    descriptionEn: "An exquisite, aromatic honey harvested from blooming lavender fields. Delivers a soothing floral note and delicate sweetness. Rich in phenolic acids and antifungal enzymes, promoting tranquil sleep, stress relief, and natural skin hydration.",
+    image: propolisImg,
+    rating: 4.75,
+    reviewsCount: 39,
+    sizes: [
+      { weight: "250g", price: 22, originalPrice: 27 },
+      { weight: "500g", price: 38, originalPrice: 46 },
+      { weight: "1kg", price: 70, originalPrice: 84 }
+    ],
+    benefitsAr: ["يهدئ الأعصاب والمخاوف ويساعد على النوم العميق", "خصائص مضادة للفطريات والأكسدة وفيتامين ج", "مغذي ممتاز للبشرة ومفيد لصحة الجهاز العصبي"],
+    benefitsEn: ["Soothes nervous tension and promotes deep restful sleep", "Natural antifungal and antioxidant properties rich in Vitamin C", "Nourishes skin texture and supports nervous system balance"],
+    bestSeller: false,
+    honeyType: "Wildflowers"
+  },
+  {
+    id: "black-forest-honey",
+    category: "wildflowers",
+    nameAr: "عسل الغابة السوداء الفاخر (ندوة عسلية)",
+    nameEn: "Premium Black Forest Honeydew Honey",
+    taglineAr: "عسل داكن غني جداً بالمعادن كالبوتاسيوم والحديد وبحلاوة معتدلة",
+    taglineEn: "Mineral-dense dark honeydew honey with low-glycemic sweetness",
+    descriptionAr: "عسل الندوة العسلية النقي المستخلص من غابات الصنوبر والأشجار الجبلية الشاهقة. يتألق بلونه البني الداكن ونكهته الغنية الخشبية المحببة وحلاوته الخفيفة. يحتوي على أعلى نسبة من المعادن الأساسية كالبوتاسيوم والحديد والمغنيسيوم، مما يجعله مثالياً لمرضى الأنيميا والرياضيين.",
+    descriptionEn: "Pure honeydew honey gathered from high-mountain evergreen pine forests. Characterized by a rich dark brown color, satisfying woody aroma, and gentle sweetness. Contains high concentrations of potassium, iron, and magnesium.",
+    image: sumarImg,
+    rating: 4.8,
+    reviewsCount: 71,
+    sizes: [
+      { weight: "250g", price: 18, originalPrice: 22 },
+      { weight: "500g", price: 32, originalPrice: 38 },
+      { weight: "1kg", price: 60, originalPrice: 72 }
+    ],
+    benefitsAr: ["غني جداً بالمعادن النادرة والحديد والبوتاسيوم", "مظهر ومذاق مدخن خفيف يناسب من لا يحب الحلاوة الزائدة", "ينشط الدورة الدموية ويعوض النقص الغذائي"],
+    benefitsEn: ["Abundant in trace minerals, iron, and potassium", "Low-glycemic subtle sweetness perfect for daily diets", "Stimulates blood vitality and prevents mineral deficiencies"],
+    bestSeller: true,
+    honeyType: "Wildflowers"
+  },
+  {
+    id: "citrus-honey",
+    category: "marai",
+    nameAr: "عسل زهر البرتقال والحمضيات المنعش",
+    nameEn: "Refreshing Citrus Blossom Honey",
+    taglineAr: "عسل فاتح خفيف برائحة البرتقال العطرة وفيتامين C",
+    taglineEn: "Light golden honey brimming with fresh citrus aroma & Vitamin C",
+    descriptionAr: "عسل طبيعي مبهج يُحصَد من بساتين الليمون والبرتقال الحمضية. يتميز بلون ذهبي مشرق وطعم حمضي خفيف منعش وعبير عاطر. يُعد مصدراً ممتازاً لفيتامين C ومضادات الأكسدة، ويعمل كمهدئ طبيعي ومثالي للأطفال ومحبوب في التحلية اليومية.",
+    descriptionEn: "Delightful natural honey gathered from blooming citrus and orange groves. Features a bright golden amber shade with a delicate citrus aroma. Packed with Vitamin C and digestive enzymes, ideal for children and family beverages.",
+    image: maraiImg,
+    rating: 4.7,
+    reviewsCount: 45,
+    sizes: [
+      { weight: "250g", price: 12, originalPrice: 15 },
+      { weight: "500g", price: 22, originalPrice: 27 },
+      { weight: "1kg", price: 40, originalPrice: 50 }
+    ],
+    benefitsAr: ["غني بـ فيتامين ج ومضادات الأكسدة المبهجة", "مهدئ ممتاز للسعال ولطيف جداً على معدة الأطفال", "طعم فريد منعش ومناسب جداً لتحلية المشروبات"],
+    benefitsEn: ["Abundant in Vitamin C and uplifting antioxidants", "Gentle cough soother suitable for kids and adults", "Refreshing citrus finish perfect for tea & desserts"],
+    bestSeller: false,
+    honeyType: "Mara'i"
+  },
+  {
+    id: "chestnut-honey",
+    category: "wildflowers",
+    nameAr: "عسل الكستناء الداكن",
+    nameEn: "Dark Chestnut Flower Honey",
+    taglineAr: "عسل قوي بنكهة خشبية فريدة ومرارة خفيفة لدعم الدورة الدموية",
+    taglineEn: "Bold woody honey with mild bitterness supporting heart & vessels",
+    descriptionAr: "عسل استثنائي ذو لون بني داكن مائل للاحمرار ونكهة قوية مركبة مع مرارة خفيفة محببة. يشتهر بغناه الهائل بالبوليفينولات والتانينات ومضادات الأكسدة التي تدعم صحة الأوعية الدموية وتنشط الدورة الدموية وتقوي عضلة القلب.",
+    descriptionEn: "An extraordinary dark reddish-brown honey with a robust woody flavor profile and subtle herbal bitterness. Packed with polyphenols and tannins that promote cardiovascular circulation, vein elasticity, and endurance.",
+    image: sumarImg,
+    rating: 4.7,
+    reviewsCount: 31,
+    sizes: [
+      { weight: "250g", price: 24, originalPrice: 29 },
+      { weight: "500g", price: 42, originalPrice: 50 },
+      { weight: "1kg", price: 78, originalPrice: 92 }
+    ],
+    benefitsAr: ["ممتلئ بالبوليفينولات ومضادات الأكسدة القوية", "يدعم الدورة الدموية وصحة القلب والشرايين", "نكهة فريدة لعشاق الأصناف غير التقليدية"],
+    benefitsEn: ["Loaded with natural polyphenols and active tannins", "Supports heart health, vein tone & blood circulation", "Complex bittersweet flavor prized by honey connoisseurs"],
+    bestSeller: false,
+    honeyType: "Wildflowers"
+  },
+  {
+    id: "cranberry-honey",
+    category: "wildflowers",
+    nameAr: "عسل التوت البري لراحة القولون الهضمي",
+    nameEn: "Cranberry Blossom Digestive Honey",
+    taglineAr: "تركيبة فريدة لتهدئة حموضة المعدة وتغذية البكتيريا النافعة",
+    taglineEn: "Specialized honey soothing acid reflux & nurturing gut flora",
+    descriptionAr: "عسل فاخر ولذيذ يُجنى من رحيق أزهار شجيرات التوت البري. يتميز بتركيبته النادرة الفعالة في تهدئة جدار المعدة وتقليل الحموضة والارتجاع المريئي، فضلاً عن دعم البكتيريا النافعة (البروبيوتيك) وحماية الجهاز البولي من الالتهابات.",
+    descriptionEn: "Rare, delicious honey sourced from wild cranberry blossoms. Specially formulated by nature to coat and soothe the stomach lining, reduce acid reflux, feed beneficial gut microbiome flora, and support urinary wellness.",
+    image: doanImg,
+    rating: 4.85,
+    reviewsCount: 57,
+    sizes: [
+      { weight: "250g", price: 25, originalPrice: 30 },
+      { weight: "500g", price: 44, originalPrice: 52 },
+      { weight: "1kg", price: 82, originalPrice: 96 }
+    ],
+    benefitsAr: ["يهدئ حموضة المعدة والارتجاع بشكل ملموس", "يدعم توازن البكتيريا النافعة في الأمعاء (البروبيوتيك)", "حماية متميزة للمسالك البولية من الالتهابات"],
+    benefitsEn: ["Rapidly calms stomach acidity and esophageal burning", "Feeds healthy gut bacteria for comfortable digestion", "Protects the urinary tract with natural anti-adhesive properties"],
+    bestSeller: true,
+    honeyType: "Wildflowers"
   }
 ];
 
@@ -260,11 +436,14 @@ export default function App() {
 
   // Load products from localStorage or fallback
   const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem("qd_products_db_v4");
+    const saved = localStorage.getItem("qd_products_db_v5");
     if (saved) {
       try {
         const parsed = JSON.parse(saved) as Product[];
-        return parsed.map(p => ({
+        const existingIds = new Set(parsed.map(p => p.id));
+        const missingFromLocal = LOCAL_PRODUCTS.filter(p => !existingIds.has(p.id));
+        const merged = [...parsed, ...missingFromLocal];
+        return merged.map(p => ({
           ...p,
           image: p.image || PRODUCT_IMAGES[p.id]
         }));
@@ -602,9 +781,31 @@ export default function App() {
             return {
               id: doc.id,
               ...data,
-              image: data.image || PRODUCT_IMAGES[doc.id]
+              image: data.image || PRODUCT_IMAGES[doc.id] || ""
             };
           }) as Product[];
+
+          // Check for any products in LOCAL_PRODUCTS that are missing from Firestore and sync them
+          const existingIds = new Set(list.map(p => p.id));
+          const missingProducts = LOCAL_PRODUCTS.filter(p => !existingIds.has(p.id));
+
+          if (missingProducts.length > 0) {
+            console.log(`Syncing ${missingProducts.length} new local products to Firestore...`);
+            let nextSort = list.length;
+            for (const p of missingProducts) {
+              const productToSave = {
+                ...p,
+                sortOrder: nextSort++,
+                image: p.image || PRODUCT_IMAGES[p.id] || ""
+              };
+              try {
+                await setDoc(doc(db, "products", p.id), productToSave);
+              } catch (e) {
+                console.warn("Could not save missing product to Firestore:", e);
+              }
+              list.push(productToSave);
+            }
+          }
           
           // Sort them by sortOrder to maintain order
           const sortedList = list.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
@@ -639,6 +840,7 @@ export default function App() {
           console.log("Successfully seeded Firestore products collection:", seededList.length);
         }
       } catch (err) {
+        handleFirestoreError(err, OperationType.GET, "products");
         console.error("Failed to load products from Firestore, falling back to local database/API", err);
         // Fallback: load from API/localStorage
         fetch("/api/products")
@@ -651,7 +853,7 @@ export default function App() {
               ...p,
               image: p.image || PRODUCT_IMAGES[p.id]
             }));
-            if (!localStorage.getItem("qd_products_db_v4")) {
+            if (!localStorage.getItem("qd_products_db_v5")) {
               setProducts(mapped);
             }
           })
@@ -701,7 +903,7 @@ export default function App() {
   // Save products database (for admin edits)
   useEffect(() => {
     try {
-      localStorage.setItem("qd_products_db_v4", JSON.stringify(products));
+      localStorage.setItem("qd_products_db_v5", JSON.stringify(products));
     } catch (e) {
       console.warn("Could not save products to localStorage (limit exceeded):", e);
     }
@@ -2541,8 +2743,10 @@ export default function App() {
                     {[
                       { id: "all", name: t.catAll, activeClass: "bg-[#D4AF37] text-white shadow-md" },
                       { id: "sidr", name: t.catSidr, activeClass: "bg-qamariyah-purple text-white shadow-md shadow-qamariyah-purple/20" },
+                      { id: "manuka", name: t.catManuka, activeClass: "bg-amber-600 text-white shadow-md shadow-amber-600/20" },
                       { id: "sumar", name: t.catSumar, activeClass: "bg-qamariyah-red text-white shadow-md shadow-qamariyah-red/20" },
                       { id: "marai", name: t.catMarai, activeClass: "bg-qamariyah-green text-white shadow-md shadow-qamariyah-green/20" },
+                      { id: "wildflowers", name: t.catWildflowers, activeClass: "bg-emerald-600 text-white shadow-md shadow-emerald-600/20" },
                       { id: "blends", name: t.catBlends, activeClass: "bg-qamariyah-blue text-white shadow-md shadow-qamariyah-blue/20" },
                       { id: "bee-products", name: t.catBeeProducts, activeClass: "bg-qamariyah-amber text-white shadow-md shadow-qamariyah-amber/20" }
                     ].map((cat) => (
@@ -3553,8 +3757,13 @@ export default function App() {
                                       onChange={(e) => setNewProductForm(p => ({ ...p, category: e.target.value }))}
                                       className="w-full bg-[#FDFBF7] border border-[#EADFC9] rounded-lg px-3 py-2 text-xs outline-none"
                                     >
-                                      <option value="sidr">{language === "ar" ? "عسل سدر" : "Sidr Honey"}</option>
-                                      <option value="sumar">{language === "ar" ? "عسل سمر" : "Sumar Honey"}</option>
+                                      <option value="sidr">{language === "ar" ? "عسل سدر فاخر" : "Sidr Honey"}</option>
+                                      <option value="manuka">{language === "ar" ? "عسل المانوكا" : "Manuka Honey"}</option>
+                                      <option value="sumar">{language === "ar" ? "عسل سمر جبال" : "Sumar Honey"}</option>
+                                      <option value="marai">{language === "ar" ? "عسل مراعي زهور" : "Mara'i Honey"}</option>
+                                      <option value="wildflowers">{language === "ar" ? "عسل أزهار وندوة" : "Wildflowers & Honeydew"}</option>
+                                      <option value="blends">{language === "ar" ? "خلطات ملكية وعلاجية" : "Royal & Immune Blends"}</option>
+                                      <option value="bee-products">{language === "ar" ? "منتجات نحل برية" : "Wild Bee Products"}</option>
                                       <option value="sal">{language === "ar" ? "عسل صال" : "Sal Honey"}</option>
                                       <option value="vouchers">{language === "ar" ? "باقات وهدايا" : "Gifts & Vouchers"}</option>
                                     </select>

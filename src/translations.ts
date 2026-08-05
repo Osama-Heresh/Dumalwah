@@ -31,6 +31,8 @@ export const translations = {
     catMarai: "عسل مراعي",
     catBlends: "خلطات علاجية وملكية",
     catBeeProducts: "منتجات نحل برية",
+    catManuka: "عسل المانوكا",
+    catWildflowers: "عسل الأزهار والندوة",
 
     // Filters
     filterCategory: "تصنيف المنتجات",
@@ -192,6 +194,8 @@ export const translations = {
     catMarai: "Mara'i Multi-flower",
     catBlends: "Immunity & Royal Blends",
     catBeeProducts: "Wild Bee Products",
+    catManuka: "Manuka Honey",
+    catWildflowers: "Wildflowers & Honeydew",
 
     // Filters
     filterCategory: "Products Category",

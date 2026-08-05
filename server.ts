@@ -164,6 +164,182 @@ const products = [
     benefitsEn: ["Extremely potent antibacterial, antiviral, and antifungal agent", "Sterilizes oral cavity, combats gum bleeding and sore throat", "Promotes cellular regeneration and supports recovery from burns"],
     bestSeller: false,
     honeyType: "Bee Products"
+  },
+  {
+    id: "manuka-umf25",
+    category: "manuka",
+    nameAr: "عسل المانوكا النيوزيلندي الملكي UMF 25+ (MGO 1200+)",
+    nameEn: "Royal New Zealand Manuka Honey UMF 25+ (MGO 1200+)",
+    taglineAr: "أندر وأجود أنواع عسل المانوكا بتركيز علاج خيالي فائق",
+    taglineEn: "Rare super-potent Manuka honey for ultimate healing & immunity",
+    descriptionAr: "عسل مانوكا نيوزيلندي أصلي 100% معتمد من منظمة UMF العالمية بتركيز MGO 1200+. يتميز بمركب الميثيل جليوكسال (Methylglyoxal) الفعال في القضاء على الجراثيم والبكتيريا الحلزونية، وعلاج جرثومة المعدة وتقرحات الجهاز الهضمي الحادة وتسريع التئام الجروح وتعزيز المناعة.",
+    descriptionEn: "Authentic 100% New Zealand Manuka honey certified UMF 25+ with MGO 1200+. Packed with concentrated Methylglyoxal for super-potent antibacterial power, stomach ulcer healing, H. Pylori eradication, and ultimate immune protection.",
+    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=600",
+    rating: 4.95,
+    reviewsCount: 86,
+    sizes: [
+      { weight: "250g", price: 340, originalPrice: 390 },
+      { weight: "500g", price: 630, originalPrice: 730 },
+      { weight: "1kg", price: 1150, originalPrice: 1300 }
+    ],
+    benefitsAr: ["أعلى تركيز للمركبات العلاجية والمضادة للبكتيريا MGO 1200+", "علاج فعال جداً لجرثومة وقرحة المعدة الحادة", "تقوية مناعة الجسم وتطهير للجهاز الهضمي والجروح"],
+    benefitsEn: ["Highest therapeutic concentration of antibacterial MGO 1200+", "Potent treatment for severe stomach ulcers & H. Pylori", "Ultimate immune support and deep digestive sterilization"],
+    bestSeller: true,
+    honeyType: "Manuka"
+  },
+  {
+    id: "manuka-umf16",
+    category: "manuka",
+    nameAr: "عسل المانوكا النيوزيلندي المميز UMF 16+ (MGO 570+)",
+    nameEn: "Premium New Zealand Manuka Honey UMF 16+ (MGO 570+)",
+    taglineAr: "الخيار العلاجي اليومي المتوازن لصحة المعدة والجهاز الهضمي",
+    taglineEn: "Balanced daily therapeutic Manuka honey for digestive health",
+    descriptionAr: "عسل مانوكا نيوزيلندي مرخص بتركيز UMF 16+ وMGO 570+ الموصى به للاستخدام العلاجي اليومي. يتميز بقوامه الكريمي الغني ونكهته الفاخرة المعتدلة، ويعمل كدرع واقٍ للمعدة، ويهدئ حموضة وارتجاع المريء وينشط الجسم.",
+    descriptionEn: "Certified New Zealand Manuka honey with UMF 16+ and MGO 570+. Smooth, rich texture offering daily therapeutic support for acid reflux relief, stomach soothing, and overall health defense.",
+    image: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&q=80&w=600",
+    rating: 4.85,
+    reviewsCount: 64,
+    sizes: [
+      { weight: "250g", price: 210, originalPrice: 250 },
+      { weight: "500g", price: 390, originalPrice: 460 },
+      { weight: "1kg", price: 730, originalPrice: 860 }
+    ],
+    benefitsAr: ["خصائص مضادة للبكتيريا والالتهابات بدرجة علاجية ممتازة", "يهدئ حموضة المعدة والارتجاع ويحسن الهضم", "بديل طبيعي رائع لتقوية الجسم ومقاومة الأمراض"],
+    benefitsEn: ["Daily therapeutic antibacterial and anti-inflammatory properties", "Relieves acid reflux and aids comfortable digestion", "Natural immune defense and vitality booster"],
+    bestSeller: false,
+    honeyType: "Manuka"
+  },
+  {
+    id: "black-seed-honey",
+    category: "blends",
+    nameAr: "عسل حبة البركة (الحبة السوداء) الأصلي",
+    nameEn: "Pure Black Seed Flower Honey",
+    taglineAr: "رحيق زهور حبة البركة لتقوية المناعة وحماية الجهاز التنفسي",
+    taglineEn: "Pure Black Seed blossom nectar for respiratory & immune strength",
+    descriptionAr: "ينتج عن تغذية النحل على رحيق أزهار نبات حبة البركة السوداء. يتميز بلونه الداكن المميز ونكهته العطرية الدافئة، يجمع بين فوائد العسل الخام والخصائص الشفائية المذهلة للحبة السوداء في دعم المناعة ومكافحة حساسية الصدر والالتهابات.",
+    descriptionEn: "Produced by bees feeding on the nectar of Nigella sativa (Black Seed) flowers. Dark amber in color with a warm aromatic flavor, combining pure honey with the therapeutic virtues of black seed for immunity and bronchial support.",
+    image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&q=80&w=600",
+    rating: 4.8,
+    reviewsCount: 52,
+    sizes: [
+      { weight: "250g", price: 105, originalPrice: 130 },
+      { weight: "500g", price: 185, originalPrice: 220 },
+      { weight: "1kg", price: 340, originalPrice: 410 }
+    ],
+    benefitsAr: ["مقوٍ مضاعف للجهاز المناعي ومكافح للالتهابات", "مفيد جداً لحساسية الصدر والجهاز التنفسي والسعال", "يحتوي على ثيموكينون ومضادات أكسدة قوية"],
+    benefitsEn: ["Doubly potent immune booster & natural anti-inflammatory", "Great for chest allergies, asthma support & cough relief", "Rich in thymoquinone and active antioxidants"],
+    bestSeller: true,
+    honeyType: "Blends"
+  },
+  {
+    id: "lavender-honey",
+    category: "wildflowers",
+    nameAr: "عسل زهرة اللافندر العطري",
+    nameEn: "Aromatic Lavender Blossom Honey",
+    taglineAr: "رحيق أزهار اللافندر الناعم للاسترخاء والهدوء ونضارة البشرة",
+    taglineEn: "Delicate lavender nectar promoting relaxation & radiant skin",
+    descriptionAr: "عسل راقٍ وساحر يجني النحل رحيقه من حقول زهور اللافندر الأرجوانية. يتميز برائحة عطرية زكية ونكهة زهرية ناعمة خفيفة. غني بالحمضيات الفينولية والانزيمات ومضادات الفطريات، ويسهم بشكل ممتاز في تهدئة الأعصاب والمساعدة على النوم العميق وتغذية البشرة.",
+    descriptionEn: "An exquisite, aromatic honey harvested from blooming lavender fields. Delivers a soothing floral note and delicate sweetness. Rich in phenolic acids and antifungal enzymes, promoting tranquil sleep, stress relief, and natural skin hydration.",
+    image: "https://images.unsplash.com/photo-1587049352851-8d4e89134292?auto=format&fit=crop&q=80&w=600",
+    rating: 4.75,
+    reviewsCount: 39,
+    sizes: [
+      { weight: "250g", price: 115, originalPrice: 140 },
+      { weight: "500g", price: 200, originalPrice: 240 },
+      { weight: "1kg", price: 370, originalPrice: 440 }
+    ],
+    benefitsAr: ["يهدئ الأعصاب والمخاوف ويساعد على النوم العميق", "خصائص مضادة للفطريات والأكسدة وفيتامين ج", "مغذي ممتاز للبشرة ومفيد لصحة الجهاز العصبي"],
+    benefitsEn: ["Soothes nervous tension and promotes deep restful sleep", "Natural antifungal and antioxidant properties rich in Vitamin C", "Nourishes skin texture and supports nervous system balance"],
+    bestSeller: false,
+    honeyType: "Wildflowers"
+  },
+  {
+    id: "black-forest-honey",
+    category: "wildflowers",
+    nameAr: "عسل الغابة السوداء الفاخر (ندوة عسلية)",
+    nameEn: "Premium Black Forest Honeydew Honey",
+    taglineAr: "عسل داكن غني جداً بالمعادن كالبوتاسيوم والحديد وبحلاوة معتدلة",
+    taglineEn: "Mineral-dense dark honeydew honey with low-glycemic sweetness",
+    descriptionAr: "عسل الندوة العسلية النقي المستخلص من غابات الصنوبر والأشجار الجبلية الشاهقة. يتألق بلونه البني الداكن ونكهته الغنية الخشبية المحببة وحلاوته الخفيفة. يحتوي على أعلى نسبة من المعادن الأساسية كالبوتاسيوم والحديد والمغنيسيوم، مما يجعله مثالياً لمرضى الأنيميا والرياضيين.",
+    descriptionEn: "Pure honeydew honey gathered from high-mountain evergreen pine forests. Characterized by a rich dark brown color, satisfying woody aroma, and gentle sweetness. Contains high concentrations of potassium, iron, and magnesium.",
+    image: "https://images.unsplash.com/photo-1608686207856-001b95cf60ca?auto=format&fit=crop&q=80&w=600",
+    rating: 4.8,
+    reviewsCount: 71,
+    sizes: [
+      { weight: "250g", price: 95, originalPrice: 115 },
+      { weight: "500g", price: 170, originalPrice: 200 },
+      { weight: "1kg", price: 315, originalPrice: 380 }
+    ],
+    benefitsAr: ["غني جداً بالمعادن النادرة والحديد والبوتاسيوم", "مظهر ومذاق مدخن خفيف يناسب من لا يحب الحلاوة الزائدة", "ينشط الدورة الدموية ويعوض النقص الغذائي"],
+    benefitsEn: ["Abundant in trace minerals, iron, and potassium", "Low-glycemic subtle sweetness perfect for daily diets", "Stimulates blood vitality and prevents mineral deficiencies"],
+    bestSeller: true,
+    honeyType: "Wildflowers"
+  },
+  {
+    id: "citrus-honey",
+    category: "marai",
+    nameAr: "عسل زهر البرتقال والحمضيات المنعش",
+    nameEn: "Refreshing Citrus Blossom Honey",
+    taglineAr: "عسل فاتح خفيف برائحة البرتقال العطرة وفيتامين C",
+    taglineEn: "Light golden honey brimming with fresh citrus aroma & Vitamin C",
+    descriptionAr: "عسل طبيعي مبهج يُحصَد من بساتين الليمون والبرتقال الحمضية. يتميز بلون ذهبي مشرق وطعم حمضي خفيف منعش وعبير عاطر. يُعد مصدراً ممتازاً لفيتامين C ومضادات الأكسدة، ويعمل كمهدئ طبيعي ومثالي للأطفال ومحبوب في التحلية اليومية.",
+    descriptionEn: "Delightful natural honey gathered from blooming citrus and orange groves. Features a bright golden amber shade with a delicate citrus aroma. Packed with Vitamin C and digestive enzymes, ideal for children and family beverages.",
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=600",
+    rating: 4.7,
+    reviewsCount: 45,
+    sizes: [
+      { weight: "250g", price: 65, originalPrice: 80 },
+      { weight: "500g", price: 115, originalPrice: 140 },
+      { weight: "1kg", price: 210, originalPrice: 260 }
+    ],
+    benefitsAr: ["غني بـ فيتامين ج ومضادات الأكسدة المبهجة", "مهدئ ممتاز للسعال ولطيف جداً على معدة الأطفال", "طعم فريد منعش ومناسب جداً لتحلية المشروبات"],
+    benefitsEn: ["Abundant in Vitamin C and uplifting antioxidants", "Gentle cough soother suitable for kids and adults", "Refreshing citrus finish perfect for tea & desserts"],
+    bestSeller: false,
+    honeyType: "Mara'i"
+  },
+  {
+    id: "chestnut-honey",
+    category: "wildflowers",
+    nameAr: "عسل الكستناء الداكن",
+    nameEn: "Dark Chestnut Flower Honey",
+    taglineAr: "عسل قوي بنكهة خشبية فريدة ومرارة خفيفة لدعم الدورة الدموية",
+    taglineEn: "Bold woody honey with mild bitterness supporting heart & vessels",
+    descriptionAr: "عسل استثنائي ذو لون بني داكن مائل للاحمرار ونكهة قوية مركبة مع مرارة خفيفة محببة. يشتهر بغناه الهائل بالبوليفينولات والتانينات ومضادات الأكسدة التي تدعم صحة الأوعية الدموية وتنشط الدورة الدموية وتقوي عضلة القلب.",
+    descriptionEn: "An extraordinary dark reddish-brown honey with a robust woody flavor profile and subtle herbal bitterness. Packed with polyphenols and tannins that promote cardiovascular circulation, vein elasticity, and endurance.",
+    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80&w=600",
+    rating: 4.7,
+    reviewsCount: 31,
+    sizes: [
+      { weight: "250g", price: 125, originalPrice: 150 },
+      { weight: "500g", price: 220, originalPrice: 260 },
+      { weight: "1kg", price: 410, originalPrice: 480 }
+    ],
+    benefitsAr: ["ممتلئ بالبوليفينولات ومضادات الأكسدة القوية", "يدعم الدورة الدموية وصحة القلب والشرايين", "نكهة فريدة لعشاق الأصناف غير التقليدية"],
+    benefitsEn: ["Loaded with natural polyphenols and active tannins", "Supports heart health, vein tone & blood circulation", "Complex bittersweet flavor prized by honey connoisseurs"],
+    bestSeller: false,
+    honeyType: "Wildflowers"
+  },
+  {
+    id: "cranberry-honey",
+    category: "wildflowers",
+    nameAr: "عسل التوت البري لراحة القولون الهضمي",
+    nameEn: "Cranberry Blossom Digestive Honey",
+    taglineAr: "تركيبة فريدة لتهدئة حموضة المعدة وتغذية البكتيريا النافعة",
+    taglineEn: "Specialized honey soothing acid reflux & nurturing gut flora",
+    descriptionAr: "عسل فاخر ولذيذ يُجنى من رحيق أزهار شجيرات التوت البري. يتميز بتركيبته النادرة الفعالة في تهدئة جدار المعدة وتقليل الحموضة والارتجاع المريئي، فضلاً عن دعم البكتيريا النافعة (البروبيوتيك) وحماية الجهاز البولي من الالتهابات.",
+    descriptionEn: "Rare, delicious honey sourced from wild cranberry blossoms. Specially formulated by nature to coat and soothe the stomach lining, reduce acid reflux, feed beneficial gut microbiome flora, and support urinary wellness.",
+    image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&q=80&w=600",
+    rating: 4.85,
+    reviewsCount: 57,
+    sizes: [
+      { weight: "250g", price: 130, originalPrice: 160 },
+      { weight: "500g", price: 230, originalPrice: 275 },
+      { weight: "1kg", price: 430, originalPrice: 500 }
+    ],
+    benefitsAr: ["يهدئ حموضة المعدة والارتجاع بشكل ملموس", "يدعم توازن البكتيريا النافعة في الأمعاء (البروبيوتيك)", "حماية متميزة للمسالك البولية من الالتهابات"],
+    benefitsEn: ["Rapidly calms stomach acidity and esophageal burning", "Feeds healthy gut bacteria for comfortable digestion", "Protects the urinary tract with natural anti-adhesive properties"],
+    bestSeller: true,
+    honeyType: "Wildflowers"
   }
 ];
 

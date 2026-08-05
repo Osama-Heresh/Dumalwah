@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../lib/firebase";
+import { db, handleFirestoreError, OperationType } from "../lib/firebase";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { FeedbackTicket } from "../types";
 
@@ -8,9 +8,13 @@ export function AdminFeedback({ language }: { language: string }) {
 
   useEffect(() => {
     const fetchFeedback = async () => {
-      const q = query(collection(db, "feedback"), orderBy("date", "desc"));
-      const snapshot = await getDocs(q);
-      setFeedback(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as FeedbackTicket)));
+      try {
+        const q = query(collection(db, "feedback"), orderBy("date", "desc"));
+        const snapshot = await getDocs(q);
+        setFeedback(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as FeedbackTicket)));
+      } catch (error) {
+        handleFirestoreError(error, OperationType.GET, "feedback");
+      }
     };
     fetchFeedback();
   }, []);

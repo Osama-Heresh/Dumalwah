@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { db } from "../lib/firebase";
+import { db, handleFirestoreError, OperationType } from "../lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { FeedbackTicket } from "../types";
 
@@ -24,7 +24,7 @@ export function FeedbackForm({ onClose, language }: { onClose: () => void, langu
       } as Partial<FeedbackTicket>);
       onClose();
     } catch (error) {
-      console.error("Error submitting feedback:", error);
+      handleFirestoreError(error, OperationType.WRITE, "feedback");
     }
   };
 
